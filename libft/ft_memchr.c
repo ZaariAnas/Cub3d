@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 09:37:39 by azari            ###   ########.fr       */
+/*   Created: 2022/10/10 08:45:12 by azari             #+#    #+#             */
+/*   Updated: 2022/10/21 12:28:21 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <sys/fcntl.h>
+#include "libft.h"
 
-int main(int ac, char **av)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-	(void)(ac);
-	(void)(av);
-	// int fd = open("cub3d.c", O_RDONLY);
-	// printf("[%s]\n", get_next_line(fd));
-	process_map(av[1]);
-	printf("success\n");
-}
+	char	*ptr;
+
+	ptr = (char *)str;
+	while (n > 0)
+	{
+		if (*ptr == (char)c)
+			return (ptr);
+		ptr++;
+		n--;
+	}
+	return (0);
+}	

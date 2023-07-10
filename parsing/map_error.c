@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   map_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 09:37:39 by azari            ###   ########.fr       */
+/*   Created: 2023/07/09 12:58:40 by azari             #+#    #+#             */
+/*   Updated: 2023/07/10 09:40:11 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <sys/fcntl.h>
+#include "../cub3d.h"
 
-int main(int ac, char **av)
+int	ft_lencheck(char *str)
 {
-	(void)(ac);
-	(void)(av);
-	// int fd = open("cub3d.c", O_RDONLY);
-	// printf("[%s]\n", get_next_line(fd));
-	process_map(av[1]);
-	printf("success\n");
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (!ft_strchr(MAP_ELEM, str[i]))
+			ft_raise_error(MAP_ELEM_ERR);
+	}
+	return (i);
+}
+
+void	ft_raise_error(char *err_msg)
+{
+	printf("%s%s\n", RED, err_msg);
+	exit(1);
 }

@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 09:37:39 by azari            ###   ########.fr       */
+/*   Created: 2022/10/19 13:39:01 by azari             #+#    #+#             */
+/*   Updated: 2022/10/19 13:46:00 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <sys/fcntl.h>
+#include "libft.h"
 
-int main(int ac, char **av)
+int	ft_lstsize(t_list *lst)
 {
-	(void)(ac);
-	(void)(av);
-	// int fd = open("cub3d.c", O_RDONLY);
-	// printf("[%s]\n", get_next_line(fd));
-	process_map(av[1]);
-	printf("success\n");
+	t_list	*temp;
+	int		i;
+
+	if (!lst)
+		return (0);
+	temp = lst;
+	i = 1;
+	while (temp->next)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
 }
