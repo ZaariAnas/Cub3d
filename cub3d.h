@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 13:49:47 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/10 15:43:07 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ typedef struct s_map{
 void	ft_getmap(t_map *m, char *map_file, int fd);
 void	ft_raise_error(char *err_msg);
 void	process_map(char *map_file);
+int		process_tokens(t_map *m);
+int		ft_open(char *map_file);
 int		ft_lencheck(char *str);
 void	ft_checkmap(t_map *m);
 int		ft_uatoi(char *str);
-int		process_tokens(t_map *m);
-
 #endif

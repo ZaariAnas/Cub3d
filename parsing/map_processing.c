@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_processing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 13:52:33 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/10 15:41:07 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ void	process_map(char *map_file)
 	int		fd;
 	t_map	*map;
 
-	fd = open(map_file, O_RDWR);
-	if (fd == -1)
-		ft_raise_error(FILE_OPEN_ERR);
+	fd = ft_open(map_file);
 	map = malloc(sizeof(t_map));
 	if (!map)
 		ft_raise_error(MEM_ALLOC_ERR);

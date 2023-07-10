@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:06:28 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/10 13:36:10 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/10 15:43:22 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,14 @@ int	ft_uatoi(char *str)
 	if (res > 255)
 		return (-1);
 	return (res);
+}
+
+int	ft_open(char *map_file)
+{
+	int	fd;
+
+	fd = open(map_file, O_RDONLY);
+	if (fd == -1)
+		ft_raise_error(FILE_OPEN_ERR);
+	return (fd);
 }
