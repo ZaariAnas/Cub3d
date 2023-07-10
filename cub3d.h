@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 10:01:53 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/10 10:52:49 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define MAP_ELEM_ERR "error : unvalid map elements"
 # define MAP_ELEM "NSEW10 \t\n"
 # define RED "\033[1;31m"
+# define ARG_ERR "error : unvalid argument !!"
 
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
@@ -27,6 +28,8 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <stdbool.h>
+# include <sys/fcntl.h>
 
 typedef struct s_map{
 	char	**map; // to return a squared map for minimap

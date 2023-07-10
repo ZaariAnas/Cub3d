@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_processing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 10:15:16 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/10 10:42:49 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static void	ft_parse_map(t_map *m, int fd, char *map_file)
 	m->map = malloc(sizeof(char *) * m->rows);
 	if (!m->map)
 		ft_raise_error(MEM_ALLOC_ERR);
-	ft_getmap(m, map_file, fd);
-	ft_checkmap(m->map);
+	// ft_getmap(m, map_file, fd);
+	// ft_checkmap(m->map);
 }
 
 void	process_map(char *map_file)
