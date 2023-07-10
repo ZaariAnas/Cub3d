@@ -6,16 +6,17 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 09:25:09 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/10 10:15:16 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #include <stdlib.h>
+#include <sys/fcntl.h>
 
 static int	func(char **token, char *var, int *flag)
 {
-	if (!ft_strncmp(token[0], var, ft_strlen(token[0])) && ft_check_acess)
+	if (!ft_strncmp(token[0], var, ft_strlen(token[0])) && token[1])
 		return ((*flag)++, 1);
 	return 0;
 }
@@ -34,7 +35,7 @@ static int	process_tokens(t_map *m)
 	return (i);
 }
 
-static void	ft_parse_map(t_map *m, int fd)
+static void	ft_parse_map(t_map *m, int fd, char *map_file)
 {
 	int	len;
 
@@ -47,9 +48,12 @@ static void	ft_parse_map(t_map *m, int fd)
 		len = ft_lencheck(m->line);
 		m->rows++;
 	}
+	close(fd);
 	m->map = malloc(sizeof(char *) * m->rows);
 	if (!m->map)
 		ft_raise_error(MEM_ALLOC_ERR);
+	ft_getmap(m, map_file, fd);
+	ft_checkmap(m->map);
 }
 
 void	process_map(char *map_file)
@@ -67,15 +71,16 @@ void	process_map(char *map_file)
 	map->line = get_next_line(fd);
 	while (map->line)
 	{
+		map->flim++;
 		map->tokens = ft_split_set(map->line, " \t");
 		if (!process_tokens(map) && (map->tokens[0][0] != '\n'))
 			break;
 		map->line = get_next_line(fd);
-		if(*map->line == '1')
+		if(*map->line == '1' && map->flim++)
 			break;
 	}
 	if ((map->SO & map->EA & map->NO & map->WE & map->F & map->C) != 1)
 		ft_raise_error(MAP_TEX_ERR);
-	if (!ft_parse_map(map, fd))
-		printf("map unvalid\n");
+	// if (!ft_parse_map(map, fd))
+	// 	printf("map unvalid\n");
 }

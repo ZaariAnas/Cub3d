@@ -6,7 +6,7 @@
 #    By: azari <azari@student.1337.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/09 12:44:49 by azari            ###   ########.fr        #
+#    Updated: 2023/07/10 09:35:58 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ PURPLE 		= 	\033[0;35m
 
 CC			= 	gcc
 
-FLAGS		= 	-Wall -Wextra -Werror
+FLAGS		= 	-Wall -Wextra -Werror -g -fsanitize=address
 
 NAME 		= 	cub3d
 

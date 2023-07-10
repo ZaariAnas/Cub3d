@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 09:15:39 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/10 10:01:53 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_map{
 	char	**map; // to return a squared map for minimap
 	char	**tokens;
 	char	*line;
+	int		flim;
 	int		rows;
 	int		col;
 	int		NO;
