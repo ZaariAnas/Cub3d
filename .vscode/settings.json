@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"*.excalidraw": "json",
+		"*.excalidrawlib": "json",
+		"map_utils.C": "cpp"
+	}
+}

@@ -6,6 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:06:28 by mechane           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/07/10 11:14:26 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -13,6 +14,15 @@
 # include "cub3d.h"
 
 int	ft_isdigit(const char *s)
+=======
+/*   Updated: 2023/07/10 13:36:10 by mechane          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+# include "../cub3d.h"
+
+static int	ftt_isdigit(char *s)
+>>>>>>> 5ebec1a7db19d3768128d79deb4b30f517420f0c
 {
 	while (*s)
 	{
@@ -24,7 +34,11 @@ int	ft_isdigit(const char *s)
 	return (1);
 }
 
+<<<<<<< HEAD
 int	ft_uatoi(const char *str)
+=======
+int	ft_uatoi(char *str)
+>>>>>>> 5ebec1a7db19d3768128d79deb4b30f517420f0c
 {
 	long long		res;
 	int				i;
@@ -33,7 +47,11 @@ int	ft_uatoi(const char *str)
 	res = 0;
 	if (!*str)
 		return (0);
+<<<<<<< HEAD
 	if (!ft_isdigit(str))
+=======
+	if (!ftt_isdigit(str))
+>>>>>>> 5ebec1a7db19d3768128d79deb4b30f517420f0c
 		return (-1);
 	while (str[i] >= '0' && str[i] <= '9')
 	{

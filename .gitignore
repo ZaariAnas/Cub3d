@@ -1,0 +1,7 @@
+/.vscode
+cub3d
+*.o
+*.a
+a.out
+.vscode
+.DS_Store
