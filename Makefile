@@ -6,43 +6,58 @@
 #    By: azari <azari@student.1337.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/07 13:51:02 by azari            ###   ########.fr        #
+#    Updated: 2023/07/09 12:44:49 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PURPLE 	= 	\033[0;35m
+PURPLE 		= 	\033[0;35m
 
-CC		= 	gcc
+CC			= 	gcc
 
-FLAGS	= 	-Wall -Wextra -Werror
+FLAGS		= 	-Wall -Wextra -Werror
 
-NAME 	= 	cub3d
+NAME 		= 	cub3d
 
-CFILES	= 	cub3d.c		\
-			test.c
+LIBFT		= 	libft/libft.a
 
-OFILES	= 	$(CFILES:.c=.o)
+GNL			= 	get_next_line/lgnl.a
 
+HEADERS		=	cub3d.h libft/libft.h get_next_line/get_next_line.h
+
+OFILES		= 	$(CFILES:.c=.o)
+
+CFILES		= 	cub3d.c								\
+				parsing/map_processing.c			\
+				parsing/map_error.c					\
+				
 all : $(NAME)
 
 $(NAME) : $(OFILES)
-	@$(CC) -lmlx -framework OpenGL -framework AppKit $(OFILES) -o $(NAME)
-	@echo "$(PURPLE) ✅ Philosophers "
+	@make -C libft
+	@make -C get_next_line
+	@$(CC) $(LIBFT) $(GNL) -lmlx -framework OpenGL -framework AppKit $(OFILES) -o $(NAME)
+	@echo "$(PURPLE) ✅ cub3D "
 	
-%.o:%.c
+	
+%.o:%.c	$(HEADERS)
 	@echo "$(PURPLE) ⏳ Setup ongoing ⏳ ..."
-	@$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 	
 clean	:
+	@make clean -C libft
+	@make clean -C get_next_line
 	@rm -rf $(OFILES)
 	@echo  "$(PURPLE) ❌ OBJS deleted."
 
 fclean	: clean
+	@make fclean -C libft
+	@make fclean -C get_next_line	
 	@rm -rf $(NAME)
 	@echo  "$(PURPLE) ❌ ALL deleted."
 
 re		: fclean all
 
-cl : all clean
+cl 		: all clean
 
-.PHONY: clean fclean re all
+.PHONY: clean fclean re all cl

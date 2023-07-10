@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/09 12:58:13 by azari            ###   ########.fr       */
+/*   Created: 2023/07/10 09:17:02 by azari             #+#    #+#             */
+/*   Updated: 2023/07/10 09:21:17 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <sys/fcntl.h>
+#include "../cub3d.h"
 
-int main(int ac, char **av)
+char	*ft_fill(char *line, int len)
 {
-	(void)(ac);
-	(void)(av);
-	// int fd = open("cub3d.c", O_RDONLY);
-	// printf("[%s]\n", get_next_line(fd));
-	// process_map(av[1]);
-	ft_raise_error("this is an error [0000]\n");
+	int		i;
+	char	*ptr;
+
+	i = -1;
+	ptr = (char *)malloc(len * sizeof(char));
+	if (!ptr)
+		ft_raise_error(MEM_ALLOC_ERR);
+	while (line[++i])
+	{
+		ptr[i] = line[i];
+		len--;
+	}
+	while (len)
+	{
+		
+	}
 }

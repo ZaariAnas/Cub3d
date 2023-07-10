@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/09 12:58:13 by azari            ###   ########.fr       */
+/*   Created: 2022/10/19 13:47:12 by azari             #+#    #+#             */
+/*   Updated: 2022/10/19 14:15:50 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <sys/fcntl.h>
+#include "libft.h"
 
-int main(int ac, char **av)
+t_list	*ft_lstlast(t_list *lst)
 {
-	(void)(ac);
-	(void)(av);
-	// int fd = open("cub3d.c", O_RDONLY);
-	// printf("[%s]\n", get_next_line(fd));
-	// process_map(av[1]);
-	ft_raise_error("this is an error [0000]\n");
+	t_list	*temp;
+
+	if (!lst)
+		return (NULL);
+	temp = lst;
+	while (temp->next)
+		temp = temp->next;
+	return (temp);
 }

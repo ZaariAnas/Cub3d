@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/09 12:58:13 by azari            ###   ########.fr       */
+/*   Created: 2022/10/08 10:14:49 by azari             #+#    #+#             */
+/*   Updated: 2022/10/14 16:00:01 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <sys/fcntl.h>
+#include "libft.h"
 
-int main(int ac, char **av)
+char	*ft_strrchr(const char *hay, int c)
 {
-	(void)(ac);
-	(void)(av);
-	// int fd = open("cub3d.c", O_RDONLY);
-	// printf("[%s]\n", get_next_line(fd));
-	// process_map(av[1]);
-	ft_raise_error("this is an error [0000]\n");
+	int	i;
+
+	i = ft_strlen(hay);
+	while (i >= 0)
+	{
+		if (hay[i] == (char)c)
+			return ((char *)&hay[i]);
+		i--;
+	}
+	return (0);
 }
