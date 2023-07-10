@@ -6,13 +6,13 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:06:28 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/10 11:14:26 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/10 15:58:26 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+# include "../cub3d.h"
 
-int	ft_isdigit(const char *s)
+static int	ftt_isdigit(char *s)
 {
 	while (*s)
 	{
@@ -24,7 +24,7 @@ int	ft_isdigit(const char *s)
 	return (1);
 }
 
-int	ft_uatoi(const char *str)
+int	ft_uatoi(char *str)
 {
 	long long		res;
 	int				i;
@@ -33,7 +33,7 @@ int	ft_uatoi(const char *str)
 	res = 0;
 	if (!*str)
 		return (0);
-	if (!ft_isdigit(str))
+	if (!ftt_isdigit(str))
 		return (-1);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
@@ -43,4 +43,14 @@ int	ft_uatoi(const char *str)
 	if (res > 255)
 		return (-1);
 	return (res);
+}
+
+int	ft_open(char *map_file)
+{
+	int	fd;
+
+	fd = open(map_file, O_RDONLY);
+	if (fd == -1)
+		ft_raise_error(FILE_OPEN_ERR);
+	return (fd);
 }
