@@ -6,13 +6,11 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 09:17:02 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 10:23:44 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/10 11:54:12 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-#include <stdlib.h>
-#include <sys/fcntl.h>
 
 char	*ft_fill(char *line, int len)
 {
@@ -47,7 +45,37 @@ void	ft_getmap(t_map *m, char *map_file, int fd)
 	m->flim = 0;
 	while (m->line)
 	{
-		m->map[m->flim] = m->line;
-		m->line = 
+		m->map[m->flim] = ft_fill(m->line, m->col);
+		m->line = get_next_line(fd);
+		m->flim++;
+	}
+	m->map[m->flim++] = NULL;
+}
+
+void	check_surrounding(t_map *m, int i, int j)
+{
+	if (i == m->col || j == m->col || !i || !j)
+		ft_raise_error(MAP_SHAPE_ERR);
+	if (!ft_strchr(HOLES, m->map[i][j + 1]) || 
+	!ft_strchr(HOLES, m->map[i][j - 1]) ||
+	!ft_strchr(HOLES, m->map[i + 1][j]) || 
+	!ft_strchr(HOLES, m->map[i - 1][j]))
+		ft_raise_error(MAP_SHAPE_ERR);
+}
+
+void	ft_checkmap(t_map *m)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (m->map[++i])
+	{
+		j = -1;
+		while (m->map[i][++j])
+		{
+			if (ft_strchr(FREE_SPACE, m->map[i][j]))
+				check_surrounding(m, i, j);
+		}
 	}
 }
