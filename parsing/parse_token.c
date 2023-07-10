@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:36:45 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/10 11:40:49 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/10 12:38:12 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,15 @@ static bool	if_valid(char *token, t_map *m)
 		if (i != 3)
 			return (false);
 	}
+	
 	return (true);
 }
 
 static int	func(t_map *m, char *var, int *flag)
 {
 	if (!ft_strncmp(m->tokens[0], var,
-		ft_strlen(m->tokens[0])) && if_valid(m->tokens[1], m))
+		ft_strlen(m->tokens[0])) && if_valid(m->tokens[1], m)
+			&& !m->tokens[2])
 		return ((*flag)++, 1);
 	return 0;
 }
