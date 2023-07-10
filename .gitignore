@@ -1,8 +1,7 @@
 /.vscode
-minishell
+cub3d
 *.o
 *.a
-test.c
 a.out
 .vscode
 .DS_Store
