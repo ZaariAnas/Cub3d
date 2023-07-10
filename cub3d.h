@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 10:52:49 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/10 11:41:57 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,14 @@ typedef struct s_map{
 	int		SO;
 	int		F;
 	int		C;
+	int		FF;
+	int		CC;
+	
 }t_map;
 
 void	ft_raise_error(char *err_msg);
 void	process_map(char *map_file);
 int		ft_lencheck(char *str);
-
+int		ft_uatoi(const char *str);
+int		process_tokens(t_map *m);
 #endif

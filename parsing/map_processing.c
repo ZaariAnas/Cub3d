@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 10:42:49 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/10 11:37:12 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,7 @@
 #include <stdlib.h>
 #include <sys/fcntl.h>
 
-static int	func(char **token, char *var, int *flag)
-{
-	if (!ft_strncmp(token[0], var, ft_strlen(token[0])) && token[1])
-		return ((*flag)++, 1);
-	return 0;
-}
 
-static int	process_tokens(t_map *m)
-{
-	int	i;
-	
-	i = 0;
-	i+=func(m->tokens, "SO", &m->SO);
-	i+=func(m->tokens, "WE", &m->WE);
-	i+=func(m->tokens, "EA", &m->EA);
-	i+=func(m->tokens, "NO", &m->NO);
-	i+=func(m->tokens, "F", &m->F);
-	i+=func(m->tokens, "C", &m->C);
-	return (i);
-}
 
 static void	ft_parse_map(t_map *m, int fd, char *map_file)
 {
