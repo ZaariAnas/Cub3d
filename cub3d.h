@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 12:42:40 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/10 13:49:47 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define MEM_ALLOC_ERR "error : memory allocation failure"
 # define MAP_SHAPE_ERR "error : unvalid map shape"
 # define MAP_ELEM_ERR "error : unvalid map elements"
+# define ARG_ERR "error : unvalid argumentS"
+# define RGB_ERR "error : unvalid RGB color"
 # define MAP_ELEM "NSEW10 \t\n"
 # define FREE_SPACE "NSWE0"
 # define HOLES " \t"
@@ -30,6 +32,8 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <stdbool.h>
+# include <sys/fcntl.h>
 
 typedef struct s_txtr{
 	char	*NO;
@@ -61,5 +65,7 @@ void	ft_raise_error(char *err_msg);
 void	process_map(char *map_file);
 int		ft_lencheck(char *str);
 void	ft_checkmap(t_map *m);
+int		ft_uatoi(char *str);
+int		process_tokens(t_map *m);
 
 #endif

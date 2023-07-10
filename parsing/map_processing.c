@@ -3,49 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   map_processing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 12:43:22 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/10 13:52:33 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-#include <stdlib.h>
-#include <sys/fcntl.h>
-
-static int	func(char **token, char *var, int *flag)
-{
-	if (!ft_strncmp(token[0], var, ft_strlen(token[0])) && token[1])
-		return ((*flag)++, 1);
-	return 0;
-}
-
-static int	process_tokens(t_map *m)
-{
-	int	i;
-	
-	i = 0;
-	i+=func(m->tokens, "SO", &m->SO);
-	i+=func(m->tokens, "WE", &m->WE);
-	i+=func(m->tokens, "EA", &m->EA);
-	i+=func(m->tokens, "NO", &m->NO);
-	i+=func(m->tokens, "F", &m->F);
-	i+=func(m->tokens, "C", &m->C);
-	return (i);
-}
 
 static void	ft_parse_map(t_map *m, int fd, char *map_file)
 {
 	int	len;
 
 	len = ft_lencheck(m->line);
+	m->col = len;
 	m->rows++;
 	while (m->line)
 	{
+		len = ft_lencheck(m->line);
 		(len > m->col) && (m->col = len);
 		m->line = get_next_line(fd);
-		len = ft_lencheck(m->line);
 		m->rows++;
 	}
 	close(fd);
@@ -68,6 +46,8 @@ void	process_map(char *map_file)
 	if (!map)
 		ft_raise_error(MEM_ALLOC_ERR);
 	ft_memset(map, 0, sizeof(t_map));
+	map->tex = malloc(sizeof(t_txtr));
+	ft_memset(map->tex, 0, sizeof(t_txtr));
 	map->line = get_next_line(fd);
 	while (map->line)
 	{

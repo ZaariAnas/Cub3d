@@ -1,32 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_error.c                                        :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/09 12:58:40 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 14:15:39 by mechane          ###   ########.fr       */
+/*   Created: 2023/07/10 11:06:28 by mechane           #+#    #+#             */
+/*   Updated: 2023/07/10 13:36:10 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+# include "../cub3d.h"
 
-int	ft_lencheck(char *str)
+static int	ftt_isdigit(char *s)
 {
-	int	i;
-
-	i = -1;
-	while (str[++i])
+	while (*s)
 	{
-		if (!ft_strchr(MAP_ELEM, str[i]))
-			ft_raise_error(MAP_ELEM_ERR);
+		if (*s >= '0' && *s <= '9')
+			s++;
+		else
+			return (0);
 	}
-	return (i);
+	return (1);
 }
 
-void	ft_raise_error(char *err_msg)
+int	ft_uatoi(char *str)
 {
-	printf("%s%s\n", RED, err_msg);
-	exit(1);
+	long long		res;
+	int				i;
+
+	i = 0;
+	res = 0;
+	if (!*str)
+		return (0);
+	if (!ftt_isdigit(str))
+		return (-1);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + str[i] - '0';
+		i++;
+	}
+	if (res > 255)
+		return (-1);
+	return (res);
 }
