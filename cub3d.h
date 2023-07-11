@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 15:59:27 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/11 09:37:38 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define FREE_SPACE "NSWE0"
 # define HOLES " \t"
 # define RED "\033[1;31m"
-# define ARG_ERR "error : unvalid argument !!"
+# define ARG_ERR "error : unvalid arguments"
 
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
