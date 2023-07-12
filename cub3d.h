@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 13:42:54 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/12 14:16:56 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # include <stdbool.h>
 # include <sys/fcntl.h>
 # include <mlx.h>
+# include <math.h>
 
 typedef struct s_txtr{
 	char	*NO;
@@ -102,4 +103,5 @@ int		ft_lencheck(char *str);
 void	ft_checkmap(t_map *m);
 int		ft_uatoi(char *str);
 void    my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
+void	ft_render_player(t_player *player, t_mlx *mlx);
 #endif
