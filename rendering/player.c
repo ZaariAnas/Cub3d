@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/12 15:55:51 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/12 16:14:08 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,23 @@ void get_player_ang(t_player *player)
 
 void draw_line(t_mlx *mlx, int x, int y, int angle, int length)
 {
-    double rad = angle * M_PI / 180.0;
+	t_line	l;
 
-    int endX = x + length * cos(rad);
-    int endY = y + length * sin(rad);
-
-
-    int currentX = x, currentY = y;
-    while (currentX != endX || currentY != endY) 
+	l.rad = angle * M_PI / 180.0;
+	l.endX = x + length * cos(l.rad);
+	l.endY = y + length * sin(l.rad);
+	l.currentX = x;
+	l.currentY = y;
+    while (l.currentX != l.endX || l.currentY != l.endY) 
     {
-        my_mlx_pixel_put(mlx, currentX, currentY, 0xFF0000);
-        double dx = endX - currentX, dy = endY - currentY;
-        double dist = sqrt(dx*dx + dy*dy);
-        double stepX = dx / dist, stepY = dy / dist;
-        currentX += (int) round(stepX);
-        currentY += (int) round(stepY);
+        my_mlx_pixel_put(mlx, l.currentX, l.currentY, 0xFF0000);
+        l.dx = l.endX - l.currentX;
+		l.dy = l.endY - l.currentY;
+        l.dist = sqrt(l.dx * l.dx + l.dy * l.dy);
+    	l.stepX = l.dx / l.dist;
+		l.stepY = l.dy / l.dist;
+        l.currentX += (int) round(l.stepX);
+        l.currentY += (int) round(l.stepY);
     }
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img, 0, 0);
 }

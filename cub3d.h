@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 14:16:56 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/12 16:08:51 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,24 @@ typedef struct s_mlx{
 	void	*win;
 	void	*img;
 	char	**map;
-	char    *addr;
-    int        bits_per_pixel;
-    int        line_length;
-    int        endian;
+	char	*addr;
+    int		bits_per_pixel;
+    int		line_length;
+    int		endian;
 }t_mlx;
+
+typedef struct s_line{
+    int		currentX;
+	int		currentY;
+	double	stepX;
+	double	stepY;
+	double	dist;
+    int		endX;
+    int		endY;
+    double	rad;
+	double	dx;
+	double	dy;
+}t_line;
 
 
 void	ft_getmap(t_map *m, char *map_file, int fd);
