@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
+#    By: azari <azari@student.1337.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/10 13:15:53 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/12 11:11:28 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ CFILES		= 	cub3d.c								\
 				parsing/ft_utils.c					\
 				parsing/map_utils.c					\
 				parsing/parse_token.c				\
+				rendering/rendering.c				\
 				
 all : $(NAME)
 
