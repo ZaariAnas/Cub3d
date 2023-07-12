@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 13:09:49 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/12 13:41:54 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int main(int ac, char **av)
 
 	if (!check_args(ac, av))
 		ft_raise_error(ARG_ERR);
-	// int fd = open("cub3d.c", O_RDONLY);
-	// printf("[%s]\n", get_next_line(fd));
 	t = malloc(sizeof(t_mlx));
 	ft_memset(t, 0, sizeof(t_mlx));
 	map = process_map(av[1]);
@@ -47,6 +45,7 @@ int main(int ac, char **av)
             &t->line_length, &t->endian);
 	ft_raise_perror(t->win, MLX_WIN_ERR);
 	ft_render_map(map, t);
+	// ft_render_player(map->p, t);
 	printf("success\n");
 	mlx_loop(t->ptr);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 09:28:42 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 12:26:12 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/12 13:53:13 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ void    my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
     dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
     *(unsigned int *)dst = color;
 }
-static void	ft_draw(t_coord *o, t_mlx *mlx)
+static void	ft_draw(int x, int y, t_mlx *mlx, int color)
 {
 	int	i;
 	int	j;
 
-	i = o->x *60;
-	j = o->y *60;
-	while (i < (o->x*60 + 60))
+	i = x * 60 ;
+	j = y * 60 ;
+	while (i < (x * 60 + 59))
 	{
-		j = o->y *60;
-		while (j < (o->y*60 + 60))
+		j = y * 60;
+		while (j < (y * 60 + 59))
 		{
-			my_mlx_pixel_put(mlx, j, i, 255);
+			my_mlx_pixel_put(mlx, j, i, color);
 			j++;
 		}
 		i++;
@@ -40,23 +40,22 @@ static void	ft_draw(t_coord *o, t_mlx *mlx)
 
 void	ft_render_map(t_map *m, t_mlx *mlx)
 {
-	t_coord	*w;
 	char	**map;
-
-	w = malloc(sizeof(t_coord));
-	ft_memset(w, 0, sizeof(t_coord));
-	w->x = 0;
+	int		x;
+	int		y;
+	
 	map = m->map;
-	while (map[(w->x)])
+	x = 0;
+	while (map[(x)])
 	{
-		w->y = 0;
-		while (map[w->x][w->y])
+		y = 0;
+		while (map[x][y])
 		{
-			if (map[w->x][w->y] == '1')
-				ft_draw(w, mlx);
-			w->y++;
+			if (map[x][y] == '1')
+				ft_draw(x, y, mlx, (0 << 16| 255 << 8| 255));	
+			y++;
 		}
-		w->x++;
+		x++;
 	}
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img, 0, 0);
 }

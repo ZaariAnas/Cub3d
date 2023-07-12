@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 13:09:23 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/12 13:12:44 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ static void	ft_parse_map(t_map *m, int fd, char *map_file)
 	ft_getmap(m, map_file, fd);
 	ft_checkmap(m);
 }
-static void ft_init(t_map *m)
+static t_map *ft_init(void)
 {
+	t_map	*m;
+	
 	m = malloc(sizeof(t_map));
 	if (!m)
 		ft_raise_error(MEM_ALLOC_ERR);
@@ -47,6 +49,7 @@ static void ft_init(t_map *m)
 	if (!m->p)
 		ft_raise_error(MEM_ALLOC_ERR);
 	ft_memset(m->p, 0, sizeof(t_player));
+	return (m);
 }
 
 t_map	*process_map(char *map_file)
@@ -55,7 +58,7 @@ t_map	*process_map(char *map_file)
 	t_map	*map;
 
 	fd = ft_open(map_file);
-	ft_init(map);
+	map = ft_init();
 	map->line = get_next_line(fd);
 	while (map->line)
 	{

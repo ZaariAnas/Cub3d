@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 13:06:31 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/12 13:42:54 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define FREE_SPACE "NSWE0"
 # define RED "\033[1;31m"
 # define HOLES " \t"
-# define TITLE "Shatira's Cub3d"
+# define TITLE "Cub3d"
 
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
@@ -101,4 +101,5 @@ int		ft_open(char *map_file);
 int		ft_lencheck(char *str);
 void	ft_checkmap(t_map *m);
 int		ft_uatoi(char *str);
+void    my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 #endif
