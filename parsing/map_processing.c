@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_processing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 15:59:07 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/12 09:53:49 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_parse_map(t_map *m, int fd, char *map_file)
 	ft_checkmap(m);
 }
 
-void	process_map(char *map_file)
+t_map	*process_map(char *map_file)
 {
 	int		fd;
 	t_map	*map;
@@ -60,4 +60,5 @@ void	process_map(char *map_file)
 	if ((map->SO & map->EA & map->NO & map->WE & map->F & map->C) != 1)
 		ft_raise_error(MAP_TEX_ERR);
 	ft_parse_map(map, fd, map_file);
+	return (map);
 }

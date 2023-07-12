@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/11 09:39:34 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/12 09:55:33 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,16 @@ static bool	check_args(int ac, char **av)
 
 int main(int ac, char **av)
 {
+	t_map	*map;
+	// t_mlx	*t;
+
 	if (!check_args(ac, av))
 		ft_raise_error(ARG_ERR);
 	// int fd = open("cub3d.c", O_RDONLY);
 	// printf("[%s]\n", get_next_line(fd));
-	process_map(av[1]);
+	map = process_map(av[1]);
+	// t.mlx=mlx_init();
+	// ft_raise_perror(t.mlx, MLX_INIT_ERR)
+	// t.win = mlx_new_win
 	printf("success\n");
 }

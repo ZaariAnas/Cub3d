@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/11 09:37:38 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/12 09:55:01 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 # define CUB3D_H
 
 // # include "mlx.h"
+# define MEM_ALLOC_ERR "error : memory allocation failure"
 # define MAP_TEX_ERR "error : unvalid map texture format"
 # define FILE_OPEN_ERR "error : unable to open map file"
-# define MEM_ALLOC_ERR "error : memory allocation failure"
-# define MAP_SHAPE_ERR "error : unvalid map shape"
 # define MAP_ELEM_ERR "error : unvalid map elements"
+# define MAP_SHAPE_ERR "error : unvalid map shape"
+# define MLX_INIT_ERR "error : mlx init failure"
 # define RGB_ERR "error : unvalid RGB color"
+# define ARG_ERR "error : unvalid arguments"
 # define MAP_ELEM "NSEW10 \t\n"
 # define FREE_SPACE "NSWE0"
-# define HOLES " \t"
 # define RED "\033[1;31m"
-# define ARG_ERR "error : unvalid arguments"
+# define HOLES " \t"
 
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
@@ -63,9 +64,21 @@ typedef struct s_map{
 	
 }t_map;
 
+typedef struct s_mlx{
+	void	*ptr;
+	void	*win;
+	char	**map;
+}t_mlx;
+
+typedef struct s_coord{
+	int	x;
+	int	y;
+}t_coord;
+
 void	ft_getmap(t_map *m, char *map_file, int fd);
+void	ft_raise_perror(void *ptr, char *err);
 void	ft_raise_error(char *err_msg);
-void	process_map(char *map_file);
+t_map	*process_map(char *map_file);
 int		process_tokens(t_map *m);
 int		ft_open(char *map_file);
 int		ft_lencheck(char *str);
