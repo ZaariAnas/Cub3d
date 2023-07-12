@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 09:55:01 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/12 11:12:38 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,19 @@ typedef struct s_txtr{
 	int		C;
 }t_txtr;
 
+typedef struct s_player{
+	float	x;
+	float	y;
+	float	height;
+	float	width;
+	float	rotate_ang;
+	float	walk_speed;
+	float	turn_speed;
+	int		turn_dir;
+	int		walk_dir;
+	char	side;
+}t_player;
+
 typedef struct s_map{
 	char	**map; // to return a squared map for minimap
 	char	**tokens;
@@ -61,7 +74,7 @@ typedef struct s_map{
 	int		C;
 	int		FF;
 	int		CC;
-	
+	t_player	*p;
 }t_map;
 
 typedef struct s_mlx{
@@ -70,10 +83,6 @@ typedef struct s_mlx{
 	char	**map;
 }t_mlx;
 
-typedef struct s_coord{
-	int	x;
-	int	y;
-}t_coord;
 
 void	ft_getmap(t_map *m, char *map_file, int fd);
 void	ft_raise_perror(void *ptr, char *err);

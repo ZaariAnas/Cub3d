@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 09:17:02 by azari             #+#    #+#             */
-/*   Updated: 2023/07/10 16:04:45 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/12 11:25:56 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,18 @@ void	ft_checkmap(t_map *m)
 		while (m->map[i][++j])
 		{
 			if (ft_strchr("NSEW", m->map[i][j]))
-				flag++;
-			if (ft_strchr(FREE_SPACE, m->map[i][j]) || flag > 1)
+				{
+					m->p->side = m->map[i][j];
+					m->map[i][j]= '0';
+					m->p->x = i;
+					m->p->y = j;
+					flag++;
+				}
+			if (ft_strchr(FREE_SPACE, m->map[i][j]))
 				check_surrounding(m, i, j);
 		}
 	}
+	if (flag != 1)
+		ft_raise_error("error : player coordinate");
 }
+  
