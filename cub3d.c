@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/13 10:20:16 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/13 10:50:13 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int main(int ac, char **av)
             &t->line_length, &t->endian);
 	ft_raise_perror(t->win, MLX_WIN_ERR);
 	ft_render_map(map, t);
+	ft_init_player(map->p);
 	ft_render_player(map->p, t);
 	t->map = map;
 	printf("success\n");

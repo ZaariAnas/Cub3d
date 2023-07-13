@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/13 10:30:05 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/13 10:49:42 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,5 @@ int		ft_uatoi(char *str);
 void    my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void	ft_render_player(t_player *player, t_mlx *mlx);
 int		ft_moves(int keycode, t_mlx *mlx);
+void	ft_init_player(t_player *player);
 #endif
