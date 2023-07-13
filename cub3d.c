@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/13 10:50:13 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/13 13:18:12 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,26 @@ static bool	check_args(int ac, char **av)
 int main(int ac, char **av)
 {
 	t_map	*map;
-	t_mlx	*t;
+	t_mlx	*mlx;
 
 	if (!check_args(ac, av))
 		ft_raise_error(ARG_ERR);
-	t = malloc(sizeof(t_mlx));
-	ft_memset(t, 0, sizeof(t_mlx));
+	mlx = malloc(sizeof(t_mlx));
+	ft_memset(mlx, 0, sizeof(t_mlx));
 	map = process_map(av[1]);
-	t->ptr = mlx_init();
-	ft_raise_perror(t->ptr, MLX_INIT_ERR);
-	t->win = mlx_new_window(t->ptr, (map->col - 1)* 60, (map->rows - 1) * 60, TITLE);
-	t->img = mlx_new_image(t->ptr, (map->col - 1) * 60 , (map->rows - 1) * 60);
-    t->addr = mlx_get_data_addr(t->img, &t->bits_per_pixel,
-            &t->line_length, &t->endian);
-	ft_raise_perror(t->win, MLX_WIN_ERR);
-	ft_render_map(map, t);
+	mlx->ptr = mlx_init();
+	ft_raise_perror(mlx->ptr, MLX_INIT_ERR);
+	mlx->win = mlx_new_window(mlx->ptr, (map->col - 1)* TILE_SIZE, (map->rows - 1) * TILE_SIZE, TITLE);
+	mlx->img = mlx_new_image(mlx->ptr, (map->col - 1) * TILE_SIZE , (map->rows - 1) * TILE_SIZE);
+    mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel,
+            &mlx->line_length, &mlx->endian);
+	ft_raise_perror(mlx->win, MLX_WIN_ERR);
+	ft_render_map(map, mlx);
 	ft_init_player(map->p);
-	ft_render_player(map->p, t);
-	t->map = map;
+	ft_render_player(map->p, mlx);
+	mlx->map = map;
 	printf("success\n");
-	mlx_hook(t->win, 02, 0, ft_moves, t);
-	mlx_loop(t->ptr);
+	mlx_hook(mlx->win, 02, 0, ft_moves, mlx);
+	mlx_hook(mlx->win, 17, 0, destroy, mlx);
+	mlx_loop(mlx->ptr);
 }
