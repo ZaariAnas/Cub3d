@@ -6,7 +6,7 @@
 #    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/12 14:16:30 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/13 09:54:16 by mechane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ CFILES		= 	cub3d.c								\
 				parsing/map_utils.c					\
 				parsing/parse_token.c				\
 				rendering/rendering.c				\
-				rendering/player.c
+				rendering/player.c					\
+				hooks/moves.c						\
 				
 all : $(NAME)
 

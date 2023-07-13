@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 14:16:56 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/13 09:53:29 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_mlx{
     int        bits_per_pixel;
     int        line_length;
     int        endian;
+	t_map	*map_s;
 }t_mlx;
 
 
@@ -104,4 +105,5 @@ void	ft_checkmap(t_map *m);
 int		ft_uatoi(char *str);
 void    my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void	ft_render_player(t_player *player, t_mlx *mlx);
+int		ft_moves(int keycode, t_mlx *mlx);
 #endif

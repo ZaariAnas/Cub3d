@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/12 15:55:51 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/13 09:57:13 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void draw_line(t_mlx *mlx, int x, int y, int angle, int length)
 void	ft_render_player(t_player *player, t_mlx *mlx)
 {
 	get_player_ang(player);
-	draw_line(mlx , player->x *60, player->y *60, player->rotate_ang, 10);
+	draw_line(mlx , player->x *60, player->y *60, player->rotate_ang, 30);
 }
