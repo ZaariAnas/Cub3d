@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/13 09:53:29 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/13 10:30:05 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,25 @@ typedef struct s_mlx{
 	void	*ptr;
 	void	*win;
 	void	*img;
-	char	**map;
 	char    *addr;
     int        bits_per_pixel;
     int        line_length;
     int        endian;
-	t_map	*map_s;
+	t_map	*map;
 }t_mlx;
+
+typedef struct s_line{
+    int		currentX;
+	int		currentY;
+	double	stepX;
+	double	stepY;
+	double	dist;
+    int		endX;
+    int		endY;
+    double	rad;
+	double	dx;
+	double	dy;
+}t_line;
 
 
 void	ft_getmap(t_map *m, char *map_file, int fd);
