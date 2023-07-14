@@ -1,13 +1,9 @@
-        SO        lolo
-   EA ./assets/ea.xpm   
+SO ./assets/so.xpm   
+EA ./assets/ea.xpm   
 WE ./assets/we.xpm
-
-NO      ./assets/no.xpm
-
-
-             F   	     45,     0006        ,    5
-C	0,25,51
-
+NO ./assets/no.xpm
+F  45,0006,5
+C  0,25,51
 11111111111
 10000000001
 11011011101
