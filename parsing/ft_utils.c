@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:06:28 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/10 15:58:26 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/14 13:45:54 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,17 @@ static int	ftt_isdigit(char *s)
 	while (*s)
 	{
 		if (*s >= '0' && *s <= '9')
+			s++;
+		else
+			return (0);
+	}
+	return (1);
+}
+int	ft_isempty(char *s)
+{
+	while (s && *s)
+	{
+		if (ft_strchr(WHITESPACE, *s))
 			s++;
 		else
 			return (0);

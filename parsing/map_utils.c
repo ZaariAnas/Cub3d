@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 09:17:02 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 15:43:44 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/14 14:03:22 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdio.h>
 
 char	*ft_fill(char *line, int len)
 {
@@ -30,6 +31,7 @@ char	*ft_fill(char *line, int len)
 	}
 	if (len > 1)
 		ft_memset(ptr + i, ' ', len - 1);
+	printf("--%lu\n", ft_strlen(ptr));
 	return (ptr);
 }
 
@@ -46,7 +48,7 @@ void	ft_getmap(t_map *m, char *map_file, int fd)
 	while (m->line && m->flim--)
 		m->line = get_next_line(fd);
 	m->flim = 0;
-	while (m->line)
+	while (m->line && !ft_isempty(m->line))
 	{
 		m->map[m->flim] = ft_fill(m->line, m->col);
 		m->line = get_next_line(fd);
@@ -92,6 +94,6 @@ void	ft_checkmap(t_map *m)
 		}
 	}
 	if (flag != 1)
-		ft_raise_error("error : player coordinate");
+		ft_raise_error(PLR_POS_ERR);
 }
   

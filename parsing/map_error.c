@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:58:40 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 12:23:23 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/14 11:06:47 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_lencheck(char *str)
 	int	i;
 
 	i = -1;
+	if (!str)
+		return (0);
 	while (str[++i])
 	{
 		if (!ft_strchr(MAP_ELEM, str[i]))

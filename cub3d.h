@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/13 13:18:03 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/14 13:58:58 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,25 @@
 # define MLX_INIT_ERR "error : mlx init failure"
 # define RGB_ERR "error : unvalid RGB color"
 # define ARG_ERR "error : unvalid arguments"
+# define PLR_POS_ERR "error : unvalid player position"
+# define UNF_MAP_ERR "error : map unfound"
+# define WHITESPACE " \t\r\v\n"
 # define MAP_ELEM "NSEW10 \t\n"
 # define FREE_SPACE "NSWE0"
 # define RED "\033[1;31m"
-# define HOLES " \t"
 # define TITLE "Cub3d"
+# define HOLES " \t"
 
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
+# include <sys/fcntl.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include <stdbool.h>
-# include <sys/fcntl.h>
-# include <mlx.h>
 # include <math.h>
+# include <mlx.h>
 
 #define TILE_SIZE 60
 
@@ -122,4 +125,6 @@ void	ft_render_player(t_player *player, t_mlx *mlx);
 int		ft_moves(int keycode, t_mlx *mlx);
 void	ft_init_player(t_player *player);
 int		destroy(t_mlx *mlx);
+int		ft_check_token(char *token);
+int		ft_isempty(char *s);
 #endif

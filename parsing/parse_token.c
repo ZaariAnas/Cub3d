@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   parse_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:36:45 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/10 16:16:39 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/14 11:00:57 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int	ft_check_token(char *token)
+{
+	char	*r;
+	int		flag;
+
+	flag = -2;
+	r = ft_strchr(token, ',');
+	if (r && r != token && ft_isdigit(*(r + 1)) && ft_isdigit(*(r - 1)))
+		flag++;
+	r = ft_strrchr(token, ',');
+	if (r && r != token && ft_isdigit(*(r + 1)) && ft_isdigit(*(r - 1)))
+		flag++;
+	if (!flag)
+		return (1);
+	return (0);
+}
 
 static void get_rgb(t_map *m)
 {
@@ -22,6 +39,8 @@ static void get_rgb(t_map *m)
 	i = -0;
 	while(m->tokens[++i])
 		s = ft_strjoin(s ,m->tokens[i]);
+	if (!ft_check_token(s))
+		ft_raise_error(RGB_ERR);
 	i = -1;
 	tmp = ft_split_set(s, " \t,\n");
 	while(tmp[++i])
@@ -32,11 +51,10 @@ static void get_rgb(t_map *m)
 			m->tex->C += ft_uatoi(tmp[i]) << (16 - (8 * i));
 		else
 			m->tex->F += ft_uatoi(tmp[i]) << (16 - (8 * i));
-	}	
+	}
 	if (i != 3)
 		ft_raise_error(RGB_ERR);
 }
-
 
 static bool	if_valid(char *token, t_map *m)
 {
@@ -57,6 +75,7 @@ static int	func(t_map *m, char *var, int *flag)
 		return ((*flag)++, 1);
 	return 0;
 }
+
 
 int	process_tokens(t_map *m)
 {

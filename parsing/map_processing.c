@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_processing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 13:12:44 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/14 13:55:24 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,23 @@
 static void	ft_parse_map(t_map *m, int fd, char *map_file)
 {
 	int	len;
+	int	flag;
 
+	flag = 1;
 	len = ft_lencheck(m->line);
+	if (len < 3)
+		ft_raise_error(UNF_MAP_ERR);
 	m->col = len;
 	m->rows++;
 	while (m->line)
 	{
+		(ft_isempty(m->line) == 1) && (flag = 0);
 		len = ft_lencheck(m->line);
 		(len > m->col) && (m->col = len);
 		m->line = get_next_line(fd);
-		m->rows++;
+		if (!flag && !ft_isempty(m->line))
+			ft_raise_error(MAP_SHAPE_ERR);
+		(flag) && (m->rows++);
 	}
 	close(fd);
 	m->map = malloc(sizeof(char *) * m->rows);
@@ -67,7 +74,7 @@ t_map	*process_map(char *map_file)
 		if (!process_tokens(map) && (map->tokens[0][0] != '\n'))
 			break;
 		map->line = get_next_line(fd);
-		if(*map->line == '1' && map->flim++)
+		if(map->line && *map->line == '1' && map->flim++)
 			break;
 	}
 	if ((map->SO & map->EA & map->NO & map->WE & map->F & map->C) != 1)
