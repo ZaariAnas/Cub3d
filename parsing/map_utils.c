@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 09:17:02 by azari             #+#    #+#             */
-/*   Updated: 2023/07/12 15:43:44 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/14 17:49:57 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void	ft_checkmap(t_map *m)
 				{
 					m->p->side = m->map[i][j];
 					m->map[i][j]= '0';
-					m->p->x = j;
-					m->p->y = i;
+					m->p->x = j * TILE_SIZE + (TILE_SIZE / 2);
+					m->p->y = i * TILE_SIZE + (TILE_SIZE / 2);
 					flag++;
 				}
 			if (ft_strchr(FREE_SPACE, m->map[i][j]))

@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/13 13:18:03 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/14 18:26:59 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # include <sys/fcntl.h>
 # include <mlx.h>
 # include <math.h>
+# include <stdlib.h>
 
 #define TILE_SIZE 60
 
@@ -51,13 +52,13 @@ typedef struct s_txtr{
 }t_txtr;
 
 typedef struct s_player{
-	float	x;
-	float	y;
-	float	height;
-	float	width;
-	float	rotate_ang;
-	float	walk_speed;
-	float	turn_speed;
+	double	x;
+	double	y;
+	double	height;
+	double	width;
+	double	rotate_ang;
+	double	walk_speed;
+	double	turn_speed;
 	int		turn_dir;
 	int		walk_dir;
 	char	side;
@@ -93,19 +94,11 @@ typedef struct s_mlx{
 	t_map	*map;
 }t_mlx;
 
-typedef struct s_line{
-    int		currentX;
-	int		currentY;
-	double	stepX;
-	double	stepY;
-	double	dist;
-    int		endX;
-    int		endY;
-    double	rad;
-	double	dx;
-	double	dy;
-}t_line;
 
+typedef struct s_point{
+	double	x;
+	double	y;
+}t_point;
 
 void	ft_getmap(t_map *m, char *map_file, int fd);
 void	ft_raise_perror(void *ptr, char *err);
@@ -122,4 +115,8 @@ void	ft_render_player(t_player *player, t_mlx *mlx);
 int		ft_moves(int keycode, t_mlx *mlx);
 void	ft_init_player(t_player *player);
 int		destroy(t_mlx *mlx);
+t_point	*find_hz_inter(t_point *s, double ang, t_map *map);
+double	to_rad(double ang);
+double	distance(t_point *p1, t_point *p2);
+t_point	*find_vrt_inter(t_point *s, double ang, t_map *map);
 #endif

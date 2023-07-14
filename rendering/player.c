@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/13 13:44:23 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/14 19:21:19 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,38 +24,59 @@ void get_player_ang(t_player *player)
 		player->rotate_ang = 270;
 	
 }
-
-void draw_line(t_mlx *mlx, int x, int y, int angle, int length)
+void draw_line(t_point *p1, t_point *p2, t_mlx *mlx)
 {
-	t_line	l;
+    double dy = p2->y - p1->y;
+    double dx = p2->x - p1->x;
 
-	l.rad = angle * M_PI / 180.0;
-	l.endX = x + length * cos(l.rad);
-	l.endY = y + length * sin(l.rad);
-	l.currentX = x;
-	l.currentY = y;
-    while (l.currentX != l.endX || l.currentY != l.endY) 
+    double steps = (fabs(dx) > fabs(dy)) ? fabs(dx) : fabs(dy);
+    double xIncrement = dx / steps;
+    double yIncrement = dy / steps;
+
+    double x = p1->x;
+    double y = p1->y;
+
+    int i = -1;
+    while (++i <= steps)
     {
-        my_mlx_pixel_put(mlx, l.currentX, l.currentY, 0xFF0000);
-        l.dx = l.endX - l.currentX;
-		l.dy = l.endY - l.currentY;
-        l.dist = sqrt(l.dx * l.dx + l.dy * l.dy);
-    	l.stepX = l.dx / l.dist;
-		l.stepY = l.dy / l.dist;
-        l.currentX += (int) round(l.stepX);
-        l.currentY += (int) round(l.stepY);
+        my_mlx_pixel_put(mlx, x, y, 0xFF0000);
+        x += xIncrement;
+        y += yIncrement;
     }
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img, 0, 0);
 }
+void	cast_ray(t_player *player, t_mlx *mlx, double ang)
+{
+	t_point *s;
+	t_point *h;
+	t_point	*v;
+	
+	s = malloc(sizeof(t_point));
+	s->x = player->x;
+	s->y = player->y;
+	h = find_hz_inter(s, to_rad(ang), mlx->map);
+	v = find_vrt_inter(s, to_rad(ang), mlx->map);
+	if (distance(s ,h) < distance(s, v))
+		draw_line(s, h, mlx);
+	else
+		draw_line(s, v, mlx);
+}
+
 void	ft_render_player(t_player *player, t_mlx *mlx)
 {
-	draw_line(mlx , player->x *60, player->y *60, player->rotate_ang, 30);
-	printf("%f %f\n", player->y, player->x);
+	double	s_ang;
+	
+	s_ang = player->rotate_ang - 30;
+	while(s_ang < player->rotate_ang + 30)
+	{
+		cast_ray(player, mlx, s_ang);
+		s_ang += 1;
+	}
 }
 
 void	ft_init_player(t_player *player)
 {
-	get_player_ang(player);
+	get_player_ang(player); 
 	player->turn_speed = 3;
 	player->walk_speed = 0.05; 
 }
