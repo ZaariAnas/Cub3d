@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/14 13:58:58 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 06:18:05 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
-# include <mlx.h>
 
 #define TILE_SIZE 60
 
@@ -54,13 +53,13 @@ typedef struct s_txtr{
 }t_txtr;
 
 typedef struct s_player{
-	float	x;
-	float	y;
-	float	height;
-	float	width;
-	float	rotate_ang;
-	float	walk_speed;
-	float	turn_speed;
+	double	x;
+	double	y;
+	double	height;
+	double	width;
+	double	rotate_ang;
+	double	walk_speed;
+	double	turn_speed;
 	int		turn_dir;
 	int		walk_dir;
 	char	side;
@@ -96,19 +95,11 @@ typedef struct s_mlx{
 	t_map	*map;
 }t_mlx;
 
-typedef struct s_line{
-    int		currentX;
-	int		currentY;
-	double	stepX;
-	double	stepY;
-	double	dist;
-    int		endX;
-    int		endY;
-    double	rad;
-	double	dx;
-	double	dy;
-}t_line;
 
+typedef struct s_point{
+	double	x;
+	double	y;
+}t_point;
 
 void	ft_getmap(t_map *m, char *map_file, int fd);
 void	ft_raise_perror(void *ptr, char *err);
@@ -125,6 +116,4 @@ void	ft_render_player(t_player *player, t_mlx *mlx);
 int		ft_moves(int keycode, t_mlx *mlx);
 void	ft_init_player(t_player *player);
 int		destroy(t_mlx *mlx);
-int		ft_check_token(char *token);
-int		ft_isempty(char *s);
 #endif
