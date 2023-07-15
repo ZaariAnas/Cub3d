@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 13:15:39 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 16:10:49 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,16 @@ void	ft_moves(void *mlx)
 		move_left(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_ESCAPE))
 		destroy(mlx);
+	ft_render(mlx);
+	return ;
+}
+
+void	ft_render(t_data *m)
+{
 	mlx_delete_image(m->ptr, m->img);
 	m->img = mlx_new_image(m->ptr, (m->map->col - 1) * TILE_SIZE,
 			(m->map->rows - 1) * TILE_SIZE);
-	ft_render_map(mlx);
-	ft_render_player(mlx);
+	ft_render_map(m);
+	ft_render_player(m);
 	mlx_image_to_window(m->ptr, m->img, 0, 0);
-	return ;
 }

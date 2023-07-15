@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 13:58:34 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 16:10:19 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ typedef struct s_data{
 	t_map		*map;
 	t_player	*plr;
 	t_txtr		*txtr;
+	int			w_height;
+	int			w_width;
 }t_data;
 
 typedef struct s_point{
@@ -125,5 +127,6 @@ void	move_backword(t_data *mlx);
 void	move_right(t_data *mlx);
 void	move_left(t_data *mlx);
 void	get_player_ang(t_player *player);
+void	ft_render(t_data *m);
 
 #endif

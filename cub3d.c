@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 14:00:41 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 15:52:18 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,9 @@ int	main(int ac, char **av)
 	if (!check_args(ac, av))
 		ft_raise_error(ARG_ERR);
 	mlx = process_map(av[1]);
-	mlx->ptr = mlx_init((mlx->map->col - 1) * TILE_SIZE,
-			(mlx->map->rows - 1) * TILE_SIZE, TITLE, false);
+	mlx->ptr = mlx_init(mlx->w_width, mlx->w_height, TITLE, false);
 	ft_raise_perror(mlx->ptr, MLX_INIT_ERR);
-	mlx->img = mlx_new_image(mlx->ptr, (mlx->map->col - 1) * TILE_SIZE,
-			(mlx->map->rows - 1) * TILE_SIZE);
+	mlx->img = mlx_new_image(mlx->ptr, mlx->w_height, mlx->w_height);
 	mlx_loop_hook(mlx->ptr, ft_moves, mlx);
 	mlx_loop(mlx->ptr);
 }

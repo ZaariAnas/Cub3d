@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 13:47:27 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 15:21:34 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ t_data	*process_map(char *map_file)
 	if ((map->so & map->ea & map->no & map->we & map->f & map->c) != 1)
 		ft_raise_error(MAP_TEX_ERR);
 	ft_parse_map(mlx, fd, map_file);
+	mlx->w_height = (mlx->map->rows - 1) * TILE_SIZE;
+	mlx->w_width = (mlx->map->col - 1) * TILE_SIZE;
 	return (mlx);
 }
