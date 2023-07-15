@@ -3,23 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 09:11:03 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 10:16:14 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_clean_mlxow(t_mlx *mlx)
+bool	isnt_wall(char **map, int y, int x)
 {
-		mlx_delete_image(mlx->ptr, mlx->img);
-		mlx->img = mlx_new_image(mlx->ptr, (mlx->map->col - 1) * 60 , (mlx->map->rows - 1) * 60);
+	int	i;
+
+	i = -1;
+	while(i++ < 5)
+	{
+		if (map[t(y)][t(x)] == '1')
+			return (0);
+		if (map[t(y - i)][t(x + i)] != '0')
+			return (0);
+		if (map[t(y + i)][t(x - i)] != '0')
+			return (0);
+	}
+	return (1);
 }
+
 void	right(t_mlx *mlx)
 {
-	mlx->map->p->rotate_ang += 5;
+	mlx->map->p->rotate_ang += 3;
 	if (mlx->map->p->rotate_ang > 360)
 		mlx->map->p->rotate_ang -= 360;
 	if (mlx->map->p->rotate_ang < 0)
@@ -28,7 +40,7 @@ void	right(t_mlx *mlx)
 
 void	left(t_mlx *mlx)
 {
-	mlx->map->p->rotate_ang -= 5;
+	mlx->map->p->rotate_ang -= 3;
 	if (mlx->map->p->rotate_ang > 360)
 		mlx->map->p->rotate_ang -= 360;
 	if (mlx->map->p->rotate_ang < 0)
@@ -40,9 +52,9 @@ void	  move_forward(t_mlx *mlx)
 	double	px;
 	double	py;
 
-	py = sin(to_rad(mlx->map->p->rotate_ang)) * 10;
-	px = cos(to_rad(mlx->map->p->rotate_ang)) * 10;
-	if (mlx->map->map[(int)(mlx->map->p->y + py) / 60][(int)(mlx->map->p->x + px) / 60] == '0')
+	py = sin(to_rad(mlx->map->p->rotate_ang)) * 5;
+	px = cos(to_rad(mlx->map->p->rotate_ang)) * 5;
+	if (isnt_wall(mlx->map->map, (mlx->map->p->y + py), mlx->map->p->x + px))
 	{
 		mlx->map->p->x += px;
 		mlx->map->p->y += py;
@@ -55,9 +67,9 @@ void	move_backword(t_mlx *mlx)
 	double	py;
 
 
-	py = sin(to_rad(mlx->map->p->rotate_ang)) * 10;
-	px = cos(to_rad(mlx->map->p->rotate_ang)) * 10;
-	if (mlx->map->map[(int)((mlx->map->p->y - py) / 60)][(int)(mlx->map->p->x - px) / 60] == '0')
+	py = sin(to_rad(mlx->map->p->rotate_ang)) * 5;
+	px = cos(to_rad(mlx->map->p->rotate_ang)) * 5;
+	if (isnt_wall(mlx->map->map, (mlx->map->p->y - py), mlx->map->p->x - px))
 	{
 		mlx->map->p->x -= px;
 		mlx->map->p->y -= py;
@@ -69,9 +81,9 @@ void	move_right(t_mlx *mlx)
 	double	px;
 	double	py;
 
-	py = sin(to_rad(mlx->map->p->rotate_ang + 90)) * 10;
-	px = cos(to_rad(mlx->map->p->rotate_ang + 90)) * 10;
-	if (mlx->map->map[(int)(mlx->map->p->y + py) / 60][(int)(mlx->map->p->x + px) / 60] == '0')
+	py = sin(to_rad(mlx->map->p->rotate_ang + 90)) * 5;
+	px = cos(to_rad(mlx->map->p->rotate_ang + 90)) * 5;
+	if (isnt_wall(mlx->map->map, (mlx->map->p->y + py), mlx->map->p->x + px))
 	{
 		mlx->map->p->x += px;
 		mlx->map->p->y += py;
@@ -83,9 +95,9 @@ void	move_left(t_mlx *mlx)
 	double	px;
 	double	py;
 
-	py = sin(to_rad(mlx->map->p->rotate_ang + 90)) * 10;
-	px = cos(to_rad(mlx->map->p->rotate_ang + 90)) * 10;
-	if (mlx->map->map[(int)(mlx->map->p->y - py) / 60][(int)(mlx->map->p->x - px) / 60] == '0')
+	py = sin(to_rad(mlx->map->p->rotate_ang + 90)) * 5;
+	px = cos(to_rad(mlx->map->p->rotate_ang + 90)) * 5;
+	if (isnt_wall(mlx->map->map, (mlx->map->p->y - py), mlx->map->p->x - px))
 	{
 		mlx->map->p->x -= px;
 		mlx->map->p->y -= py;
@@ -105,18 +117,18 @@ void	ft_moves(void *mlx)
 	t_mlx	*m;
 
 	m = (t_mlx *)mlx;
-	if (mlx_is_key_down(m->ptr, MLX_KEY_RIGHT))
+	if (mlx_is_key_down(m->ptr, MLX_KEY_D))
 		right(mlx);
-	if (mlx_is_key_down(m->ptr, MLX_KEY_LEFT))
+	if (mlx_is_key_down(m->ptr, MLX_KEY_A))
 		left(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_UP))
 		move_forward(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_DOWN))
 		move_backword(mlx);
-	// if (keypress == 124)
-	// 	move_right(mlx);
-	// if (keypress == 123)
-	// 	move_left(mlx);
+	if (mlx_is_key_down(m->ptr, MLX_KEY_RIGHT))
+		move_right(mlx);
+	if (mlx_is_key_down(m->ptr, MLX_KEY_LEFT))
+		move_left(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_ESCAPE))
 		destroy(mlx);
 	mlx_delete_image(m->ptr, m->img);

@@ -6,13 +6,13 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 13:14:50 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/14 19:11:59 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/15 09:57:56 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int	t(double x)
+int	t(double x)
 {
 	return (x / TILE_SIZE);
 }

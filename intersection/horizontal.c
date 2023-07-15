@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:22:34 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/14 19:11:23 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/15 09:57:50 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ double	distance(t_point *p1, t_point *p2)
 double	to_rad(double ang)
 {
 	return (ang * M_PI / 180.0);
-}
-
-static int	t(double x)
-{
-	return (x / TILE_SIZE);
 }
 
 t_point	*find_hz_inter(t_point *s, double ang, t_map *map)

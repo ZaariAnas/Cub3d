@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: azari <azari@student.1337.fr>              +#+  +:+       +#+         #
+#    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/15 07:31:44 by azari            ###   ########.fr        #
+#    Updated: 2023/07/15 09:53:33 by mechane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-USER 		=	azari
+USER 		=	mechane
 
 PURPLE 		= 	\033[0;35m
 

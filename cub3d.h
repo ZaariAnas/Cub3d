@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 07:30:06 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 10:10:50 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ int		ft_open(char *map_file);
 int		ft_lencheck(char *str);
 void	ft_checkmap(t_map *m);
 int		ft_uatoi(char *str);
-void    my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void	ft_render_player(t_player *player, t_mlx *mlx);
 void	ft_moves(void *mlx);
 void	ft_init_player(t_player *player);
@@ -124,4 +123,5 @@ double	to_rad(double ang);
 double	distance(t_point *p1, t_point *p2);
 t_point	*find_vrt_inter(t_point *s, double ang, t_map *map);
 int		ft_isempty(char *s);
+int		t(double x);
 #endif
