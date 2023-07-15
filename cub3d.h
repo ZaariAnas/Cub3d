@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 06:18:05 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 06:23:43 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,32 @@
 # define MEM_ALLOC_ERR "error : memory allocation failure"
 # define MAP_TEX_ERR "error : unvalid map texture format"
 # define FILE_OPEN_ERR "error : unable to open map file"
+# define PLR_POS_ERR "error : unvalid player position"
 # define MAP_ELEM_ERR "error : unvalid map elements"
 # define MAP_SHAPE_ERR "error : unvalid map shape"
 # define MLX_WIN_ERR "error : mlx window failure"
 # define MLX_INIT_ERR "error : mlx init failure"
 # define RGB_ERR "error : unvalid RGB color"
 # define ARG_ERR "error : unvalid arguments"
-# define PLR_POS_ERR "error : unvalid player position"
 # define UNF_MAP_ERR "error : map unfound"
-# define WHITESPACE " \t\r\v\n"
 # define MAP_ELEM "NSEW10 \t\n"
+# define WHITESPACE " \t\r\v\n"
 # define FREE_SPACE "NSWE0"
 # define RED "\033[1;31m"
-# define TITLE "Cub3d"
 # define HOLES " \t"
+# define TITLE "Cub3d"
 
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
-# include <sys/fcntl.h>
-# include <stdbool.h>
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <stdbool.h>
+# include <sys/fcntl.h>
+# include <mlx.h>
 # include <math.h>
+# include <stdlib.h>
 
 #define TILE_SIZE 60
 
@@ -116,4 +118,9 @@ void	ft_render_player(t_player *player, t_mlx *mlx);
 int		ft_moves(int keycode, t_mlx *mlx);
 void	ft_init_player(t_player *player);
 int		destroy(t_mlx *mlx);
+t_point	*find_hz_inter(t_point *s, double ang, t_map *map);
+double	to_rad(double ang);
+double	distance(t_point *p1, t_point *p2);
+t_point	*find_vrt_inter(t_point *s, double ang, t_map *map);
+int		ft_isempty(char *s);
 #endif
