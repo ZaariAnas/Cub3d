@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 10:08:46 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/15 11:26:30 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-#include <stdio.h>
 
 void get_player_ang(t_player *player)
 {
@@ -29,7 +28,7 @@ int get_rgba(int r, int g, int b, int a)
 {
     return (r << 24 | g << 16 | b << 8 | a);
 }
-void draw_line(t_point *p1, t_point *p2, t_mlx *mlx)
+void draw_line(t_point *p1, t_point *p2, t_data *mlx)
 {
     double dy = p2->y - p1->y;
     double dx = p2->x - p1->x;
@@ -49,15 +48,15 @@ void draw_line(t_point *p1, t_point *p2, t_mlx *mlx)
         y += yIncrement;
     }
 }
-void	cast_ray(t_player *player, t_mlx *mlx, double ang)
+void	cast_ray(t_data *mlx, double ang)
 {
 	t_point *s;
 	t_point *h;
 	t_point	*v;
 	
-	s = malloc(sizeof(t_point));
-	s->x = player->x;
-	s->y = player->y;
+	s = ft_malloc(sizeof(t_point));
+	s->x = mlx->plr->x;
+	s->y = mlx->plr->y;
 	h = find_hz_inter(s, to_rad(ang), mlx->map);
 	v = find_vrt_inter(s, to_rad(ang), mlx->map);
 	if (distance(s ,h) < distance(s, v))
@@ -66,14 +65,14 @@ void	cast_ray(t_player *player, t_mlx *mlx, double ang)
 		draw_line(s, v, mlx);
 }
 
-void	ft_render_player(t_player *player, t_mlx *mlx)
+void	ft_render_player(t_data *mlx)
 {
 	double	s_ang;
 	
-	s_ang = player->rotate_ang - 30;
-	while(s_ang <= player->rotate_ang + 30)
+	s_ang = mlx->plr->rotate_ang - 30;
+	while(s_ang <= mlx->plr->rotate_ang + 30)
 	{
-		cast_ray(player, mlx, s_ang);
+		cast_ray(mlx, s_ang);
 		s_ang += 0.3;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 17:54:54 by azari             #+#    #+#             */
-/*   Updated: 2023/07/08 17:55:10 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 11:26:30 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**ft_split_set(char *str, char *c)
 	j = 0;
 	if (!str)
 		return (NULL);
-	tab = malloc((num_word(c, str) + 1) * sizeof(char *));
+	tab = ft_malloc((num_word(c, str) + 1) * sizeof(char *));
 	if (!tab)
 		return (NULL);
 	while (str[i])

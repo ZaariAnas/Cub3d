@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertical.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 13:14:50 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 09:57:56 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/15 11:26:30 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_point	*find_vrt_inter(t_point *s, double ang, t_map *map)
 	double		offset;
 	
 	offset = 0;
-	f = malloc(sizeof(t_point));
+	f = ft_malloc(sizeof(t_point));
 	ft_memset(f, 0, sizeof(t_point));
 	f->x = ((int)(s->x / TILE_SIZE) * TILE_SIZE);  
 	if (cos(ang) > 0)

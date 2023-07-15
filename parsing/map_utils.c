@@ -6,12 +6,11 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 09:17:02 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 09:01:40 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 11:26:30 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-#include <stdio.h>
 
 char	*ft_fill(char *line, int len)
 {
@@ -19,7 +18,7 @@ char	*ft_fill(char *line, int len)
 	char	*ptr;
 
 	i = 0;
-	ptr = (char *)malloc(len * sizeof(char));
+	ptr = (char *)ft_malloc(len * sizeof(char));
 	ptr[len - 1] = 0;
 	if (!ptr)
 		ft_raise_error(MEM_ALLOC_ERR);
@@ -39,7 +38,7 @@ void	ft_getmap(t_map *m, char *map_file, int fd)
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 		ft_raise_error(FILE_OPEN_ERR);
-	m->map = (char **)malloc(sizeof(char *) * m->rows);
+	m->map = (char **)ft_malloc(sizeof(char *) * m->rows);
 	if (!m->map)
 		ft_raise_error(MEM_ALLOC_ERR);
 	m->line = get_next_line(fd);
@@ -67,7 +66,7 @@ void	check_surrounding(t_map *m, int i, int j)
 		ft_raise_error(MAP_SHAPE_ERR);
 }
 
-void	ft_checkmap(t_map *m)
+void	ft_checkmap(t_data *mlx)
 {
 	int	i;
 	int	j;
@@ -75,21 +74,21 @@ void	ft_checkmap(t_map *m)
 	
 	flag = 0;
 	i = -1;
-	while (m->map[++i])
+	while (mlx->map->map[++i])
 	{
 		j = -1;
-		while (m->map[i][++j])
+		while (mlx->map->map[i][++j])
 		{
-			if (ft_strchr("NSEW", m->map[i][j]))
+			if (ft_strchr("NSEW", mlx->map->map[i][j]))
 				{
-					m->p->side = m->map[i][j];
-					m->map[i][j]= '0';
-					m->p->x = j * TILE_SIZE + (TILE_SIZE / 2);
-					m->p->y = i * TILE_SIZE + (TILE_SIZE / 2);
+					mlx->plr->side = mlx->map->map[i][j];
+					mlx->map->map[i][j]= '0';
+					mlx->plr->x = j * TILE_SIZE + (TILE_SIZE / 2);
+					mlx->plr->y = i * TILE_SIZE + (TILE_SIZE / 2);
 					flag++;
 				}
-			if (ft_strchr(FREE_SPACE, m->map[i][j]))
-				check_surrounding(m, i, j);
+			if (ft_strchr(FREE_SPACE, mlx->map->map[i][j]))
+				check_surrounding(mlx->map, i, j);
 		}
 	}
 	if (flag != 1)

@@ -3,20 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
+#    By: azari <azari@student.1337.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/15 09:53:33 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/15 11:29:05 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-USER 		=	mechane
+USER 		=	azari
 
 PURPLE 		= 	\033[0;35m
 
 CC			= 	cc
 
-CFLAGS		= 	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS		= 	-Wall -Wextra -Werror #-g -fsanitize=address
 
 NAME 		= 	cub3d
 
@@ -24,7 +24,7 @@ LIBFT		= 	libft/libft.a
 
 GNL			= 	get_next_line/lgnl.a
 
-HEADERS		=	cub3d.h libft/libft.h get_next_line/get_next_line.h
+HEADERS		=	cub3d.h libft/libft.h get_next_line/get_next_line.h gc/gc.h
 
 OFILES		= 	$(CFILES:.c=.o)
 
@@ -39,6 +39,7 @@ CFILES		= 	cub3d.c								\
 				hooks/moves.c						\
 				intersection/horizontal.c			\
 				intersection/vertical.c				\
+				gc/gc.c
 				
 all : $(NAME)
 

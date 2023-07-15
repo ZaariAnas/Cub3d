@@ -6,13 +6,13 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 09:28:42 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 08:56:55 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 10:37:59 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	ft_draw(int x, int y, t_mlx *mlx, int color)
+static void	ft_draw(int x, int y, t_data *mlx, int color)
 {
 	int	i;
 	int	j;
@@ -31,13 +31,13 @@ static void	ft_draw(int x, int y, t_mlx *mlx, int color)
 	}
 }
 
-void	ft_render_map(t_map *m, t_mlx *mlx)
+void	ft_render_map(t_data *mlx)
 {
 	char	**map;
 	int		x;
 	int		y;
 	
-	map = m->map;
+	map = mlx->map->map;
 	x = 0;
 	while (map[(x)])
 	{

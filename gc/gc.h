@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   gc.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 12:53:11 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 11:26:30 by azari            ###   ########.fr       */
+/*   Created: 2023/05/05 10:47:54 by mechane           #+#    #+#             */
+/*   Updated: 2023/07/15 11:22:09 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GC_H
+#define GC_H
 
-void	*ft_calloc(size_t count, size_t size)
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdbool.h>
+
+typedef struct s_gc
 {
-	void	*ptr;
+	void		*address;
+	struct s_gc	*next;
+}t_gc;
 
-	ptr = ft_malloc(count * size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
-}
+t_gc	*new_gc (void *ptr);
+void	*gc(size_t size, int fr_flag);
+void	gc_add_front(t_gc **gc, t_gc *new);
+void	free_gc(t_gc **gc);
+
+#endif

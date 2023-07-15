@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 10:10:50 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/15 11:19:00 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include <sys/fcntl.h>
-// # include <mlx.h>
 # include "MLX42.h"
 # include <math.h>
 # include <stdlib.h>
@@ -47,12 +46,12 @@
 #define TILE_SIZE 60
 
 typedef struct s_txtr{
-	char	*NO;
-	char	*WE;
-	char	*EA;
-	char	*SO;
-	int		F;
-	int		C;
+	char	*no;
+	char	*we;
+	char	*ea;
+	char	*so;
+	int		f;
+	int		c;
 }t_txtr;
 
 typedef struct s_player{
@@ -76,27 +75,25 @@ typedef struct s_map{
 	int		flim;
 	int		rows;
 	int		col;
-	int		NO;
-	int		EA;
-	int		WE;
-	int		SO;
-	int		F;
-	int		C;
-	int		FF;
-	int		CC;
+	int		no;
+	int		ea;
+	int		we;
+	int		so;
+	int		f;
+	int		c;
+	int		ff;
+	int		cc;
 	t_player	*p;
 }t_map;
 
-typedef struct s_mlx{
+typedef struct s_data{
 	mlx_t		*ptr;
 	void		*win;
 	mlx_image_t	*img;
-	char    	*addr;
-    int        	bits_per_pixel;
-    int        	line_length;
-    int        	endian;
 	t_map		*map;
-}t_mlx;
+	t_player	*plr;
+	t_txtr		*txtr;
+}t_data;
 
 
 typedef struct s_point{
@@ -106,15 +103,13 @@ typedef struct s_point{
 
 void	ft_getmap(t_map *m, char *map_file, int fd);
 void	ft_raise_perror(void *ptr, char *err);
-void	ft_render_map(t_map *m, t_mlx *mlx);
 void	ft_raise_error(char *err_msg);
-t_map	*process_map(char *map_file);
-int		process_tokens(t_map *m);
+t_data	*process_map(char *map_file);
+int		process_tokens(t_data *mlx);
 int		ft_open(char *map_file);
 int		ft_lencheck(char *str);
-void	ft_checkmap(t_map *m);
+void	ft_checkmap(t_data *mlx);
 int		ft_uatoi(char *str);
-void	ft_render_player(t_player *player, t_mlx *mlx);
 void	ft_moves(void *mlx);
 void	ft_init_player(t_player *player);
 void	destroy(void *mlx);
@@ -124,4 +119,6 @@ double	distance(t_point *p1, t_point *p2);
 t_point	*find_vrt_inter(t_point *s, double ang, t_map *map);
 int		ft_isempty(char *s);
 int		t(double x);
+void	ft_render_map(t_data *mlx);
+void	ft_render_player(t_data *mlx);
 #endif

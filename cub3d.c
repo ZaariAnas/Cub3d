@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 10:18:20 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/15 11:09:31 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdbool.h>
+#include <stdlib.h>
 
 static bool	check_args(int ac, char **av)
 {
@@ -28,18 +29,14 @@ static bool	check_args(int ac, char **av)
 
 int main(int ac, char **av)
 {
-	t_map	*map;
-	t_mlx	*mlx;
+	t_data	*mlx;
 
 	if (!check_args(ac, av))
 		ft_raise_error(ARG_ERR);
-	mlx = malloc(sizeof(t_mlx));
-	ft_memset(mlx, 0, sizeof(t_mlx));
-	map = process_map(av[1]);
-	mlx->map = map;
-	mlx->ptr = mlx_init((map->col - 1)* TILE_SIZE, (map->rows - 1) * TILE_SIZE, TITLE, false);
+	mlx = process_map(av[1]);
+	mlx->ptr = mlx_init((mlx->map->col - 1)* TILE_SIZE, (mlx->map->rows - 1) * TILE_SIZE, TITLE, false);
 	ft_raise_perror(mlx->ptr, MLX_INIT_ERR);
-	mlx->img = mlx_new_image(mlx->ptr, (map->col - 1) * TILE_SIZE , (map->rows - 1) * TILE_SIZE);
+	mlx->img = mlx_new_image(mlx->ptr, (mlx->map->col - 1) * TILE_SIZE , (mlx->map->rows - 1) * TILE_SIZE);
 	mlx_loop_hook(mlx->ptr, ft_moves, mlx);
 	mlx_loop(mlx->ptr);
 }

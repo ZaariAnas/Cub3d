@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:22:34 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 09:57:50 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/15 11:26:30 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_point	*find_hz_inter(t_point *s, double ang, t_map *map)
 	double		offset;
 	
 	offset = 0;
-	f = malloc(sizeof(t_point));
-	f = malloc(sizeof(t_point));
+	f = ft_malloc(sizeof(t_point));
+	f = ft_malloc(sizeof(t_point));
 	f->y = ((int)(s->y / TILE_SIZE) * TILE_SIZE);
 	if (sin(ang) > 0)
 		f->y += TILE_SIZE;
