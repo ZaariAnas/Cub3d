@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_processing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 15:21:34 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 16:29:46 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ t_data	*process_map(char *map_file)
 	ft_parse_map(mlx, fd, map_file);
 	mlx->w_height = (mlx->map->rows - 1) * TILE_SIZE;
 	mlx->w_width = (mlx->map->col - 1) * TILE_SIZE;
+	get_player_ang(mlx->plr);
 	return (mlx);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 13:05:38 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 13:08:22 by azari            ###   ########.fr       */
+/*   Created: 2023/07/15 16:26:37 by mechane           #+#    #+#             */
+/*   Updated: 2023/07/15 16:27:46 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	isnt_wall(char **map, int y, int x)
 	int	i;
 
 	i = -1;
-	while (i++ < 5)
+	while (i++ < 10)
 	{
 		if (map[t(y)][t(x)] == '1')
 			return (0);
@@ -34,8 +34,8 @@ void	move_forward(t_data *mlx)
 	double	px;
 	double	py;
 
-	py = sin(to_rad(mlx->plr->rotate_ang)) * 5;
-	px = cos(to_rad(mlx->plr->rotate_ang)) * 5;
+	py = sin(to_rad(mlx->plr->rotate_ang)) * mlx->plr->walk_speed;
+	px = cos(to_rad(mlx->plr->rotate_ang)) * mlx->plr->walk_speed;
 	if (isnt_wall(mlx->map->map, (mlx->plr->y + py), mlx->plr->x + px))
 	{
 		mlx->plr->x += px;
@@ -48,8 +48,8 @@ void	move_backword(t_data *mlx)
 	double	px;
 	double	py;
 
-	py = sin(to_rad(mlx->plr->rotate_ang)) * 5;
-	px = cos(to_rad(mlx->plr->rotate_ang)) * 5;
+	py = sin(to_rad(mlx->plr->rotate_ang)) * mlx->plr->walk_speed;
+	px = cos(to_rad(mlx->plr->rotate_ang)) * mlx->plr->walk_speed;
 	if (isnt_wall(mlx->map->map, (mlx->plr->y - py), mlx->plr->x - px))
 	{
 		mlx->plr->x -= px;
@@ -62,8 +62,8 @@ void	move_right(t_data *mlx)
 	double	px;
 	double	py;
 
-	py = sin(to_rad(mlx->plr->rotate_ang + 90)) * 5;
-	px = cos(to_rad(mlx->plr->rotate_ang + 90)) * 5;
+	py = sin(to_rad(mlx->plr->rotate_ang + 90)) * mlx->plr->walk_speed;
+	px = cos(to_rad(mlx->plr->rotate_ang + 90)) * mlx->plr->walk_speed;
 	if (isnt_wall(mlx->map->map, (mlx->plr->y + py), mlx->plr->x + px))
 	{
 		mlx->plr->x += px;
@@ -76,8 +76,8 @@ void	move_left(t_data *mlx)
 	double	px;
 	double	py;
 
-	py = sin(to_rad(mlx->plr->rotate_ang + 90)) * 5;
-	px = cos(to_rad(mlx->plr->rotate_ang + 90)) * 5;
+	py = sin(to_rad(mlx->plr->rotate_ang + 90)) * mlx->plr->walk_speed;
+	px = cos(to_rad(mlx->plr->rotate_ang + 90)) * mlx->plr->walk_speed;
 	if (isnt_wall(mlx->map->map, (mlx->plr->y - py), mlx->plr->x - px))
 	{
 		mlx->plr->x -= px;

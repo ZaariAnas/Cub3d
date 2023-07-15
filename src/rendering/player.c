@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 14:12:53 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 16:24:13 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	get_player_ang(t_player *player)
 		player->rotate_ang = 0;
 	else if (player->side == 'S')
 		player->rotate_ang = 270;
+	player->turn_speed = 2;
+	player->walk_speed = 3;
 }
 
 int	get_rgba(int r, int g, int b, int a)

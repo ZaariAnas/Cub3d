@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 16:10:49 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 16:20:02 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	right(t_data *mlx)
 {
-	mlx->plr->rotate_ang += 3;
+	mlx->plr->rotate_ang += mlx->plr->turn_speed;
 	if (mlx->plr->rotate_ang > 360)
 		mlx->plr->rotate_ang -= 360;
 	if (mlx->plr->rotate_ang < 0)
@@ -23,7 +23,7 @@ void	right(t_data *mlx)
 
 void	left(t_data *mlx)
 {
-	mlx->plr->rotate_ang -= 3;
+	mlx->plr->rotate_ang -= mlx->plr->turn_speed;
 	if (mlx->plr->rotate_ang > 360)
 		mlx->plr->rotate_ang -= 360;
 	if (mlx->plr->rotate_ang < 0)
