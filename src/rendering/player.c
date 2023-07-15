@@ -6,13 +6,13 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 11:26:30 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 14:12:53 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../include/cub3d.h"
 
-void get_player_ang(t_player *player)
+void	get_player_ang(t_player *player)
 {
 	if (player->side == 'N')
 		player->rotate_ang = 90;
@@ -22,44 +22,51 @@ void get_player_ang(t_player *player)
 		player->rotate_ang = 0;
 	else if (player->side == 'S')
 		player->rotate_ang = 270;
-	
 }
-int get_rgba(int r, int g, int b, int a)
+
+int	get_rgba(int r, int g, int b, int a)
 {
-    return (r << 24 | g << 16 | b << 8 | a);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
-void draw_line(t_point *p1, t_point *p2, t_data *mlx)
+
+void	draw_line(t_point *p1, t_point *p2, t_data *mlx)
 {
-    double dy = p2->y - p1->y;
-    double dx = p2->x - p1->x;
+	double	steps;
+	t_point	d;
+	t_point	p;
+	t_point	inc;
 
-    double steps = (fabs(dx) > fabs(dy)) ? fabs(dx) : fabs(dy);
-    double xIncrement = dx / steps;
-    double yIncrement = dy / steps;
-
-    double x = p1->x;
-    double y = p1->y;
-
-    int i = -1;
-    while (++i <= steps)
-    {
-		mlx_put_pixel(mlx->img, x, y,get_rgba(255, 0, 0, 255));
-        x += xIncrement;
-        y += yIncrement;
-    }
+	d.y = p2->y - p1->y;
+	d.x = p2->x - p1->x;
+	if (fabs(d.x) > fabs(d.y))
+		steps = fabs(d.x);
+	else
+		steps = fabs(d.y);
+	inc.x = d.x / steps;
+	inc.y = d.y / steps;
+	p.x = p1->x;
+	p.y = p1->y;
+	while (steps-- >= 0)
+	{
+		mlx_put_pixel(mlx->img, p.x, p.y,
+			get_rgba(255, 0, 0, 255));
+		p.x += inc.x;
+		p.y += inc.y;
+	}
 }
+
 void	cast_ray(t_data *mlx, double ang)
 {
-	t_point *s;
-	t_point *h;
+	t_point	*s;
+	t_point	*h;
 	t_point	*v;
-	
+
 	s = ft_malloc(sizeof(t_point));
 	s->x = mlx->plr->x;
 	s->y = mlx->plr->y;
 	h = find_hz_inter(s, to_rad(ang), mlx->map);
 	v = find_vrt_inter(s, to_rad(ang), mlx->map);
-	if (distance(s ,h) < distance(s, v))
+	if (distance(s, h) < distance(s, v))
 		draw_line(s, h, mlx);
 	else
 		draw_line(s, v, mlx);
@@ -68,18 +75,11 @@ void	cast_ray(t_data *mlx, double ang)
 void	ft_render_player(t_data *mlx)
 {
 	double	s_ang;
-	
+
 	s_ang = mlx->plr->rotate_ang - 30;
-	while(s_ang <= mlx->plr->rotate_ang + 30)
+	while (s_ang <= mlx->plr->rotate_ang + 30)
 	{
 		cast_ray(mlx, s_ang);
 		s_ang += 0.3;
 	}
-}
-
-void	ft_init_player(t_player *player)
-{
-	get_player_ang(player); 
-	player->turn_speed = 3;
-	player->walk_speed = 0.05; 
 }

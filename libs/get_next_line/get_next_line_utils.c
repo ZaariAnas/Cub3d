@@ -6,13 +6,11 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:48:47 by azari             #+#    #+#             */
-/*   Updated: 2023/07/08 17:18:03 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 12:55:55 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-
 
 size_t	ft_strlen(const char *str)
 {

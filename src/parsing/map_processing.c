@@ -6,11 +6,11 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 11:26:30 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 13:47:27 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../include/cub3d.h"
 
 static void	ft_parse_map(t_data *mlx, int fd, char *map_file)
 {
@@ -40,7 +40,8 @@ static void	ft_parse_map(t_data *mlx, int fd, char *map_file)
 	ft_getmap(mlx->map, map_file, fd);
 	ft_checkmap(mlx);
 }
-static t_data *ft_init(void)
+
+static t_data	*ft_init(void)
 {
 	t_data	*mlx;
 
@@ -51,7 +52,7 @@ static t_data *ft_init(void)
 	mlx->plr = ft_malloc(sizeof(t_player));
 	if (!mlx->plr)
 		ft_raise_error(MEM_ALLOC_ERR);
-	ft_memset(mlx->plr, 0, sizeof(t_player));	
+	ft_memset(mlx->plr, 0, sizeof(t_player));
 	mlx->map = ft_malloc(sizeof(t_map));
 	if (!mlx->map)
 		ft_raise_error(MEM_ALLOC_ERR);
@@ -78,10 +79,10 @@ t_data	*process_map(char *map_file)
 		map->flim++;
 		map->tokens = ft_split_set(map->line, " \t");
 		if (!process_tokens(mlx) && (map->tokens[0][0] != '\n'))
-			break;
+			break ;
 		map->line = get_next_line(fd);
-		if(map->line && *map->line == '1' && map->flim++)
-			break;
+		if (map->line && *map->line == '1' && map->flim++)
+			break ;
 	}
 	if ((map->so & map->ea & map->no & map->we & map->f & map->c) != 1)
 		ft_raise_error(MAP_TEX_ERR);

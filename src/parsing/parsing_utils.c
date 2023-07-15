@@ -6,11 +6,11 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:06:28 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/11 09:28:08 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 13:53:43 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../cub3d.h"
+#include "../../include/cub3d.h"
 
 static int	ftt_isdigit(char *s)
 {
@@ -67,6 +67,5 @@ char	*ft_getname(char *line)
 	j = i;
 	while (line[j] && !ft_strchr(WHITESPACE, line[j]))
 		j++;
-
 	return (name);
 }

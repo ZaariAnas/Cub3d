@@ -6,11 +6,18 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 09:28:42 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 10:37:59 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 13:59:34 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../include/cub3d.h"
+
+void	ft_init_player(t_player *player)
+{
+	get_player_ang(player);
+	player->turn_speed = 3;
+	player->walk_speed = 0.05;
+}
 
 static void	ft_draw(int x, int y, t_data *mlx, int color)
 {
@@ -36,7 +43,7 @@ void	ft_render_map(t_data *mlx)
 	char	**map;
 	int		x;
 	int		y;
-	
+
 	map = mlx->map->map;
 	x = 0;
 	while (map[(x)])
@@ -45,11 +52,9 @@ void	ft_render_map(t_data *mlx)
 		while (map[x][y])
 		{
 			if (map[x][y] == '1')
-				ft_draw(x, y, mlx, (255 << 24| 255 << 16| 255 << 8 | 255));	
+				ft_draw(x, y, mlx, (255 << 24 | 255 << 16 | 255 << 8 | 255));
 			y++;
 		}
 		x++;
 	}
 }
-
-

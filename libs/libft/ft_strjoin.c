@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 16:14:15 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 11:26:30 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 13:01:14 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		str = ft_strdup("");
 	else
 		str = ft_strdup(s1);
-	ptr = (char *)ft_malloc((ft_strlen(str) + ft_strlen(s2) + 1) * sizeof(char));
+	ptr = ft_malloc((ft_strlen(str) + ft_strlen(s2) + 1));
 	if (!ptr)
 		return (0);
 	while (str[++i])

@@ -6,11 +6,11 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:06:28 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/14 13:45:54 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 13:46:02 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../cub3d.h"
+#include "../../include/cub3d.h"
 
 static int	ftt_isdigit(char *s)
 {
@@ -23,6 +23,7 @@ static int	ftt_isdigit(char *s)
 	}
 	return (1);
 }
+
 int	ft_isempty(char *s)
 {
 	while (s && *s)

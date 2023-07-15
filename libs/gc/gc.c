@@ -6,17 +6,17 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:47:40 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 11:21:56 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 12:54:24 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "gc.h"
+#include "gc.h"
 
 void	*gc(size_t size, int fr_flag)
 {
 	static t_gc	*gc;
 	void		*address;
-	
+
 	if (fr_flag == 1)
 		free_gc(&gc);
 	else
@@ -33,7 +33,7 @@ void	*gc(size_t size, int fr_flag)
 	return (NULL);
 }
 
-t_gc	*new_gc (void *ptr)
+t_gc	*new_gc(void *ptr)
 {
 	t_gc	*new;
 
@@ -52,6 +52,7 @@ void	gc_add_front(t_gc **gc, t_gc *new)
 	new->next = *gc;
 	*gc = new;
 }
+
 void	free_gc(t_gc **gc)
 {
 	t_gc	*tmp;

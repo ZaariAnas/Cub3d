@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gc.h                                               :+:      :+:    :+:   */
+/*   map_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 10:47:54 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 11:22:09 by azari            ###   ########.fr       */
+/*   Created: 2023/07/09 12:58:40 by azari             #+#    #+#             */
+/*   Updated: 2023/07/15 11:49:34 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GC_H
-#define GC_H
+#include "../../include/cub3d.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdbool.h>
-
-typedef struct s_gc
+int	ft_lencheck(char *str)
 {
-	void		*address;
-	struct s_gc	*next;
-}t_gc;
+	int	i;
 
-t_gc	*new_gc (void *ptr);
-void	*gc(size_t size, int fr_flag);
-void	gc_add_front(t_gc **gc, t_gc *new);
-void	free_gc(t_gc **gc);
+	i = -1;
+	if (!str)
+		return (0);
+	while (str[++i])
+	{
+		if (!ft_strchr(MAP_ELEM, str[i]))
+			ft_raise_error(MAP_ELEM_ERR);
+	}
+	return (i);
+}
 
-#endif
+void	ft_raise_error(char *err_msg)
+{
+	printf("%s%s\n", RED, err_msg);
+	exit(1);
+}
+
+void	ft_raise_perror(void *ptr, char *err)
+{
+	if (!ptr)
+	{
+		printf("%s%s\n", RED, err);
+		exit(1);
+	}
+}

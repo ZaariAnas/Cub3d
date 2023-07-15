@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 11:19:00 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 13:58:34 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@
 # define WHITESPACE " \t\r\v\n"
 # define FREE_SPACE "NSWE0"
 # define RED "\033[1;31m"
-# define HOLES " \t"
 # define TITLE "Cub3d"
+# define TILE_SIZE 60
+# define HOLES " \t"
 
-# include "get_next_line/get_next_line.h"
-# include "libft/libft.h"
+# include "../libs/get_next_line/get_next_line.h"
+# include "../libs/libft/libft.h"
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
@@ -42,8 +43,6 @@
 # include "MLX42.h"
 # include <math.h>
 # include <stdlib.h>
-
-#define TILE_SIZE 60
 
 typedef struct s_txtr{
 	char	*no;
@@ -68,21 +67,21 @@ typedef struct s_player{
 }t_player;
 
 typedef struct s_map{
-	char	**map; // to return a squared map for minimap
-	char	**tokens;
-	char	*line;
-	t_txtr	*tex;
-	int		flim;
-	int		rows;
-	int		col;
-	int		no;
-	int		ea;
-	int		we;
-	int		so;
-	int		f;
-	int		c;
-	int		ff;
-	int		cc;
+	char		**map;
+	char		**tokens;
+	char		*line;
+	t_txtr		*tex;
+	int			flim;
+	int			rows;
+	int			col;
+	int			no;
+	int			ea;
+	int			we;
+	int			so;
+	int			f;
+	int			c;
+	int			ff;
+	int			cc;
 	t_player	*p;
 }t_map;
 
@@ -94,7 +93,6 @@ typedef struct s_data{
 	t_player	*plr;
 	t_txtr		*txtr;
 }t_data;
-
 
 typedef struct s_point{
 	double	x;
@@ -121,4 +119,11 @@ int		ft_isempty(char *s);
 int		t(double x);
 void	ft_render_map(t_data *mlx);
 void	ft_render_player(t_data *mlx);
+bool	isnt_wall(char **map, int y, int x);
+void	move_forward(t_data *mlx);
+void	move_backword(t_data *mlx);
+void	move_right(t_data *mlx);
+void	move_left(t_data *mlx);
+void	get_player_ang(t_player *player);
+
 #endif
