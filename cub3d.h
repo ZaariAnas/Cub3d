@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 06:23:43 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 07:30:06 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include <sys/fcntl.h>
-# include <mlx.h>
+// # include <mlx.h>
+# include "MLX42.h"
 # include <math.h>
 # include <stdlib.h>
 
@@ -87,14 +88,14 @@ typedef struct s_map{
 }t_map;
 
 typedef struct s_mlx{
-	void	*ptr;
-	void	*win;
-	void	*img;
-	char    *addr;
-    int        bits_per_pixel;
-    int        line_length;
-    int        endian;
-	t_map	*map;
+	mlx_t		*ptr;
+	void		*win;
+	mlx_image_t	*img;
+	char    	*addr;
+    int        	bits_per_pixel;
+    int        	line_length;
+    int        	endian;
+	t_map		*map;
 }t_mlx;
 
 
@@ -115,9 +116,9 @@ void	ft_checkmap(t_map *m);
 int		ft_uatoi(char *str);
 void    my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void	ft_render_player(t_player *player, t_mlx *mlx);
-int		ft_moves(int keycode, t_mlx *mlx);
+void	ft_moves(void *mlx);
 void	ft_init_player(t_player *player);
-int		destroy(t_mlx *mlx);
+void	destroy(void *mlx);
 t_point	*find_hz_inter(t_point *s, double ang, t_map *map);
 double	to_rad(double ang);
 double	distance(t_point *p1, t_point *p2);

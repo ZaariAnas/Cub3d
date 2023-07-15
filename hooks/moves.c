@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/14 18:49:20 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/15 09:00:36 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	ft_clean_mlxow(t_mlx *mlx)
 {
-		mlx_destroy_image(mlx->ptr, mlx->img);
+		mlx_delete_image(mlx->ptr, mlx->img);
 		mlx->img = mlx_new_image(mlx->ptr, (mlx->map->col - 1) * 60 , (mlx->map->rows - 1) * 60);
-    	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel,
-            &mlx->line_length, &mlx->endian);
 }
 void	right(t_mlx *mlx)
 {
@@ -94,29 +92,38 @@ void	move_left(t_mlx *mlx)
 	}
 }
 
-int	destroy(t_mlx *mlx)
+void	destroy(void *mlx)
 {
-	mlx_destroy_window(mlx->ptr, mlx->win);
+	t_mlx	*m;
+
+	m = (t_mlx *)mlx;
+	mlx_terminate(m->ptr);
 	exit(0);
 }
-int	ft_moves(int keypress, t_mlx *mlx)
+void	ft_moves(void *mlx)
 {
-	if (keypress == 2)
+	t_mlx	*m;
+
+	m = (t_mlx *)mlx;
+	if (mlx_is_key_down(m->ptr, MLX_KEY_RIGHT))
 		right(mlx);
-	if (keypress == 0)
+	if (mlx_is_key_down(m->ptr, MLX_KEY_LEFT))
 		left(mlx);
-	if (keypress == 126)
+	if (mlx_is_key_down(m->ptr, MLX_KEY_UP))
 		move_forward(mlx);
-	if (keypress == 125)
+	if (mlx_is_key_down(m->ptr, MLX_KEY_DOWN))
 		move_backword(mlx);
-	if (keypress == 124)
-		move_right(mlx);
-	if (keypress == 123)
-		move_left(mlx);
-	if (keypress == 53)
+	// if (keypress == 124)
+	// 	move_right(mlx);
+	// if (keypress == 123)
+	// 	move_left(mlx);
+	if (mlx_is_key_down(m->ptr, MLX_KEY_ESCAPE))
 		destroy(mlx);
-	ft_clean_mlxow(mlx);
-	ft_render_map(mlx->map, mlx);
-	ft_render_player(mlx->map->p, mlx);
-	return (0);
+	mlx_delete_image(m->ptr, m->img);
+	m->img = mlx_new_image(m->ptr, (m->map->rows - 1) * TILE_SIZE , (m->map->rows - 1) * TILE_SIZE);
+	ft_render_map(m->map, mlx);
+	ft_render_player(m->map->p, mlx);
+	mlx_image_to_window(m->ptr, m->img, 0, 0);
+
+	return ;
 }

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/14 19:21:19 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/15 09:01:00 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdio.h>
 
 void get_player_ang(t_player *player)
 {
@@ -23,6 +24,10 @@ void get_player_ang(t_player *player)
 	else if (player->side == 'S')
 		player->rotate_ang = 270;
 	
+}
+int get_rgba(int r, int g, int b, int a)
+{
+    return (r << 24 | g << 16 | b << 8 | a);
 }
 void draw_line(t_point *p1, t_point *p2, t_mlx *mlx)
 {
@@ -39,11 +44,10 @@ void draw_line(t_point *p1, t_point *p2, t_mlx *mlx)
     int i = -1;
     while (++i <= steps)
     {
-        my_mlx_pixel_put(mlx, x, y, 0xFF0000);
+		mlx_put_pixel(mlx->img, x, y,get_rgba(255, 0, 0, 255));
         x += xIncrement;
         y += yIncrement;
     }
-	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img, 0, 0);
 }
 void	cast_ray(t_player *player, t_mlx *mlx, double ang)
 {
@@ -67,10 +71,10 @@ void	ft_render_player(t_player *player, t_mlx *mlx)
 	double	s_ang;
 	
 	s_ang = player->rotate_ang - 30;
-	while(s_ang < player->rotate_ang + 30)
+	while(s_ang <= player->rotate_ang + 30)
 	{
 		cast_ray(player, mlx, s_ang);
-		s_ang += 1;
+		s_ang += 0.3;
 	}
 }
 

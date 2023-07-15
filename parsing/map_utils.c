@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 09:17:02 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 06:19:38 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/15 09:01:40 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char	*ft_fill(char *line, int len)
 	}
 	if (len > 1)
 		ft_memset(ptr + i, ' ', len - 1);
-	printf("--%lu\n", ft_strlen(ptr));
 	return (ptr);
 }
 

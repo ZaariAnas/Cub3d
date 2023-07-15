@@ -3,16 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
+#    By: azari <azari@student.1337.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/14 13:14:25 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/15 07:31:44 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+USER 		=	azari
+
 PURPLE 		= 	\033[0;35m
 
-CC			= 	gcc
+CC			= 	cc
 
 CFLAGS		= 	-Wall -Wextra -Werror -g -fsanitize=address
 
@@ -43,7 +45,7 @@ all : $(NAME)
 $(NAME) : $(OFILES)
 	@make -C libft
 	@make -C get_next_line
-	@$(CC) $(CFLAGS) $(LIBFT) $(GNL) -lmlx -framework OpenGL -framework AppKit $(OFILES) -o $(NAME)
+	@$(CC) $(CFLAGS) $(LIBFT) $(GNL)  libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" $(OFILES) -o $(NAME)
 	@echo "$(PURPLE) ✅ cub3D "
 	
 	
