@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 16:29:46 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/16 11:01:24 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static t_data	*ft_init(void)
 	if (!mlx->txtr)
 		ft_raise_error(MEM_ALLOC_ERR);
 	ft_memset(mlx->txtr, 0, sizeof(t_txtr));
+	mlx->mini_scale = 0.2;
 	return (mlx);
 }
 

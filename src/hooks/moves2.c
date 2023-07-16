@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 16:26:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 16:27:46 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/16 10:46:40 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	isnt_wall(char **map, int y, int x)
 	int	i;
 
 	i = -1;
-	while (i++ < 10)
+	while (i++ < 3)
 	{
 		if (map[t(y)][t(x)] == '1')
 			return (0);

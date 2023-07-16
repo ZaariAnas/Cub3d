@@ -6,7 +6,7 @@
 #    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/15 16:13:07 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/16 10:17:48 by mechane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ PURPLE 		= 	\033[0;35m
 
 CC			= 	cc
 
-CFLAGS		= 	-Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS		= 	-Wall -Wextra -Werror -g -fsanitize=address
 
 NAME 		= 	cub3d
 
@@ -36,10 +36,11 @@ CFILES		= 	cub3d.c									\
 				src/parsing/map_processing.c			\
 				src/parsing/map_error.c					\
 				src/parsing/ft_utils.c					\
-				src/parsing/ft_map_utils.c					\
+				src/parsing/ft_map_utils.c				\
 				src/parsing/parse_token.c				\
 				src/rendering/rendering.c				\
 				src/rendering/player.c					\
+				src/rendering/wall.c					\
 				src/hooks/moves.c						\
 				src/hooks/moves2.c						\
 				src/intersection/horizontal.c			\

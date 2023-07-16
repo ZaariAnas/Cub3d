@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:36:45 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 13:53:14 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/16 10:43:41 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ static void	get_rgb(t_data *mlx)
 			ft_raise_error(RGB_ERR);
 		if (!ft_strncmp(mlx->map->tokens[0], "C",
 				ft_strlen(mlx->map->tokens[0])))
-			mlx->txtr->c += ft_uatoi(tmp[i]) << (16 - (8 * i));
+			mlx->txtr->c += (ft_uatoi(tmp[i]) << (24 - (8 * (i + 1)) | 255));
 		else
-			mlx->txtr->f += ft_uatoi(tmp[i]) << (16 - (8 * i));
+			mlx->txtr->f += (ft_uatoi(tmp[i]) << (24 - (8 * (i + 1))) | 255);
 	}
 	if (i != 3)
 		ft_raise_error(RGB_ERR);

@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 09:28:42 by azari             #+#    #+#             */
-/*   Updated: 2023/07/16 08:14:31 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/16 11:10:30 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	ft_init_player(t_player *player)
 {
 	get_player_ang(player);
-	player->turn_speed = 3;
-	player->walk_speed = 0.05;
+	player->turn_speed = 0.5;
+	player->walk_speed = 1;
 }
 
 static void	ft_draw(int x, int y, t_data *mlx, int color)

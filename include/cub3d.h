@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/16 07:43:51 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/16 11:52:24 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define FREE_SPACE "NSWE0"
 # define RED "\033[1;31m"
 # define TITLE "Cub3d"
-# define TILE_SIZE 60
+# define TILE_SIZE 32
 # define HOLES " \t"
 
 # include "../libs/get_next_line/get_next_line.h"
@@ -93,6 +93,7 @@ typedef struct s_data{
 	t_txtr		*txtr;
 	int			w_height;
 	int			w_width;
+	double		mini_scale;
 }t_data;
 
 typedef struct s_point{
@@ -127,5 +128,8 @@ void	move_right(t_data *mlx);
 void	move_left(t_data *mlx);
 void	get_player_ang(t_player *player);
 void	ft_render(t_data *m);
-
+void	render_wall(t_data *mlx, double dis, int y);
+int		get_color(char dir);
+int		get_rgba(int r, int g, int b, int a);
+void	render_ceil_a_floor(t_data *mlx);
 #endif

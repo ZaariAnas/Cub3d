@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:47:40 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 12:54:24 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/16 09:29:16 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	*gc(size_t size, int fr_flag)
 			return (exit(1), NULL);
 		}
 		gc_add_front(&gc, new_gc(address));
+		ft_memset(address, 0, size);
 		return (address);
 	}
 	return (NULL);

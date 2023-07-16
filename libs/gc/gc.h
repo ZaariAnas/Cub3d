@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:47:54 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 13:25:27 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/16 09:28:39 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include "../libft/libft.h"
 
 typedef struct s_gc
 {
