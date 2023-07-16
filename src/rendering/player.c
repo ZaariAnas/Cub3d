@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/16 12:08:20 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/16 15:00:18 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	draw_line(t_point *p1, t_point *p2, t_data *mlx)
 	while (steps-- >= 0)
 	{
 		mlx_put_pixel(mlx->img, p.x, p.y,
-			get_color(mlx->plr->side));
+			get_color(mlx->txtr->side));
 		p.x += inc.x;
 		p.y += inc.y;
 	}
@@ -70,18 +70,18 @@ void	cast_ray(t_data *mlx, double ang, int x)
 	v = find_vrt_inter(s, to_rad(ang), mlx->map);
 	if (distance(s, h) < distance(s, v))
 	{
-		if (cos(to_rad(ang + mlx->plr->rotate_ang)) < 0)
-			mlx->plr->side = 'N';
+		if (sin(to_rad(ang)) > 0)
+			mlx->txtr->side = 'N';
 		else
-			mlx->plr->side = 'N';
+			mlx->txtr->side = 'S';
 		render_wall(mlx, (cos(to_rad(ang - mlx->plr->rotate_ang)) * distance(s,h)), x);
 	}	
 	else
 	{
-		if (sin(to_rad(ang + mlx->plr->rotate_ang)) > 0)
-			mlx->plr->side = 'S';
+		if (cos(to_rad(ang)) > 0)
+			mlx->txtr->side = 'W';
 		else
-			mlx->plr->side = 'S';
+			mlx->txtr->side = 'E';
 		render_wall(mlx, (cos(to_rad(ang - mlx->plr->rotate_ang)) * distance(s,v)), x);
 	}
 	
@@ -115,7 +115,7 @@ void	render_wall(t_data *mlx, double dis, int x)
 	draw_line(s, f, mlx);
 }
 
-void	ft_render_player(t_data *mlx)
+void	  render_walls(t_data *mlx)
 {
 	double	ang_step;
 	double	cur_ang;

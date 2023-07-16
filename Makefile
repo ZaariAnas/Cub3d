@@ -6,7 +6,7 @@
 #    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/16 10:17:48 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/16 13:37:26 by mechane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ CFILES		= 	cub3d.c									\
 				src/rendering/rendering.c				\
 				src/rendering/player.c					\
 				src/rendering/wall.c					\
+				src/rendering/mini_map.c				\
 				src/hooks/moves.c						\
 				src/hooks/moves2.c						\
 				src/intersection/horizontal.c			\

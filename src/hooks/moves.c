@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/16 11:12:23 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/16 15:28:06 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_render(t_data *m)
 	mlx_delete_image(m->ptr, m->img);
 	m->img = mlx_new_image(m->ptr, m->w_width, m->w_height);
 	render_ceil_a_floor(m);
-	ft_render_player(m);
-	// ft_render_map(m);
+	render_walls(m);
+	// render_mini_map(m->map, m);
 	mlx_image_to_window(m->ptr, m->img, 0, 0);
 }

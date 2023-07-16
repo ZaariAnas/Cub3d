@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/16 11:52:24 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/16 15:29:20 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_txtr{
 	char			*so;
 	unsigned int	f;
 	unsigned int	c;
+	char			side;
 }t_txtr;
 
 typedef struct s_player{
@@ -88,6 +89,7 @@ typedef struct s_data{
 	mlx_t		*ptr;
 	void		*win;
 	mlx_image_t	*img;
+	void		*img1;
 	t_map		*map;
 	t_player	*plr;
 	t_txtr		*txtr;
@@ -120,7 +122,7 @@ t_point	*find_vrt_inter(t_point *s, double ang, t_map *map);
 int		ft_isempty(char *s);
 int		t(double x);
 void	ft_render_map(t_data *mlx);
-void	ft_render_player(t_data *mlx);
+void	render_walls(t_data *mlx);
 bool	isnt_wall(char **map, int y, int x);
 void	move_forward(t_data *mlx);
 void	move_backword(t_data *mlx);
@@ -132,4 +134,5 @@ void	render_wall(t_data *mlx, double dis, int y);
 int		get_color(char dir);
 int		get_rgba(int r, int g, int b, int a);
 void	render_ceil_a_floor(t_data *mlx);
+void	render_mini_map(t_map *m, t_data *mlx);
 #endif
