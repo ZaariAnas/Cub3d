@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/15 16:10:19 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/16 07:43:51 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@
 # include <stdlib.h>
 
 typedef struct s_txtr{
-	char	*no;
-	char	*we;
-	char	*ea;
-	char	*so;
-	int		f;
-	int		c;
+	char			*no;
+	char			*we;
+	char			*ea;
+	char			*so;
+	unsigned int	f;
+	unsigned int	c;
 }t_txtr;
 
 typedef struct s_player{
@@ -82,7 +82,6 @@ typedef struct s_map{
 	int			c;
 	int			ff;
 	int			cc;
-	t_player	*p;
 }t_map;
 
 typedef struct s_data{
