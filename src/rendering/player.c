@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/19 15:42:26 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/19 16:44:55 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void	draw_line(t_point *p1, t_point *p2, t_data *mlx)
 	p.y = p1->y;
 	while (steps-- >= 0)
 	{
-		mlx->txtr->dft = p.y + ((p2->y - p1->y) / 2) - (mlx->w_height / 2);
-		mlx->txtr->offsety = mlx->txtr->dft * ((float)mlx->txtr->t_ea->height / (p2->y - p1->y));
+		mlx->txtr->dft = p.y + (mlx->txtr->wall_height / 2) - (mlx->w_height / 2);
+		mlx->txtr->offsety = mlx->txtr->dft * ((float)mlx->txtr->t_ea->height / mlx->txtr->wall_height);
 		his_mlx_put_pixel(mlx->img, p.x, p.y,
 			color((mlx->txtr->t_ea), mlx->txtr->offsetx, mlx->txtr->offsety));
 		p.x += inc.x;
@@ -145,6 +145,7 @@ void	render_wall(t_data *mlx, double dis, int x)
 	wall_st_height = (TILE_SIZE / dis) * prc_plane; // wallstripe height
 	s = gc(sizeof(t_point) , 0);
 	f = gc(sizeof(t_point) , 0);
+	mlx->txtr->wall_height = wall_st_height;
 	s->y = adjust((mlx->w_height / 2) - (wall_st_height / 2), mlx); // Distance from top
 	f->y = adjust((mlx->w_height / 2) + (wall_st_height / 2), mlx);
 	s->x = x;

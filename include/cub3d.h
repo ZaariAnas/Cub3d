@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/19 15:10:21 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/19 16:43:01 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ typedef struct s_txtr{
 	int			wall_tex; 
 	unsigned int	f;
 	unsigned int	c;
-	char			side;	
+	char			side;
+	double			wall_height;
 	mlx_texture_t	*t_ea;
 	mlx_texture_t	*t_we;
 	mlx_texture_t	*t_no;
