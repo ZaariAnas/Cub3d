@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/19 16:44:55 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/19 17:13:04 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,13 +114,15 @@ void	cast_ray(t_data *mlx, double ang, int x)
 		(sin(to_rad(ang)) >= 0) && (mlx->txtr->side = 'N');
 		(sin(to_rad(ang)) < 0) && (mlx->txtr->side = 'S');
 		mlx->txtr->offsetx = (fmod(h->x, TILE_SIZE) / TILE_SIZE) * mlx->txtr->t_ea->width;
-		render_wall(mlx, (cos(to_rad(ang - mlx->plr->rotate_ang)) * distance(s,h)), x); 
+		(ang == mlx->plr->rotate_ang) && (mlx->plr->col_x = h->x, mlx->plr->col_y = h->y);
+		render_wall(mlx, (cos(to_rad(ang - mlx->plr->rotate_ang)) * distance(s,h)), x);
 	}	
 	else
 	{
 		(cos(to_rad(ang)) >= 0) && (mlx->txtr->side = 'W');
 		(cos(to_rad(ang)) < 0) && (mlx->txtr->side = 'E');
 		mlx->txtr->offsetx = (fmod(v->y, TILE_SIZE) / TILE_SIZE) * mlx->txtr->t_ea->width;
+		(ang == mlx->plr->rotate_ang) && (mlx->plr->col_x = v->x, mlx->plr->col_y = v->y);
 		render_wall(mlx, (cos(to_rad(ang - mlx->plr->rotate_ang)) * distance(s,v)), x); // v.y
 	}
 }

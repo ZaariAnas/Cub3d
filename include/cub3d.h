@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/19 16:43:01 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/19 17:10:58 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ typedef struct s_txtr{
 typedef struct s_player{
 	double	x;
 	double	y;
-	double	height;
-	double	width;
+	double	col_x;
+	double	col_y;
 	double	rotate_ang;
 	double	walk_speed;
 	double	turn_speed;
