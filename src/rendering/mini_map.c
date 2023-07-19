@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 13:26:35 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/19 17:05:34 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/19 17:46:59 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,25 +63,42 @@ void draw_circle(t_data *mlx,int center_x, int center_y, int radius)
         }
     }
 }
+void	draw_line_p(t_point *p2, t_point *p1, t_data *mlx)
+{
+	double	steps;
+	t_point	d;
+	t_point	p;
+	t_point	inc;
+
+	d.y = p2->y - p1->y;
+	d.x = p2->x - p1->x;
+	if (fabs(d.x) > fabs(d.y))
+		steps = fabs(d.x);
+	else
+		steps = fabs(d.y);
+	inc.x = d.x / steps;
+	inc.y = d.y / steps;
+	p.x = p1->x;
+	p.y = p1->y;
+	while (steps-- >= 0)
+	{
+		mlx_put_pixel(mlx->img, p.x, p.y,0);
+		p.x += inc.x;
+		p.y += inc.y;
+	}
+}
  void	ft_draw_p(t_data *mlx, int color)
 {
-	
+	double	end_x;
+	double	end_y;
+	double	ang;
+
+	ang = to_rad(mlx->plr->rotate_ang);
+	end_x = 100 + 15 * cos(ang);
+	end_y = 100 + 15 * sin(ang);
 	(void)color;
+	draw_line_p(&(t_point){100,100}, &(t_point){end_x, end_y}, mlx);
 	draw_circle(mlx, 100, 100, 1);
-}
-void	reset_minimap(t_data *mlx)
-{
-	int	x;
-	int	y;
-	
-	x = -1;
-	while (++x <= 200)
-	{
-		y = -1;
-		while (++y <= 200)
-			mlx_put_pixel(mlx->img, x, y, 0);
-	}
-	
 }
 
 void	render_mini_map(t_map *m, t_data *mlx)
@@ -91,7 +108,6 @@ void	render_mini_map(t_map *m, t_data *mlx)
 	int		y;
 	
 	map = m->map;
-	// reset_minimap(mlx);
 	draw_circle(mlx,100,100,100);
 	x = 0;
 	while (map[(x)])
