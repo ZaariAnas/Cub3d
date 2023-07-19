@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/18 14:29:24 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/19 12:37:58 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,17 @@ static t_data	*ft_init(void)
 	t_data	*mlx;
 
 	mlx = ft_malloc(sizeof(t_data));
-	if (!mlx)
-		ft_raise_error(MEM_ALLOC_ERR);
+	ft_raise_perror(mlx, MEM_ALLOC_ERR);
 	ft_memset(mlx, 0, sizeof(t_data));
 	mlx->plr = ft_malloc(sizeof(t_player));
-	if (!mlx->plr)
-		ft_raise_error(MEM_ALLOC_ERR);
+	ft_raise_perror(mlx->plr, MEM_ALLOC_ERR);
 	ft_memset(mlx->plr, 0, sizeof(t_player));
 	mlx->map = ft_malloc(sizeof(t_map));
-	if (!mlx->map)
-		ft_raise_error(MEM_ALLOC_ERR);
+	ft_raise_perror(mlx->map, MEM_ALLOC_ERR);
 	ft_memset(mlx->map, 0, sizeof(t_map));
 	mlx->txtr = ft_malloc(sizeof(t_txtr));
-	if (!mlx->txtr)
-		ft_raise_error(MEM_ALLOC_ERR);
+	ft_raise_perror(mlx->txtr, MEM_ALLOC_ERR);
 	ft_memset(mlx->txtr, 0, sizeof(t_txtr));
-	mlx->tex = ft_malloc(sizeof(t_texture));
-	if (!mlx->tex)
-		ft_raise_error(MEM_ALLOC_ERR);
-	ft_memset(mlx->txtr, 0, sizeof(t_texture));
 	mlx->mini_scale = 0.2;
 	return (mlx);
 }
@@ -73,7 +65,7 @@ static void	ft_var_init(t_data *mlx)
 {
 	mlx->w_height = (mlx->map->rows - 1) * TILE_SIZE;
 	mlx->w_width = (mlx->map->col - 1) * TILE_SIZE;
-	ft_get_texture(mlx, mlx->tex);
+	ft_get_texture(mlx);
 }
 
 t_data	*process_map(char *map_file)

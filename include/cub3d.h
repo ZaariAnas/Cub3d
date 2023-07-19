@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/19 07:25:38 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/19 15:10:21 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define FREE_SPACE "NSWE0"
 # define RED "\033[1;31m"
 # define TITLE "Cub3d"
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 # define HOLES " \t"
 
 # include "../libs/get_next_line/get_next_line.h"
@@ -45,6 +45,8 @@
 # include <math.h>
 # include <stdlib.h>
 
+
+
 typedef struct s_point{
 	double	x;
 	double	y;
@@ -57,9 +59,15 @@ typedef struct s_txtr{
 	char			*so;
 	int			offsetx;
 	int			offsety;
+	int			dft;
+	int			wall_tex; 
 	unsigned int	f;
 	unsigned int	c;
-	char			side;
+	char			side;	
+	mlx_texture_t	*t_ea;
+	mlx_texture_t	*t_we;
+	mlx_texture_t	*t_no;
+	mlx_texture_t	*t_so;
 }t_txtr;
 
 typedef struct s_player{
@@ -93,14 +101,6 @@ typedef struct s_map{
 	int			cc;
 }t_map;
 
-typedef struct s_texture{
-	mlx_texture_t	*no;
-	mlx_texture_t	*we;
-	mlx_texture_t	*ea;
-	mlx_texture_t	*so;
-	t_txtr			*txtr;
-}t_texture;
-
 typedef struct s_data{
 	mlx_t		*ptr;
 	void		*win;
@@ -109,7 +109,6 @@ typedef struct s_data{
 	t_map		*map;
 	t_player	*plr;
 	t_txtr		*txtr;
-	t_texture	*tex;
 	int			w_height;
 	int			w_width;
 	double		mini_scale;
@@ -149,6 +148,5 @@ int		get_color(char dir);
 int		get_rgba(int r, int g, int b, int a);
 void	render_ceil_a_floor(t_data *mlx);
 void	render_mini_map(t_map *m, t_data *mlx);
-void	ft_get_texture(t_data *mlx, t_texture *t);
-
+void	ft_get_texture(t_data *mlx);
 #endif
