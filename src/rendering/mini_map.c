@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 13:26:35 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/19 14:52:58 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/19 15:26:01 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,14 @@ static void	ft_draw(int x, int y, t_data *mlx, int color)
 		{
 			i1 = i + get_offset((mlx->plr->x / TILE_SIZE) * 10);
 			j1 = j + get_offset((mlx->plr->y / TILE_SIZE) * 10);
-			if (j1 < 0 || i1 < 0 || j1 > 200 | i1 > 200)
-				return ;
-			int dx = i1 - 100;
-            int dy = j1 - 100;
-            int distance = sqrt(dx * dx + dy * dy);
-			if (distance <= 98)
-				mlx_put_pixel(mlx->img, j1, i1, color);
+			if (j1 > 0 && i1 > 0 && j1 < 200 && i1 < 200)
+			{
+				int dx = i1 - 100;
+				int dy = j1 - 100;
+				int distance = sqrt(dx * dx + dy * dy);
+				if (distance <= 98)
+					mlx_put_pixel(mlx->img, j1, i1, color);
+			}
 			j++;
 		}
 		i++;
