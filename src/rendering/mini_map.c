@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 13:26:35 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/19 15:26:01 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/19 17:05:34 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,16 @@ void draw_circle(t_data *mlx,int center_x, int center_y, int radius)
 
             if (distance < radius)
 				mlx_put_pixel(mlx->img,x, y, 0);
-			else if (distance >= radius && distance <= radius + 5)
+			else if (distance >= radius && distance <= radius + 2)
 				mlx_put_pixel(mlx->img,x, y, (190 << 24| 63 << 8 |120));	
         }
     }
 }
  void	ft_draw_p(t_data *mlx, int color)
 {
-	// int	i;
-	// int	j;
-
-	// i = 100;
-	// while (i < 10)
-	// {
-	// 	j = 100;
-	// 	while (j < 105)
-	// 	{
-	// 		mlx_put_pixel(mlx->img, j, i, color);
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
+	
 	(void)color;
-	draw_circle(mlx, 100, 100, 2);
+	draw_circle(mlx, 100, 100, 1);
 }
 void	reset_minimap(t_data *mlx)
 {
