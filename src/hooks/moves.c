@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/19 10:55:08 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/19 17:19:38 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ void	ft_moves(void *mlx)
 
 	m = (t_data *)mlx;
 	if (mlx_is_key_down(m->ptr, MLX_KEY_D))
-		right(mlx);
+		move_right(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_A))
-		left(mlx);
-	if (mlx_is_key_down(m->ptr, MLX_KEY_UP))
+		move_left(mlx);
+	if (mlx_is_key_down(m->ptr, MLX_KEY_W))
 		move_forward(mlx);
-	if (mlx_is_key_down(m->ptr, MLX_KEY_DOWN))
+	if (mlx_is_key_down(m->ptr, MLX_KEY_S))
 		move_backword(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_RIGHT))
-		move_right(mlx);
+		right(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_LEFT))
-		move_left(mlx);
+		left(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_ESCAPE))
 		destroy(mlx);
 	ft_render(mlx);

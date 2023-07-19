@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/16 15:07:54 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:22:53 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/cub3d.h"
 
-static bool	check_args(int ac, char **av)
+static bool	check_args(int ac, char **av)	
 {
 	int	len;
 
@@ -35,6 +35,7 @@ int	main(int ac, char **av)
 	mlx->ptr = mlx_init(mlx->w_width, mlx->w_height, TITLE, false);
 	ft_raise_perror(mlx->ptr, MLX_INIT_ERR);
 	mlx->img = mlx_new_image(mlx->ptr, mlx->w_height, mlx->w_height);
+	ft_raise_perror(mlx->img, MLX_INIT_ERR);
 	mlx_loop_hook(mlx->ptr, ft_moves, mlx);
 	mlx_loop(mlx->ptr);
 }

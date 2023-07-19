@@ -3,33 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/16 15:29:20 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/19 17:10:58 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define MEM_ALLOC_ERR "error : memory allocation failure"
-# define MAP_TEX_ERR "error : unvalid map texture format"
-# define FILE_OPEN_ERR "error : unable to open map file"
-# define PLR_POS_ERR "error : unvalid player position"
-# define MAP_ELEM_ERR "error : unvalid map elements"
-# define MAP_SHAPE_ERR "error : unvalid map shape"
-# define MLX_WIN_ERR "error : mlx window failure"
-# define MLX_INIT_ERR "error : mlx init failure"
-# define RGB_ERR "error : unvalid RGB color"
-# define ARG_ERR "error : unvalid arguments"
-# define UNF_MAP_ERR "error : map unfound"
+# define MEM_ALLOC_ERR "Error\nmemory allocation failure"
+# define MAP_TEX_ERR "Error\nunvalid map texture format"
+# define FILE_OPEN_ERR "Error\nunable to open map file"
+# define PLR_POS_ERR "Error\nunvalid player position"
+# define MAP_ELEM_ERR "Error\nunvalid map elements"
+# define PNG_LOAD_ERR "Error\npng load failure"
+# define MAP_SHAPE_ERR "Error\nunvalid map shape"
+# define MLX_WIN_ERR "Error\nmlx window failure"
+# define MLX_INIT_ERR "Error\nmlx init failure"
+# define RGB_ERR "Error\nunvalid RGB color"
+# define ARG_ERR "Error\nunvalid arguments"
+# define UNF_MAP_ERR "Error\nmap unfound"
 # define MAP_ELEM "NSEW10 \t\n"
 # define WHITESPACE " \t\r\v\n"
 # define FREE_SPACE "NSWE0"
 # define RED "\033[1;31m"
 # define TITLE "Cub3d"
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 # define HOLES " \t"
 
 # include "../libs/get_next_line/get_next_line.h"
@@ -44,21 +45,37 @@
 # include <math.h>
 # include <stdlib.h>
 
+
+
+typedef struct s_point{
+	double	x;
+	double	y;
+}t_point;
+
 typedef struct s_txtr{
 	char			*no;
 	char			*we;
 	char			*ea;
 	char			*so;
+	int			offsetx;
+	int			offsety;
+	int			dft;
+	int			wall_tex; 
 	unsigned int	f;
 	unsigned int	c;
 	char			side;
+	double			wall_height;
+	mlx_texture_t	*t_ea;
+	mlx_texture_t	*t_we;
+	mlx_texture_t	*t_no;
+	mlx_texture_t	*t_so;
 }t_txtr;
 
 typedef struct s_player{
 	double	x;
 	double	y;
-	double	height;
-	double	width;
+	double	col_x;
+	double	col_y;
 	double	rotate_ang;
 	double	walk_speed;
 	double	turn_speed;
@@ -98,10 +115,7 @@ typedef struct s_data{
 	double		mini_scale;
 }t_data;
 
-typedef struct s_point{
-	double	x;
-	double	y;
-}t_point;
+
 
 void	ft_getmap(t_map *m, char *map_file, int fd);
 void	ft_raise_perror(void *ptr, char *err);
@@ -135,4 +149,5 @@ int		get_color(char dir);
 int		get_rgba(int r, int g, int b, int a);
 void	render_ceil_a_floor(t_data *mlx);
 void	render_mini_map(t_map *m, t_data *mlx);
+void	ft_get_texture(t_data *mlx);
 #endif
