@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:36:45 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/16 13:00:03 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/18 15:01:00 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,15 @@ int	process_tokens(t_data *mlx)
 	int	i;
 
 	i = 0;
-	i += func(mlx->map, "SO", &mlx->map->so, mlx);
-	i += func(mlx->map, "WE", &mlx->map->we, mlx);
-	i += func(mlx->map, "EA", &mlx->map->ea, mlx);
-	i += func(mlx->map, "NO", &mlx->map->no, mlx);
-	i += func(mlx->map, "F", &mlx->map->f, mlx);
-	i += func(mlx->map, "C", &mlx->map->c, mlx);
+	(func(mlx->map, "SO", &mlx->map->so, mlx))
+		&& (mlx->txtr->so = ft_strtrim(mlx->map->tokens[1], WHITESPACE), i += 1);
+	(func(mlx->map, "WE", &mlx->map->we, mlx))
+		&& (mlx->txtr->we = ft_strtrim(mlx->map->tokens[1], WHITESPACE), i += 1);
+	(func(mlx->map, "EA", &mlx->map->ea, mlx))
+		&& (mlx->txtr->ea = ft_strtrim(mlx->map->tokens[1], WHITESPACE), i += 1);
+	(func(mlx->map, "NO", &mlx->map->no, mlx))
+		&& (mlx->txtr->no = ft_strtrim(mlx->map->tokens[1], WHITESPACE), i += 1);
+	(func(mlx->map, "F", &mlx->map->f, mlx)) && (i += 1);
+	(func(mlx->map, "C", &mlx->map->c, mlx)) && (i += 1);
 	return (i);
 }

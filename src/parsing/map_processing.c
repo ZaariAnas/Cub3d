@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_processing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/16 11:01:24 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/18 14:29:24 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,19 @@ static t_data	*ft_init(void)
 	if (!mlx->txtr)
 		ft_raise_error(MEM_ALLOC_ERR);
 	ft_memset(mlx->txtr, 0, sizeof(t_txtr));
+	mlx->tex = ft_malloc(sizeof(t_texture));
+	if (!mlx->tex)
+		ft_raise_error(MEM_ALLOC_ERR);
+	ft_memset(mlx->txtr, 0, sizeof(t_texture));
 	mlx->mini_scale = 0.2;
 	return (mlx);
+}
+
+static void	ft_var_init(t_data *mlx)
+{
+	mlx->w_height = (mlx->map->rows - 1) * TILE_SIZE;
+	mlx->w_width = (mlx->map->col - 1) * TILE_SIZE;
+	ft_get_texture(mlx, mlx->tex);
 }
 
 t_data	*process_map(char *map_file)
@@ -88,8 +99,7 @@ t_data	*process_map(char *map_file)
 	if ((map->so & map->ea & map->no & map->we & map->f & map->c) != 1)
 		ft_raise_error(MAP_TEX_ERR);
 	ft_parse_map(mlx, fd, map_file);
-	mlx->w_height = (mlx->map->rows - 1) * TILE_SIZE;
-	mlx->w_width = (mlx->map->col - 1) * TILE_SIZE;
+	ft_var_init(mlx);
 	get_player_ang(mlx->plr);
 	return (mlx);
 }

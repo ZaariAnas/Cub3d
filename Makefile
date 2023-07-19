@@ -3,20 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
+#    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/16 13:37:26 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/19 06:55:58 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-USER 		=	mechane
+USER 		=	azari
 
 PURPLE 		= 	\033[0;35m
 
 CC			= 	cc
 
-CFLAGS		= 	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS		= 	-Wall -Wextra -Werror #-g -fsanitize=address
 
 NAME 		= 	cub3d
 
@@ -46,6 +46,7 @@ CFILES		= 	cub3d.c									\
 				src/hooks/moves2.c						\
 				src/intersection/horizontal.c			\
 				src/intersection/vertical.c				\
+				src/textures/textures.c				\
 				libs/gc/gc.c
 				
 all : $(NAME)
