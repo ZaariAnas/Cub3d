@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 06:09:08 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 10:02:18 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/20 10:10:32 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	draw_torch(t_data *mlx)
 		mlx_delete_image(mlx->ptr, mlx->torch);
 	mlx->torch = mlx_texture_to_image(mlx->ptr, txt);
 	mlx_delete_texture(txt);
-	mlx_image_to_window(mlx->ptr, mlx->torch, 0,0);
-	mlx->torch->instances[0].y = -100;
+	mlx_image_to_window(mlx->ptr, mlx->torch, 1000,400);
+	mlx->torch->instances[0].y = 100;
 	mlx->torch_frame++;
 	if (mlx->torch_frame > 5)
 		mlx->torch_frame = 0;

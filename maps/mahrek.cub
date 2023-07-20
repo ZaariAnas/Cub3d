@@ -1,7 +1,7 @@
-SO ./assets/wall64.png
-WE ./assets/bluestone.png
-EA ./assets/greystone.png
-NO ./assets/colorstone.png
+SO ./assets/14.png
+WE ./assets/14.png
+EA ./assets/14.png
+NO ./assets/14.png
 F 0,0,31
 C 0,0,50
 
