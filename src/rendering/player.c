@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 08:06:28 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 11:11:17 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,14 @@ void	cast_ray(t_data *mlx, double ang, int x)
 	{
 		(sin(to_rad(ang)) >= 0) && (mlx->txtr->side = 'N');
 		(sin(to_rad(ang)) < 0) && (mlx->txtr->side = 'S');
-		mlx->txtr->ofsx = (fmod(h->x, TILE_SIZE) / TILE_SIZE) * getwidth(mlx);
+		getoffx(mlx, h->x);
 		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, h)), x);
 	}	
 	else
 	{
 		(cos(to_rad(ang)) >= 0) && (mlx->txtr->side = 'W');
 		(cos(to_rad(ang)) < 0) && (mlx->txtr->side = 'E');
-		mlx->txtr->ofsx = (fmod(v->y, TILE_SIZE) / TILE_SIZE) * getwidth(mlx);
+		getoffx(mlx, v->y);
 		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, v)), x);
 	}
 }

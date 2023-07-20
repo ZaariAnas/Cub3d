@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 08:02:06 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 09:19:34 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 11:11:28 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,13 @@ mlx_texture_t	*getside(t_data *mlx)
 double	get_offset(double z)
 {
 	return (100 - z);
+}
+
+void	getoffx(t_data *mlx, double p)
+{
+	if (mlx->txtr->side == 'E' || mlx->txtr->side == 'N')
+		mlx->txtr->ofsx = (1 - ((fmod(p, TILE_SIZE) / TILE_SIZE)))\
+			* getwidth(mlx);
+	else if (mlx->txtr->side == 'S' || mlx->txtr->side == 'W')
+		mlx->txtr->ofsx = ((fmod(p, TILE_SIZE) / TILE_SIZE)) * getwidth(mlx);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 08:33:12 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/20 10:32:15 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ void	ft_moves(void *mlx)
 		left(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_ESCAPE))
 		destroy(mlx);
-	if (mlx_is_mouse_down(m->ptr, MLX_MOUSE_BUTTON_LEFT))
-		mouse_rotate(mlx);
+	mouse_rotate(mlx);
 	ft_render(mlx);
 	return ;
 }
@@ -71,5 +70,6 @@ void	ft_render(t_data *m)
 	render_ceil_a_floor(m);
 	render_walls(m);
 	render_mini_map(m->map, m);
+	// draw_torch(m);
 	mlx_image_to_window(m->ptr, m->img, 0, 0);
 }

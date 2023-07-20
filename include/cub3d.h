@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 09:26:08 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 11:11:48 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,11 @@ typedef struct s_data{
 	mlx_t		*ptr;
 	void		*win;
 	mlx_image_t	*img;
-	void		*img1;
 	t_map		*map;
 	t_player	*plr;
 	t_txtr		*txtr;
+	mlx_image_t	*torch;
+	int			torch_frame;
 	int			w_height;
 	int			w_width;
 	double		mini_scale;
@@ -153,5 +154,7 @@ uint32_t		getheight(t_data *mlx);
 mlx_texture_t	*getside(t_data *mlx);
 double			adjust(double i, t_data *mlx);
 void			mouse_rotate(t_data *mlx);
+void			draw_torch(t_data *mlx);
 double			get_offset(double z);
+void			getoffx(t_data *mlx, double p);
 #endif
