@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/19 17:10:58 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 05:44:52 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define FREE_SPACE "NSWE0"
 # define RED "\033[1;31m"
 # define TITLE "Cub3d"
-# define TILE_SIZE 64
+# define TILE_SIZE 40
 # define HOLES " \t"
 
 # include "../libs/get_next_line/get_next_line.h"

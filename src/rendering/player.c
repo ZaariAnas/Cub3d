@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/19 17:13:04 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 05:44:33 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,6 @@ int	get_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-// void	yarbirak3arf(t_point *p1, t_point *p2, t_data *mlx)
-// {
-// 	double	j;
-// 	double	y;
-// 	unsigned int	color;
-
-// 	y = p1->y;
-// 	while (y <  p2->y)
-//     {
-//         j = (p1->y + ((p2->y - p1->y) / 2) - (mlx->w_height / 2));
-//         mlx->txtr->offsety = j * ((double)(mlx->tex->ea->height
-//                     / p2->y - p1->y)); 
-//         color = get_colors(mlx->tex->ea, mlx->txtr->offsetx, mlx->txtr->offsety);
-//         mlx_put_pixel(mlx->img, p1->x , y++ , color);
-//     }
-//     // if (data->cord.wall_bottom < data->height)
-//     // {
-//     //     while (data->cord.y < data->height)
-//     //         mlx_put_pixel(data->image, x, data->cord.y++, data->vars->F);
-//     // }÷
-// }
 
 unsigned int    his_mlx_put_pixel(mlx_image_t *img, unsigned int x, unsigned int y, unsigned int colour)
 {

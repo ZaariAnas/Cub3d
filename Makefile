@@ -6,32 +6,21 @@
 #    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/20 05:42:09 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/20 06:10:41 by mechane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-USER 		=	mechane
-
 PURPLE 		= 	\033[0;35m
-
 CC			= 	cc
-
+GLFW_LIB 		:= $(shell brew --prefix glfw)
 CFLAGS		= 	-Wall -Wextra -Werror -Ofast #-g -fsanitize=address
-
 NAME 		= 	cub3d
-
 LIBFTF	 	= 	libs/libft
-
 GNLF	 	= 	libs/get_next_line
-
 LIBFT		= 	libs/libft/libft.a
-
 GNL			= 	libs/get_next_line/lgnl.a
-
 HEADERS		=	cub3d.h
-
 OFILES		= 	$(CFILES:.c=.o)
-
 CFILES		= 	cub3d.c									\
 				src/parsing/map_processing.c			\
 				src/parsing/map_error.c					\
@@ -54,7 +43,7 @@ all : $(NAME)
 $(NAME) : $(OFILES)
 	@make -C $(LIBFTF)
 	@make -C $(GNLF)
-	@$(CC) $(CFLAGS) $(LIBFT) $(GNL)  libs/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" $(OFILES) -o $(NAME)
+	@$(CC) $(CFLAGS) $(LIBFT) $(GNL)  libs/libmlx42.a -Iinclude -lglfw -L"$(GLFW_LIB)/lib/" $(OFILES) -o $(NAME)
 	@echo "$(PURPLE) ✅ cub3D "
 	
 libs/gc/%.o: libs/gc/%.c libs/gc/gc.h
@@ -77,6 +66,11 @@ fclean	: clean
 	@make fclean -C $(GNLF)	
 	@rm -rf $(NAME)
 	@echo  "$(PURPLE) ❌ ALL deleted."
+
+norm:
+	norminette include/cub3d.h
+	norminette ./src
+	norminette ./libs
 
 re		: fclean all
 
