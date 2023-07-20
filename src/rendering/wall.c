@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 08:08:09 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/16 13:45:29 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/19 19:21:35 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,22 @@ void	render_ceil_a_floor(t_data *mlx)
 {
 	int	x;
 	int	y;
+	int r;
 	
 	y = -1;
+	r = rand() % 300 + 1;
 	while (++y < mlx->w_height)
 	{
 		x = -1;
 		while (++x < mlx->w_width)
 		{
-			if (y < mlx->w_height / 2)
+			if (y < mlx->w_height / 2 && !(y % r) && !(x%r) && (r > 40))
+				mlx_put_pixel(mlx->img, x, y, get_rgba(255,250,134,255));
+			else if (y < mlx->w_height / 2)
 				mlx_put_pixel(mlx->img, x, y, mlx->txtr->c);
 			else
 				mlx_put_pixel(mlx->img, x, y, mlx->txtr->f);
 		}
-	
 	}
 }
 int	get_color(char dir)
