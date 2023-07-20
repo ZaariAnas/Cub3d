@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 08:08:09 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 07:19:05 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 09:14:01 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	render_ceil_a_floor(t_data *mlx)
 {
 	int	x;
 	int	y;
-	int r;
-	
+	int	r;
+
 	y = -1;
 	r = rand() % 300 + 1;
 	while (++y < mlx->w_height)
@@ -32,6 +32,7 @@ void	render_ceil_a_floor(t_data *mlx)
 		}
 	}
 }
+
 int	get_color(char dir)
 {
 	if (dir == 'N')
