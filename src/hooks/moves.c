@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/19 17:19:38 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/20 07:47:05 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	ft_moves(void *mlx)
 		left(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_ESCAPE))
 		destroy(mlx);
+	if (mlx_is_mouse_down(m->ptr, MLX_MOUSE_BUTTON_LEFT))
+		mouse_rotate(mlx);
 	ft_render(mlx);
 	return ;
 }
