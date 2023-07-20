@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
+#    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/20 06:25:35 by azari            ###   ########.fr        #
+#    Updated: 2023/07/20 08:11:16 by mechane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PURPLE 		= 	\033[0;35m
 CC			= 	cc
-GLFW_LIB 		:= $(shell brew --prefix glfw)
+GLFW_LIB 	=	$(shell brew --prefix glfw)
 CFLAGS		= 	-Wall -Wextra -Werror -Ofast #-g -fsanitize=address
 NAME 		= 	cub3d
 LIBFTF	 	= 	libs/libft
@@ -20,7 +20,6 @@ GNLF	 	= 	libs/get_next_line
 LIBFT		= 	libs/libft/libft.a
 GNL			= 	libs/get_next_line/lgnl.a
 HEADERS		=	cub3d.h
-OFILES		= 	$(CFILES:.c=.o)
 CFILES		= 	cub3d.c									\
 				src/parsing/map_processing.c			\
 				src/parsing/map_error.c					\
@@ -33,12 +32,15 @@ CFILES		= 	cub3d.c									\
 				src/rendering/mini_map.c				\
 				src/rendering/rendering_utils.c			\
 				src/hooks/moves.c						\
+				src/hooks/mouse.c						\
 				src/hooks/moves2.c						\
 				src/intersection/horizontal.c			\
 				src/intersection/vertical.c				\
 				src/textures/textures.c					\
 				libs/gc/gc.c
 				
+OFILES		= 	$(CFILES:.c=.o)
+
 all : $(NAME)
 
 $(NAME) : $(OFILES)
