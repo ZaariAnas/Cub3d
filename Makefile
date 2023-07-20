@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
+#    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/20 06:10:41 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/20 06:25:35 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,12 @@ CFILES		= 	cub3d.c									\
 				src/rendering/player.c					\
 				src/rendering/wall.c					\
 				src/rendering/mini_map.c				\
+				src/rendering/rendering_utils.c			\
 				src/hooks/moves.c						\
 				src/hooks/moves2.c						\
 				src/intersection/horizontal.c			\
 				src/intersection/vertical.c				\
-				src/textures/textures.c				\
+				src/textures/textures.c					\
 				libs/gc/gc.c
 				
 all : $(NAME)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 05:44:52 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/20 06:23:54 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define TITLE "Cub3d"
 # define TILE_SIZE 40
 # define HOLES " \t"
+# define UNI unsigned int
 
 # include "../libs/get_next_line/get_next_line.h"
 # include "../libs/libft/libft.h"
@@ -150,4 +151,7 @@ int		get_rgba(int r, int g, int b, int a);
 void	render_ceil_a_floor(t_data *mlx);
 void	render_mini_map(t_map *m, t_data *mlx);
 void	ft_get_texture(t_data *mlx);
+int		get_rgba(int r, int g, int b, int a);
+UNI		ft_mlx_put_pixel(mlx_image_t *img, UNI x, UNI y, UNI colour);
+int		color(mlx_texture_t *img, UNI x, UNI y);
 #endif

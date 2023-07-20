@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 05:44:33 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/20 06:24:53 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,6 @@ void	get_player_ang(t_player *player)
 		player->rotate_ang = 270;
 	player->turn_speed = 1;
 	player->walk_speed = 5;
-}
-
-int	get_rgba(int r, int g, int b, int a)
-{
-	return (r << 24 | g << 16 | b << 8 | a);
-}
-
-
-unsigned int    his_mlx_put_pixel(mlx_image_t *img, unsigned int x, unsigned int y, unsigned int colour)
-{
-    unsigned int    *pixel;
-
-    pixel = (unsigned int *)&img->pixels[(x + y * img->width) * sizeof(unsigned int)];
-    *pixel = colour;
-    return (*pixel);
-}
-
-int	color(mlx_texture_t *img, unsigned int x, unsigned int y)
-{
-	unsigned int	*colour;
-
-	colour = (unsigned int *)(img->pixels + (x + y * img->width) * sizeof(unsigned int));
-	return (*colour);
 }
 
 void	draw_line(t_point *p1, t_point *p2, t_data *mlx)
@@ -70,7 +47,7 @@ void	draw_line(t_point *p1, t_point *p2, t_data *mlx)
 	{
 		mlx->txtr->dft = p.y + (mlx->txtr->wall_height / 2) - (mlx->w_height / 2);
 		mlx->txtr->offsety = mlx->txtr->dft * ((float)mlx->txtr->t_ea->height / mlx->txtr->wall_height);
-		his_mlx_put_pixel(mlx->img, p.x, p.y,
+		ft_mlx_put_pixel(mlx->img, p.x, p.y,
 			color((mlx->txtr->t_ea), mlx->txtr->offsetx, mlx->txtr->offsety));
 		p.x += inc.x;
 		p.y += inc.y;
@@ -117,23 +94,21 @@ double	adjust(double i, t_data *mlx)
 }
 void	render_wall(t_data *mlx, double dis, int x)
 {
-	double	prc_plane;
-	double	wall_st_height;
+	double		prc_plane;
+	double		wall_st_height;
 	t_point		*s;
 	t_point		*f;
 
 	prc_plane = (mlx->w_width / 2) / tan(to_rad(30));
-	wall_st_height = (TILE_SIZE / dis) * prc_plane; // wallstripe height
+	wall_st_height = (TILE_SIZE / dis) * prc_plane;
 	s = gc(sizeof(t_point) , 0);
 	f = gc(sizeof(t_point) , 0);
 	mlx->txtr->wall_height = wall_st_height;
-	s->y = adjust((mlx->w_height / 2) - (wall_st_height / 2), mlx); // Distance from top
+	s->y = adjust((mlx->w_height / 2) - (wall_st_height / 2), mlx);
 	f->y = adjust((mlx->w_height / 2) + (wall_st_height / 2), mlx);
 	s->x = x;
 	f->x = x;
-	// printf("s_x= = %f s_y= %f  | f_x= %f  f_y= %f\n", s->x, s->y, f->x, f->y);
 	draw_line(s, f, mlx);
-	// yarbirak3arf(s, f, mlx);
 }
 
 void	  render_walls(t_data *mlx)
@@ -148,7 +123,6 @@ void	  render_walls(t_data *mlx)
 	while (++i < mlx->w_width)
 	{
 		cast_ray(mlx, cur_ang, i);
-		// printf("%d\n", i);
 		cur_ang += ang_step;
 	}
 }
