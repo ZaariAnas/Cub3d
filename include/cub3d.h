@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 08:14:44 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/20 08:17:48 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,4 +152,9 @@ void	ft_get_texture(t_data *mlx);
 int		get_rgba(int r, int g, int b, int a);
 UNI		ft_mlx_put_pixel(mlx_image_t *img, UNI x, UNI y, UNI colour);
 int		color(mlx_texture_t *img, UNI x, UNI y);
+uint32_t	getwidth(t_data *mlx);
+uint32_t	getheight(t_data *mlx);
+mlx_texture_t	*getside(t_data *mlx);
+double	adjust(double i, t_data *mlx);
+void	mouse_rotate(t_data *mlx);
 #endif
