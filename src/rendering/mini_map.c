@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 13:26:35 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 05:43:17 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/20 07:18:17 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void draw_circle(t_data *mlx,int center_x, int center_y, int radius)
 	double	end_y;
 	double	ang;
 
-	ang = to_rad(mlx->plr->rotate_ang);
+	ang = to_rad(mlx->plr->r_ang);
 	end_y = 100.0 + 2.0 * cos(ang);
 	end_x = 100.0 + 2.0 * sin(ang);
 	draw_circle(mlx, 100, 100, 5);
