@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 08:09:51 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/20 08:14:44 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ typedef struct s_txtr{
 	char			*we;
 	char			*ea;
 	char			*so;
-	int			offsetx;
-	int			offsety;
-	int			dft;
-	int			wall_tex; 
+	int				ofsx;
+	int				ofsy;
+	int				dft;
+	int				wall_tex; 
 	unsigned int	f;
 	unsigned int	c;
 	char			side;
-	double			wall_height;
+	double			wall_h;
 	mlx_texture_t	*t_ea;
 	mlx_texture_t	*t_we;
 	mlx_texture_t	*t_no;
@@ -75,9 +75,7 @@ typedef struct s_txtr{
 typedef struct s_player{
 	double	x;
 	double	y;
-	double	col_x;
-	double	col_y;
-	double	rotate_ang;
+	double	r_ang;
 	double	walk_speed;
 	double	turn_speed;
 	int		turn_dir;
@@ -132,7 +130,7 @@ void	ft_init_player(t_player *player);
 void	destroy(void *mlx);
 t_point	*find_hz_inter(t_point *s, double ang, t_map *map);
 double	to_rad(double ang);
-double	distance(t_point *p1, t_point *p2);
+double	dist(t_point *p1, t_point *p2);
 t_point	*find_vrt_inter(t_point *s, double ang, t_map *map);
 int		ft_isempty(char *s);
 int		t(double x);
@@ -151,4 +149,7 @@ int		get_rgba(int r, int g, int b, int a);
 void	render_ceil_a_floor(t_data *mlx);
 void	render_mini_map(t_map *m, t_data *mlx);
 void	ft_get_texture(t_data *mlx);
+int		get_rgba(int r, int g, int b, int a);
+UNI		ft_mlx_put_pixel(mlx_image_t *img, UNI x, UNI y, UNI colour);
+int		color(mlx_texture_t *img, UNI x, UNI y);
 #endif

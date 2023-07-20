@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 07:47:05 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/20 08:33:12 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	right(t_data *mlx)
 {
-	mlx->plr->rotate_ang += mlx->plr->turn_speed;
-	if (mlx->plr->rotate_ang > 360)
-		mlx->plr->rotate_ang -= 360;
-	if (mlx->plr->rotate_ang < 0)
-		mlx->plr->rotate_ang += 360;
+	mlx->plr->r_ang += mlx->plr->turn_speed;
+	if (mlx->plr->r_ang > 360)
+		mlx->plr->r_ang -= 360;
+	if (mlx->plr->r_ang < 0)
+		mlx->plr->r_ang += 360;
 }
 
 void	left(t_data *mlx)
 {
-	mlx->plr->rotate_ang -= mlx->plr->turn_speed;
-	if (mlx->plr->rotate_ang > 360)
-		mlx->plr->rotate_ang -= 360;
-	if (mlx->plr->rotate_ang < 0)
-		mlx->plr->rotate_ang += 360;
+	mlx->plr->r_ang -= mlx->plr->turn_speed;
+	if (mlx->plr->r_ang > 360)
+		mlx->plr->r_ang -= 360;
+	if (mlx->plr->r_ang < 0)
+		mlx->plr->r_ang += 360;
 }
 
 void	destroy(void *mlx)

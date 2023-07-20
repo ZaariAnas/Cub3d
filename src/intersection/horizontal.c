@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.1337.fr>              +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:22:34 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/15 13:42:54 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 07:30:45 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-double	distance(t_point *p1, t_point *p2)
+double	dist(t_point *p1, t_point *p2)
 {
 	return (sqrt(pow(p2->x - p1->x, 2) + pow(p2->y - p1->y, 2)));
 }
