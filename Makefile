@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
+#    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/20 09:10:55 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/21 09:53:54 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ CFILES		= 	cub3d.c									\
 				src/rendering/wall.c					\
 				src/rendering/mini_map.c				\
 				src/rendering/rendering_utils.c			\
+				src/rendering/doors.c					\
 				src/rendering/geters.c					\
 				src/hooks/moves.c						\
 				src/hooks/mouse.c						\

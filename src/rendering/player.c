@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 11:11:17 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 15:38:00 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_line(t_point *p1, t_point *p2, t_data *mlx)
 	t_point	d;
 	t_point	p;
 	t_point	inc;
-
+	
 	d.y = p2->y - p1->y;
 	d.x = p2->x - p1->x;
 	if (fabs(d.x) > fabs(d.y))

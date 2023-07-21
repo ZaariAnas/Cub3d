@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 11:11:48 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 14:43:55 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define RGB_ERR "Error\nunvalid RGB color"
 # define ARG_ERR "Error\nunvalid arguments"
 # define UNF_MAP_ERR "Error\nmap unfound"
-# define MAP_ELEM "NSEW10 \t\n"
+# define MAP_ELEM "NSEWD10 \t\n"
 # define WHITESPACE " \t\r\v\n"
 # define FREE_SPACE "NSWE0"
 # define RED "\033[1;31m"
@@ -68,6 +68,7 @@ typedef struct s_txtr{
 	mlx_texture_t	*t_we;
 	mlx_texture_t	*t_no;
 	mlx_texture_t	*t_so;
+	mlx_texture_t	*t_do;
 }t_txtr;
 
 typedef struct s_player{
@@ -97,6 +98,7 @@ typedef struct s_map{
 	int			c;
 	int			ff;
 	int			cc;
+	double		offset;
 }t_map;
 
 typedef struct s_data{
@@ -126,9 +128,11 @@ void			ft_moves(void *mlx);
 void			ft_init_player(t_player *player);
 void			destroy(void *mlx);
 t_point			*find_hz_inter(t_point *s, double ang, t_map *map);
+t_point			*find_hz_inter_door(t_point *s, double ang, t_map *map);
 double			to_rad(double ang);
 double			dist(t_point *p1, t_point *p2);
 t_point			*find_vrt_inter(t_point *s, double ang, t_map *map);
+t_point			*find_vrt_inter_door(t_point *s, double ang, t_map *map);
 int				ft_isempty(char *s);
 int				t(double x);
 void			ft_render_map(t_data *mlx);
@@ -157,4 +161,6 @@ void			mouse_rotate(t_data *mlx);
 void			draw_torch(t_data *mlx);
 double			get_offset(double z);
 void			getoffx(t_data *mlx, double p);
+void			render_doors(t_data *mlx);
+void			cast_door_rays(t_data *mlx, double ang, int x);
 #endif

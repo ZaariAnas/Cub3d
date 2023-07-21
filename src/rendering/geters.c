@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 08:02:06 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 11:11:28 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 13:04:23 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ uint32_t	getwidth(t_data *mlx)
 		return (mlx->txtr->t_ea->width);
 	if (mlx->txtr->side == 'S')
 		return (mlx->txtr->t_so->width);
+	if (mlx->txtr->side == 'D')
+		return (mlx->txtr->t_do->width);
 	return (0);
 }
 
@@ -35,6 +37,8 @@ uint32_t	getheight(t_data *mlx)
 		return (mlx->txtr->t_ea->height);
 	if (mlx->txtr->side == 'S')
 		return (mlx->txtr->t_so->height);
+	if (mlx->txtr->side == 'D')
+		return (mlx->txtr->t_do->height);
 	return (0);
 }
 
@@ -48,6 +52,8 @@ mlx_texture_t	*getside(t_data *mlx)
 		return (mlx->txtr->t_ea);
 	if (mlx->txtr->side == 'S')
 		return (mlx->txtr->t_so);
+	if (mlx->txtr->side == 'D')
+		return (mlx->txtr->t_do);
 	return (0);
 }
 

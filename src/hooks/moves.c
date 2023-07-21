@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 10:32:15 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 09:56:09 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	ft_render(t_data *m)
 	m->img = mlx_new_image(m->ptr, m->w_width, m->w_height);
 	render_ceil_a_floor(m);
 	render_walls(m);
+	render_doors(m);
 	render_mini_map(m->map, m);
 	// draw_torch(m);
 	mlx_image_to_window(m->ptr, m->img, 0, 0);
