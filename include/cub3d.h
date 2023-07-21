@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 09:26:08 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 10:10:33 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,16 @@ typedef struct s_data{
 	mlx_t		*ptr;
 	void		*win;
 	mlx_image_t	*img;
-	void		*img1;
 	t_map		*map;
 	t_player	*plr;
 	t_txtr		*txtr;
+	mlx_image_t	*torch;
+	int			frame;
 	int			w_height;
 	int			w_width;
 	double		mini_scale;
+	int		type;
+	bool	shot;
 }t_data;
 
 void			ft_getmap(t_map *m, char *map_file, int fd);
