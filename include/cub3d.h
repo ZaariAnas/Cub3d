@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 09:45:51 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 08:27:34 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,12 @@ typedef struct s_data{
 	t_player	*plr;
 	t_txtr		*txtr;
 	mlx_image_t	*torch;
-	int			torch_frame;
+	int			frame;
 	int			w_height;
 	int			w_width;
 	double		mini_scale;
+	int		type;
+	bool	shot;
 }t_data;
 
 
@@ -158,5 +160,8 @@ uint32_t	getheight(t_data *mlx);
 mlx_texture_t	*getside(t_data *mlx);
 double	adjust(double i, t_data *mlx);
 void	mouse_rotate(t_data *mlx);
-void	draw_torch(t_data *mlx);
+void	draw_pistol(t_data *mlx);
+void	draw_gun(t_data *mlx);
+void	draw_m_g(t_data *mlx);
+void	key(mlx_key_data_t keydata, void* param);
 #endif

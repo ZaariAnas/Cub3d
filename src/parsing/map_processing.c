@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_processing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/19 12:37:58 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 10:54:59 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ static t_data	*ft_init(void)
 
 static void	ft_var_init(t_data *mlx)
 {
-	mlx->w_height = (mlx->map->rows - 1) * TILE_SIZE;
-	mlx->w_width = (mlx->map->col - 1) * TILE_SIZE;
+	mlx->w_height = 1080;
+	mlx->w_width = 1920;
 	ft_get_texture(mlx);
 }
 

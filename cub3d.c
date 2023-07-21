@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 09:20:30 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 08:06:55 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int	main(int ac, char **av)
 	ft_raise_perror(mlx->img, MLX_INIT_ERR);
 	mlx_set_cursor_mode(mlx->ptr,  MLX_MOUSE_HIDDEN);
 	mlx_loop_hook(mlx->ptr, ft_moves, mlx);
+	mlx_key_hook(mlx->ptr, key, mlx);
 	mlx_loop(mlx->ptr);
+	mlx_terminate(mlx->ptr);
 }
