@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   geters.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 08:02:06 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 16:21:37 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 18:32:59 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ double	get_offset(double z)
 void	getoffx(t_data *mlx, double p)
 {
 	if (ft_strchr("ENO1D23", mlx->txtr->side))
-		mlx->txtr->ofsx = (1 - ((fmod(p, TILE_SIZE) / TILE_SIZE)))\
+		mlx->txtr->ofsx = (1 - ((fmod(p, TILE_SIZE) / TILE_SIZE))) \
 			* getwidth(mlx);
 	else if (ft_strchr("WS", mlx->txtr->side))
 		mlx->txtr->ofsx = ((fmod(p, TILE_SIZE) / TILE_SIZE)) * getwidth(mlx);

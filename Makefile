@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
+#    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/21 16:22:01 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/21 18:58:25 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PURPLE 		= 	\033[0;35m
 CC			= 	cc
 GLFW_LIB 		:= $(shell brew --prefix glfw)
-CFLAGS		= 	-Wall -Wextra -Werror -Ofast -O3 #-g -fsanitize=address
+CFLAGS		= 	-Wall -Wextra -Werror -Ofast -O3 -g -fsanitize=address
 NAME 		= 	cub3d
 LIBFTF	 	= 	libs/libft
 GNLF	 	= 	libs/get_next_line
@@ -36,9 +36,13 @@ CFILES		= 	cub3d.c									\
 				src/hooks/moves.c						\
 				src/hooks/mouse.c						\
 				src/hooks/moves2.c						\
+				src/hooks/key.c						\
 				src/intersection/horizontal.c			\
 				src/intersection/vertical.c				\
 				src/textures/textures.c					\
+				src/textures/machine_gun.c					\
+				src/textures/pistol.c					\
+				src/textures/punch.c					\
 				libs/gc/gc.c
 				
 OFILES		= 	$(CFILES:.c=.o)
@@ -76,6 +80,7 @@ norm:
 	norminette include/cub3d.h
 	norminette ./src
 	norminette ./libs
+	norminette cub3d.c
 
 re		: fclean all
 

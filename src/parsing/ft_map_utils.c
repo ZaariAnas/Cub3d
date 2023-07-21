@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 14:15:01 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 17:41:02 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 18:57:37 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,21 @@ void	ft_getmap(t_map *m, char *map_file, int fd)
 	m->line = get_next_line(fd);
 	m->flim--;
 	while (m->line && m->flim--)
+	{
+		free(m->line);
 		m->line = get_next_line(fd);
+	}
 	m->flim = 0;
 	while (m->line && !ft_isempty(m->line))
 	{
 		m->map[m->flim] = ft_fill(m->line, m->col);
+		free(m->line);
 		m->line = get_next_line(fd);
 		m->flim++;
 	}
 	m->map[m->flim++] = NULL;
+	free(m->line);
+	close(fd);
 }
 
 void	check_surrounding(t_map *m, int i, int j)

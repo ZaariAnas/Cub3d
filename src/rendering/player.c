@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/21 13:24:02 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 18:34:03 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_line(t_point *p1, t_point *p2, t_data *mlx)
 	t_point	d;
 	t_point	p;
 	t_point	inc;
-	
+
 	d.y = p2->y - p1->y;
 	d.x = p2->x - p1->x;
 	if (fabs(d.x) > fabs(d.y))

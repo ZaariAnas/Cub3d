@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertical.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 13:14:50 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/21 13:44:44 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 18:19:59 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,21 @@ t_point	*find_vrt_inter(t_point *s, double ang, t_map *map)
 	return (f);
 }
 
+static int	ft_isdoor(t_map *map, double x, double y)
+{
+	int	flag;
+
+	flag = 0;
+	if (t(x) > 0 && t(y) > 0 && t(x) < map->col
+		&& t(y) < map->rows && map->map[t(y)]
+		&& map->map[t(y)][t(x)]
+		&& ft_strchr("D", map->map[t(y)][t(x + map->offset)]))
+	{
+		map->v_door++;
+		flag = 1;
+	}
+	return (flag);
+}
 
 t_point	*find_vrt_inter_door(t_point *s, double ang, t_map *map)
 {
@@ -67,14 +82,8 @@ t_point	*find_vrt_inter_door(t_point *s, double ang, t_map *map)
 	{
 		f->x += x_step;
 		f->y += y_step;
-		if (t(f->x) > 0 && t(f->y) > 0 && t(f->x) < map->col
-        && t(f->y) < map->rows && map->map[t(f->y)]
-        && map->map[t(f->y)][t(f->x)]
-        && ft_strchr("D", map->map[t(f->y)][t(f->x + map->offset)]))
-        {
-            map->v_door++;
-			break;
-        }
+		if (ft_isdoor(map, f->x, f->y))
+			break ;
 	}
 	return (f);
 }

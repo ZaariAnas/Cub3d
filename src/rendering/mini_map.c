@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 13:26:35 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/21 16:34:03 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 18:33:51 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/cub3d.h"
 
@@ -121,7 +120,7 @@ void	render_mini_map(t_map *m, t_data *mlx)
 			if (map[x][y] == '1')
 				ft_draw(y, x, mlx, get_rgba(255, 255, 255, 255));
 			else if (map[x][y] == 'D')
-				ft_draw(y, x, mlx,get_rgba(255, 0, 0, 255));
+				ft_draw(y, x, mlx, get_rgba(255, 0, 0, 255));
 			else
 				ft_draw(y, x, mlx, get_rgba(0, 0, 0, 230));
 			y++;

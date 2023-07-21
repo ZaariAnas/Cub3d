@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doors.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:31:15 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 16:17:49 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 18:29:02 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ void	render_doors(t_data *mlx)
 	}
 }
 
+void	ft_set_door(t_data *mlx, double dist, double p)
+{
+	(mlx->txtr->side = 'O');
+	(dist > 500) && (mlx->txtr->side = 'D');
+	(dist > 400 && dist < 500) && (mlx->txtr->side = '1');
+	(dist > 300 && dist < 400) && (mlx->txtr->side = '2');
+	(dist > 200 && dist < 300) && (mlx->txtr->side = '3');
+	getoffx(mlx, p);
+}
+
 void	cast_door_rays(t_data *mlx, double ang, int x)
 {
 	t_point	*s;
@@ -39,34 +49,14 @@ void	cast_door_rays(t_data *mlx, double ang, int x)
 	s->y = mlx->plr->y;
 	h = find_hz_inter_door(s, to_rad(ang), mlx->map);
 	v = find_vrt_inter_door(s, to_rad(ang), mlx->map);
-	if (dist(s, h) < dist(s, v))
+	if (dist(s, h) < dist(s, v) && mlx->map->h_door)
 	{
-		(sin(to_rad(ang)) >= 0) && (mlx->txtr->side = 'N');
-		(sin(to_rad(ang)) < 0) && (mlx->txtr->side = 'S');
-		if (mlx->map->h_door)
-		{
-			(mlx->txtr->side = 'O');
-			(dist(s, h) > 500) && (mlx->txtr->side = 'D');
-			(dist(s, h) > 400 && dist(s, h) < 500) && (mlx->txtr->side = '1');
-			(dist(s, h) > 300 && dist(s, h) < 400) && (mlx->txtr->side = '2');
-			(dist(s, h) > 200 && dist(s, h) < 300) && (mlx->txtr->side = '3');
-			getoffx(mlx, h->x);
-			render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, h)), x);
-		}
+		ft_set_door(mlx, dist(s, h), h->x);
+		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, h)), x);
 	}	
-	else
+	else if (dist(s, h) >= dist(s, v) && mlx->map->v_door)
 	{
-		(cos(to_rad(ang)) >= 0) && (mlx->txtr->side = 'W');
-		(cos(to_rad(ang)) < 0) && (mlx->txtr->side = 'E');
-		if (mlx->map->v_door)
-		{	
-			(mlx->txtr->side = 'O');
-			(dist(s, v) > 500) && (mlx->txtr->side = 'D');
-			(dist(s, v) > 400 && dist(s, v) < 500) && (mlx->txtr->side = '1');
-			(dist(s, v) > 300 && dist(s, v) < 400) && (mlx->txtr->side = '2');
-			(dist(s, v) > 200 && dist(s, v) < 300) && (mlx->txtr->side = '3');
-			getoffx(mlx, v->y);
-			render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, v)), x);
-		}
+		ft_set_door(mlx, dist(s, v), v->y);
+		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, v)), x);
 	}
 }
