@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 13:14:50 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/21 12:16:26 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 13:28:32 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ t_point	*find_vrt_inter(t_point *s, double ang, t_map *map)
 	y_step = x_step * tan(ang);
 	while (t(f->x) > 0 && t(f->y) > 0 && t(f->x) < map->col
 		&& t(f->y) < map->rows && map->map[t(f->y)]
-		&& map->map[t(f->y)][t(f->x)]
+		&& map->map[t(f->
+		y)][t(f->x)]
 		&& !ft_strchr("1D", map->map[t(f->y)][t(f->x + map->offset)]))
 	{
 		f->x += x_step;
