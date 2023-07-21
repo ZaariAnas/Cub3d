@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/21 13:09:02 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 16:23:36 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	ft_moves(void *mlx)
 	if (mlx_is_key_down(m->ptr, MLX_KEY_LEFT))
 		left(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_LEFT_SHIFT))
-		m->plr->walk_speed = 2;
+		m->plr->walk_speed = 6;
 	else
-		m->plr->walk_speed = 5;
+		m->plr->walk_speed = 4;
 	if (mlx_is_key_down(m->ptr, MLX_KEY_ESCAPE))
 		destroy(mlx);
 	mouse_rotate(mlx);

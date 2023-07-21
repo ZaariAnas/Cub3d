@@ -1,9 +1,9 @@
-SO ./assets/wall64.png
-WE ./assets/wall64.png
-EA ./assets/wall64.png
-NO ./assets/wall64.png
-F 0,0,31
-C 40,40,40
+SO ./assets/wall/wall64.png
+WE ./assets/wall/wall64.png
+EA ./assets/wall/wall64.png
+NO ./assets/wall/wall64.png
+C 0,0,0
+F 40,40,40
 
 
 1111111111111111111111111111111111111111111111111

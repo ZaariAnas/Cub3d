@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 13:44:12 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 15:57:39 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ typedef struct s_txtr{
 	mlx_texture_t	*t_no;
 	mlx_texture_t	*t_so;
 	mlx_texture_t	*t_do;
+	mlx_texture_t	*t_dc;
+	mlx_texture_t	*t_d1;
+	mlx_texture_t	*t_d2;
+	mlx_texture_t	*t_d3;
 }t_txtr;
 
 typedef struct s_player{
