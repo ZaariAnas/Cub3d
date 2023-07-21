@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/21 16:23:36 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 16:56:21 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_moves(void *mlx)
 		m->plr->walk_speed = 4;
 	if (mlx_is_key_down(m->ptr, MLX_KEY_ESCAPE))
 		destroy(mlx);
-	mouse_rotate(mlx);
+	mouse_rotate(mlx); //lock unlock
 	ft_render(mlx);
 	return ;
 }

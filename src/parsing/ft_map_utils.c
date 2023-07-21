@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 14:15:01 by azari             #+#    #+#             */
-/*   Updated: 2023/07/19 19:41:03 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 17:25:13 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ void	ft_getmap(t_map *m, char *map_file, int fd)
 
 void	check_surrounding(t_map *m, int i, int j)
 {
-	if (i == m->col || j == m->col || !i || !j)
+	printf("%d %d\n",i,j);
+	if (i == m->col || j == m->rows || !i || !j)
 		ft_raise_error(MAP_SHAPE_ERR);
+	puts("HH");
 	if (ft_strchr(HOLES, m->map[i][j + 1])
 		|| ft_strchr(HOLES, m->map[i][j - 1])
 		|| ft_strchr(HOLES, m->map[i + 1][j])
@@ -87,7 +89,7 @@ void	ft_checkmap(t_data *mlx)
 				mlx->plr->y = i * TILE_SIZE + (TILE_SIZE / 2.0);
 				flag++;
 			}
-			if (ft_strchr(FREE_SPACE, mlx->map->map[i][j]))
+			else if (ft_strchr(FREE_SPACE, mlx->map->map[i][j]))
 				check_surrounding(mlx->map, i, j);
 		}
 	}
