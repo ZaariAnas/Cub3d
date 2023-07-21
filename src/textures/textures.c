@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 06:09:08 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 09:05:59 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 09:55:53 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void	draw_m_g(t_data *mlx)
 		return;
 	}
 	mlx_set_instance_depth(mlx->torch->instances, 10);
-	if (mlx_is_key_down(mlx->ptr, MLX_KEY_SPACE) && mlx->shot)
+	if (mlx_is_key_down(mlx->ptr, MLX_KEY_SPACE))
 		mlx->frame++;
 	else
 		mlx->frame = 0;
