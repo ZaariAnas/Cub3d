@@ -7,10 +7,14 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 13:14:50 by mechane           #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2023/07/21 12:16:26 by azari            ###   ########.fr       */
 =======
 /*   Updated: 2023/07/21 13:44:44 by mechane          ###   ########.fr       */
 >>>>>>> c5cea7f656d6a8fd8241f961ae5c54b01fe41bc5
+=======
+/*   Updated: 2023/07/21 13:28:32 by azari            ###   ########.fr       */
+>>>>>>> db26f80a9e0493d589bd7f1d33630f8a7fefafb3
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +43,8 @@ t_point	*find_vrt_inter(t_point *s, double ang, t_map *map)
 	y_step = x_step * tan(ang);
 	while (t(f->x) > 0 && t(f->y) > 0 && t(f->x) < map->col
 		&& t(f->y) < map->rows && map->map[t(f->y)]
-		&& map->map[t(f->y)][t(f->x)]
+		&& map->map[t(f->
+		y)][t(f->x)]
 		&& !ft_strchr("1D", map->map[t(f->y)][t(f->x + map->offset)]))
 	{
 		f->x += x_step;
