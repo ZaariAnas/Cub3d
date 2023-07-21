@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/07/21 09:03:31 by mechane          ###   ########.fr       */
+=======
+/*   Updated: 2023/07/21 09:56:09 by azari            ###   ########.fr       */
+>>>>>>> azari
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +85,7 @@ void	ft_render(t_data *m)
 	m->img = mlx_new_image(m->ptr, m->w_width, m->w_height);
 	render_ceil_a_floor(m);
 	render_walls(m);
+	render_doors(m);
 	render_mini_map(m->map, m);
 	mlx_image_to_window(m->ptr, m->img, 0, 0);
 	mlx_set_instance_depth(m->img->instances, 0);

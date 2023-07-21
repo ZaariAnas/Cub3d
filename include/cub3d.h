@@ -6,7 +6,11 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/07/21 10:15:24 by mechane          ###   ########.fr       */
+=======
+/*   Updated: 2023/07/20 14:43:55 by azari            ###   ########.fr       */
+>>>>>>> azari
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +29,7 @@
 # define RGB_ERR "Error\nunvalid RGB color"
 # define ARG_ERR "Error\nunvalid arguments"
 # define UNF_MAP_ERR "Error\nmap unfound"
-# define MAP_ELEM "NSEW10 \t\n"
+# define MAP_ELEM "NSEWD10 \t\n"
 # define WHITESPACE " \t\r\v\n"
 # define FREE_SPACE "NSWE0"
 # define RED "\033[1;31m"
@@ -70,6 +74,7 @@ typedef struct s_txtr{
 	mlx_texture_t	*t_we;
 	mlx_texture_t	*t_no;
 	mlx_texture_t	*t_so;
+	mlx_texture_t	*t_do;
 }t_txtr;
 
 typedef struct s_player{
@@ -99,6 +104,7 @@ typedef struct s_map{
 	int			c;
 	int			ff;
 	int			cc;
+	double		offset;
 }t_map;
 
 typedef struct s_data{
@@ -117,6 +123,7 @@ typedef struct s_data{
 	bool	shot;
 }t_data;
 
+<<<<<<< HEAD
 
 
 void	ft_getmap(t_map *m, char *map_file, int fd);
@@ -165,4 +172,54 @@ void	draw_gun(t_data *mlx);
 void	draw_m_g(t_data *mlx);
 void	key(mlx_key_data_t keydata, void* param);
 double	get_offset(double z);
+=======
+void			ft_getmap(t_map *m, char *map_file, int fd);
+void			ft_raise_perror(void *ptr, char *err);
+void			ft_raise_error(char *err_msg);
+t_data			*process_map(char *map_file);
+int				process_tokens(t_data *mlx);
+int				ft_open(char *map_file);
+int				ft_lencheck(char *str);
+void			ft_checkmap(t_data *mlx);
+int				ft_uatoi(char *str);
+void			ft_moves(void *mlx);
+void			ft_init_player(t_player *player);
+void			destroy(void *mlx);
+t_point			*find_hz_inter(t_point *s, double ang, t_map *map);
+t_point			*find_hz_inter_door(t_point *s, double ang, t_map *map);
+double			to_rad(double ang);
+double			dist(t_point *p1, t_point *p2);
+t_point			*find_vrt_inter(t_point *s, double ang, t_map *map);
+t_point			*find_vrt_inter_door(t_point *s, double ang, t_map *map);
+int				ft_isempty(char *s);
+int				t(double x);
+void			ft_render_map(t_data *mlx);
+void			render_walls(t_data *mlx);
+bool			isnt_wall(char **map, int y, int x);
+void			move_forward(t_data *mlx);
+void			move_backword(t_data *mlx);
+void			move_right(t_data *mlx);
+void			move_left(t_data *mlx);
+void			get_player_ang(t_player *player);
+void			ft_render(t_data *m);
+void			render_wall(t_data *mlx, double dis, int y);
+int				get_color(char dir);
+int				get_rgba(int r, int g, int b, int a);
+void			render_ceil_a_floor(t_data *mlx);
+void			render_mini_map(t_map *m, t_data *mlx);
+void			ft_get_texture(t_data *mlx);
+int				get_rgba(int r, int g, int b, int a);
+UNI				ft_mlx_put_pixel(mlx_image_t *img, UNI x, UNI y, UNI colour);
+int				color(mlx_texture_t *img, UNI x, UNI y);
+uint32_t		getwidth(t_data *mlx);
+uint32_t		getheight(t_data *mlx);
+mlx_texture_t	*getside(t_data *mlx);
+double			adjust(double i, t_data *mlx);
+void			mouse_rotate(t_data *mlx);
+void			draw_torch(t_data *mlx);
+double			get_offset(double z);
+void			getoffx(t_data *mlx, double p);
+void			render_doors(t_data *mlx);
+void			cast_door_rays(t_data *mlx, double ang, int x);
+>>>>>>> azari
 #endif

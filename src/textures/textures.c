@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 06:09:08 by azari             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/07/21 10:15:43 by mechane          ###   ########.fr       */
+=======
+/*   Updated: 2023/07/20 13:01:24 by azari            ###   ########.fr       */
+>>>>>>> azari
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +27,10 @@ void	ft_get_texture(t_data *mlx)
 	ft_raise_perror(mlx->txtr->t_so, PNG_LOAD_ERR);
 	mlx->txtr->t_no = mlx_load_png(mlx->txtr->no);
 	ft_raise_perror(mlx->txtr->t_no, PNG_LOAD_ERR);
+	mlx->txtr->t_do = mlx_load_png("./assets/wall/wood.png");
+	ft_raise_perror(mlx->txtr->t_do, PNG_LOAD_ERR);
 }
+<<<<<<< HEAD
 
 
 
@@ -149,3 +156,5 @@ void	key(mlx_key_data_t keydata, void* param)
 	if (mlx->type < 0)
 		mlx->type = 2;
 }
+=======
+>>>>>>> azari

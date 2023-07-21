@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 10:24:49 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/20 15:38:00 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_line(t_point *p1, t_point *p2, t_data *mlx)
 	t_point	d;
 	t_point	p;
 	t_point	inc;
-
+	
 	d.y = p2->y - p1->y;
 	d.x = p2->x - p1->x;
 	if (fabs(d.x) > fabs(d.y))
@@ -68,18 +68,16 @@ void	cast_ray(t_data *mlx, double ang, int x)
 	v = find_vrt_inter(s, to_rad(ang), mlx->map);
 	if (dist(s, h) < dist(s, v))
 	{
-		(sin(to_rad(ang)) >= 0) && (mlx->txtr->side = 'N')
-		 && (mlx->txtr->ofsx = (1 - ((fmod(h->x, TILE_SIZE) / TILE_SIZE))) * getwidth(mlx));
-		(sin(to_rad(ang)) < 0) && (mlx->txtr->side = 'S')
-			&& (mlx->txtr->ofsx = ((fmod(h->x, TILE_SIZE) / TILE_SIZE)) * getwidth(mlx));
+		(sin(to_rad(ang)) >= 0) && (mlx->txtr->side = 'N');
+		(sin(to_rad(ang)) < 0) && (mlx->txtr->side = 'S');
+		getoffx(mlx, h->x);
 		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, h)), x);
 	}	
 	else
 	{
-		(cos(to_rad(ang)) >= 0) && (mlx->txtr->side = 'W')
-			&& (mlx->txtr->ofsx = (fmod(v->y, TILE_SIZE) / TILE_SIZE) * getwidth(mlx));
-		(cos(to_rad(ang)) < 0) && (mlx->txtr->side = 'E')
-			&& (mlx->txtr->ofsx = (1 - (fmod(v->y, TILE_SIZE) / TILE_SIZE)) * getwidth(mlx));
+		(cos(to_rad(ang)) >= 0) && (mlx->txtr->side = 'W');
+		(cos(to_rad(ang)) < 0) && (mlx->txtr->side = 'E');
+		getoffx(mlx, v->y);
 		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, v)), x);
 	}
 }
