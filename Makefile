@@ -6,14 +6,14 @@
 #    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/21 10:28:05 by azari            ###   ########.fr        #
+#    Updated: 2023/07/21 11:08:41 by azari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PURPLE 		= 	\033[0;35m
 CC			= 	cc
 GLFW_LIB 		:= $(shell brew --prefix glfw)
-CFLAGS		= 	-Wall -Wextra -Werror -Ofast #-g -fsanitize=address
+CFLAGS		= 	-Wall -Wextra -Werror -Ofast -g -fsanitize=address
 NAME 		= 	cub3d
 LIBFTF	 	= 	libs/libft
 GNLF	 	= 	libs/get_next_line
@@ -31,7 +31,6 @@ CFILES		= 	cub3d.c									\
 				src/rendering/wall.c					\
 				src/rendering/mini_map.c				\
 				src/rendering/rendering_utils.c			\
-				src/rendering/doors.c					\
 				src/rendering/geters.c					\
 				src/hooks/moves.c						\
 				src/hooks/mouse.c						\
@@ -41,6 +40,7 @@ CFILES		= 	cub3d.c									\
 				src/textures/textures.c					\
 				libs/gc/gc.c
 				
+				#src/rendering/doors.c					\#
 OFILES		= 	$(CFILES:.c=.o)
 
 all : $(NAME)

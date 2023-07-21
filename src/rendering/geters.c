@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 08:02:06 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 13:04:23 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 11:43:12 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ double	get_offset(double z)
 
 void	getoffx(t_data *mlx, double p)
 {
-	if (mlx->txtr->side == 'E' || mlx->txtr->side == 'N')
+	if (mlx->txtr->side == 'E' || mlx->txtr->side == 'N' || mlx->txtr->side == 'D')
 		mlx->txtr->ofsx = (1 - ((fmod(p, TILE_SIZE) / TILE_SIZE)))\
 			* getwidth(mlx);
 	else if (mlx->txtr->side == 'S' || mlx->txtr->side == 'W')

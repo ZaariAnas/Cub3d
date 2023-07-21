@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 15:38:00 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 12:01:18 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	draw_line(t_point *p1, t_point *p2, t_data *mlx)
 		mlx->txtr->dft = p.y + (mlx->txtr->wall_h / 2) - (mlx->w_height / 2);
 		mlx->txtr->ofsy = mlx->txtr->dft * (getheight(mlx) \
 		/ mlx->txtr->wall_h);
-		ft_mlx_put_pixel(mlx->img, p.x, p.y,
+		ft_mlx_put_pixel(mlx, p.x, p.y,
 			color(getside(mlx), mlx->txtr->ofsx, mlx->txtr->ofsy));
 		p.x += inc.x;
 		p.y += inc.y;
@@ -70,6 +70,7 @@ void	cast_ray(t_data *mlx, double ang, int x)
 	{
 		(sin(to_rad(ang)) >= 0) && (mlx->txtr->side = 'N');
 		(sin(to_rad(ang)) < 0) && (mlx->txtr->side = 'S');
+		(mlx->map->is_door > 0) && (mlx->txtr->side = 'D');
 		getoffx(mlx, h->x);
 		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, h)), x);
 	}	
@@ -77,6 +78,7 @@ void	cast_ray(t_data *mlx, double ang, int x)
 	{
 		(cos(to_rad(ang)) >= 0) && (mlx->txtr->side = 'W');
 		(cos(to_rad(ang)) < 0) && (mlx->txtr->side = 'E');
+		(mlx->map->is_door > 0) && (mlx->txtr->side = 'D');
 		getoffx(mlx, v->y);
 		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, v)), x);
 	}
