@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertical.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 13:14:50 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 14:42:51 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 13:44:44 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_point	*find_vrt_inter_door(t_point *s, double ang, t_map *map)
 	double		x_step;
 	double		y_step;
 
+	map->v_door = 0;
 	map->offset = 0;
 	f = ft_malloc(sizeof(t_point));
 	ft_memset(f, 0, sizeof(t_point));
@@ -62,10 +63,18 @@ t_point	*find_vrt_inter_door(t_point *s, double ang, t_map *map)
 	while (t(f->x) > 0 && t(f->y) > 0 && t(f->x) < map->col
 		&& t(f->y) < map->rows && map->map[t(f->y)]
 		&& map->map[t(f->y)][t(f->x)]
-		&& !ft_strchr("D", map->map[t(f->y)][t(f->x + map->offset)]))
+		&& !ft_strchr("1D", map->map[t(f->y)][t(f->x + map->offset)]))
 	{
 		f->x += x_step;
 		f->y += y_step;
+		if (t(f->x) > 0 && t(f->y) > 0 && t(f->x) < map->col
+        && t(f->y) < map->rows && map->map[t(f->y)]
+        && map->map[t(f->y)][t(f->x)]
+        && ft_strchr("D", map->map[t(f->y)][t(f->x + map->offset)]))
+        {
+            map->v_door++;
+			break;
+        }
 	}
 	return (f);
 }

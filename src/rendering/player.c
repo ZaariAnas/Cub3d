@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 15:38:00 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 13:24:02 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	draw_line(t_point *p1, t_point *p2, t_data *mlx)
 		mlx->txtr->dft = p.y + (mlx->txtr->wall_h / 2) - (mlx->w_height / 2);
 		mlx->txtr->ofsy = mlx->txtr->dft * (getheight(mlx) \
 		/ mlx->txtr->wall_h);
-		ft_mlx_put_pixel(mlx->img, p.x, p.y,
+		ft_mlx_put_pixel(mlx, p.x, p.y,
 			color(getside(mlx), mlx->txtr->ofsx, mlx->txtr->ofsy));
 		p.x += inc.x;
 		p.y += inc.y;

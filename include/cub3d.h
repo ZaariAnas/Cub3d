@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 10:31:00 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 13:44:12 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ typedef struct s_map{
 	int			ff;
 	int			cc;
 	double		offset;
+	int			h_door;
+	int			v_door;
 }t_map;
 
 typedef struct s_data{
@@ -155,7 +157,7 @@ void	render_ceil_a_floor(t_data *mlx);
 void	render_mini_map(t_map *m, t_data *mlx);
 void	ft_get_texture(t_data *mlx);
 int		get_rgba(int r, int g, int b, int a);
-UNI		ft_mlx_put_pixel(mlx_image_t *img, UNI x, UNI y, UNI colour);
+UNI	ft_mlx_put_pixel(t_data *mlx, UNI x, UNI y, UNI colour);
 int		color(mlx_texture_t *img, UNI x, UNI y);
 uint32_t	getwidth(t_data *mlx);
 uint32_t	getheight(t_data *mlx);
@@ -172,4 +174,5 @@ void	cast_door_rays(t_data *mlx, double ang, int x);
 t_point	*find_hz_inter_door(t_point *s, double ang, t_map *map);
 t_point	*find_vrt_inter_door(t_point *s, double ang, t_map *map);
 void	render_doors(t_data *mlx);
+void	cast_ray(t_data *mlx, double ang, int x);
 #endif

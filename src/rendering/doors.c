@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doors.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:31:15 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 14:56:14 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 13:44:57 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,24 @@ void	cast_door_rays(t_data *mlx, double ang, int x)
 	v = find_vrt_inter_door(s, to_rad(ang), mlx->map);
 	if (dist(s, h) < dist(s, v))
 	{
+		(sin(to_rad(ang)) >= 0) && (mlx->txtr->side = 'N');
+		(sin(to_rad(ang)) < 0) && (mlx->txtr->side = 'S');
+		if (mlx->map->h_door)
+		{
+			mlx->txtr->side = 'D';
 		getoffx(mlx, h->x);
-		if (h->x < mlx->w_width && h->y < mlx->w_height)
-			render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, h)), x);
+		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, h)), x);
+		}
 	}	
 	else
 	{
+		(cos(to_rad(ang)) >= 0) && (mlx->txtr->side = 'W');
+		(cos(to_rad(ang)) < 0) && (mlx->txtr->side = 'E');
+		if (mlx->map->v_door)
+		{	
+			mlx->txtr->side = 'D';
 		getoffx(mlx, v->y);
-		if (h->x < mlx->w_width && h->y < mlx->w_height)
-			render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, v)), x);
+		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, v)), x);
+		}
 	}
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 06:22:08 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 09:19:08 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 13:47:14 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ int	get_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-UNI	ft_mlx_put_pixel(mlx_image_t *img, UNI x, UNI y, UNI colour)
+UNI	ft_mlx_put_pixel(t_data *mlx, UNI x, UNI y, UNI colour)
 {
 	UNI	*pixel;
 
-	pixel = (UNI *)&img->pixels[(x + y * img->width) * sizeof(UNI)];
+	if ((mlx->map->h_door || mlx->map->v_door) && !colour)
+		return (0);
+	pixel = (UNI *)&mlx->img->pixels[(x + y * mlx->img->width) * sizeof(UNI)];
 	*pixel = colour;
 	return (*pixel);
 }
