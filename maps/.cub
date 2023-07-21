@@ -1,8 +1,8 @@
 
-SO ./assets/so.xpm   
-EA ./assets/ea.xpm   
-WE ./assets/we.xpm
-NO ./assets/no.xpm
+SO ./assets/14.png
+WE ./assets/14.png
+EA ./assets/14.png
+NO ./assets/14.png
 F  45,0006,5
 C  0,25,51
 

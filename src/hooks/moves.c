@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 08:33:12 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 09:03:31 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,25 @@ void	ft_moves(void *mlx)
 		right(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_LEFT))
 		left(mlx);
+	if (mlx_is_key_down(m->ptr, MLX_KEY_LEFT_SHIFT))
+		m->plr->walk_speed = 2;
+	else
+		m->plr->walk_speed = 5;
 	if (mlx_is_key_down(m->ptr, MLX_KEY_ESCAPE))
 		destroy(mlx);
-	if (mlx_is_mouse_down(m->ptr, MLX_MOUSE_BUTTON_LEFT))
-		mouse_rotate(mlx);
+	mouse_rotate(mlx);
 	ft_render(mlx);
 	return ;
 }
-
+void	chose_gun(t_data *mlx)
+{
+	if (mlx->type == 0)
+		draw_pistol(mlx);
+	else if (mlx->type == 1)
+		draw_m_g(mlx);
+	else
+		draw_gun(mlx);
+}
 void	ft_render(t_data *m)
 {
 	mlx_delete_image(m->ptr, m->img);
@@ -72,4 +83,7 @@ void	ft_render(t_data *m)
 	render_walls(m);
 	render_mini_map(m->map, m);
 	mlx_image_to_window(m->ptr, m->img, 0, 0);
+	mlx_set_instance_depth(m->img->instances, 0);
+	chose_gun(m);
+	
 }

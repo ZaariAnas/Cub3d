@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:17:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/20 08:06:28 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/20 10:24:49 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,18 @@ void	cast_ray(t_data *mlx, double ang, int x)
 	v = find_vrt_inter(s, to_rad(ang), mlx->map);
 	if (dist(s, h) < dist(s, v))
 	{
-		(sin(to_rad(ang)) >= 0) && (mlx->txtr->side = 'N');
-		(sin(to_rad(ang)) < 0) && (mlx->txtr->side = 'S');
-		mlx->txtr->ofsx = (fmod(h->x, TILE_SIZE) / TILE_SIZE) * getwidth(mlx);
+		(sin(to_rad(ang)) >= 0) && (mlx->txtr->side = 'N')
+		 && (mlx->txtr->ofsx = (1 - ((fmod(h->x, TILE_SIZE) / TILE_SIZE))) * getwidth(mlx));
+		(sin(to_rad(ang)) < 0) && (mlx->txtr->side = 'S')
+			&& (mlx->txtr->ofsx = ((fmod(h->x, TILE_SIZE) / TILE_SIZE)) * getwidth(mlx));
 		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, h)), x);
 	}	
 	else
 	{
-		(cos(to_rad(ang)) >= 0) && (mlx->txtr->side = 'W');
-		(cos(to_rad(ang)) < 0) && (mlx->txtr->side = 'E');
-		mlx->txtr->ofsx = (fmod(v->y, TILE_SIZE) / TILE_SIZE) * getwidth(mlx);
+		(cos(to_rad(ang)) >= 0) && (mlx->txtr->side = 'W')
+			&& (mlx->txtr->ofsx = (fmod(v->y, TILE_SIZE) / TILE_SIZE) * getwidth(mlx));
+		(cos(to_rad(ang)) < 0) && (mlx->txtr->side = 'E')
+			&& (mlx->txtr->ofsx = (1 - (fmod(v->y, TILE_SIZE) / TILE_SIZE)) * getwidth(mlx));
 		render_wall(mlx, (cos(to_rad(ang - mlx->plr->r_ang)) * dist(s, v)), x);
 	}
 }
