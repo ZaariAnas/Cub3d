@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 13:26:35 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/21 10:14:46 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 10:35:05 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,6 @@ void	render_mini_map(t_map *m, t_data *mlx)
 		x++;
 	}
 	ft_draw_p(mlx);
-	draw_star(mlx, get_rgba(255, 255, 255, 255));
+	if (mlx->type != 2)
+		draw_star(mlx, get_rgba(255, 255, 255, 255));
 }
