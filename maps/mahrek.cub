@@ -1,0 +1,20 @@
+SO ./assets/wall/wall64.png 
+WE ./assets/wall/wall64.png
+EA ./assets/wall/wall64.png
+NO ./assets/wall/wall64.png
+C 0,0,0
+F 40,40,40
+
+111
+101
+101     
+101
+101
+101
+101
+101
+101
+101
+101
+1E1
+111
