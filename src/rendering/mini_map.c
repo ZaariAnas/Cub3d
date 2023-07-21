@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 13:26:35 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/21 10:35:05 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 16:34:03 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,14 +119,16 @@ void	render_mini_map(t_map *m, t_data *mlx)
 		while (map[x][y])
 		{
 			if (map[x][y] == '1')
-				ft_draw(y, x, mlx, (255 << 24 | 255 << 16 | 255 << 8 | 255));
+				ft_draw(y, x, mlx, get_rgba(255, 255, 255, 255));
+			else if (map[x][y] == 'D')
+				ft_draw(y, x, mlx,get_rgba(255, 0, 0, 255));
 			else
-				ft_draw(y, x, mlx, (62 << 24 | 100 << 16 | 25 << 8 | 255));
+				ft_draw(y, x, mlx, get_rgba(0, 0, 0, 230));
 			y++;
 		}
 		x++;
 	}
 	ft_draw_p(mlx);
 	if (mlx->type != 2)
-		draw_star(mlx, get_rgba(255, 255, 255, 255));
+		draw_star(mlx, get_rgba(255, 0, 0, 255));
 }

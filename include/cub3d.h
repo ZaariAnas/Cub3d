@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 12:01:08 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 17:27:02 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ typedef struct s_txtr{
 	mlx_texture_t	*t_no;
 	mlx_texture_t	*t_so;
 	mlx_texture_t	*t_do;
+	mlx_texture_t	*t_dc;
+	mlx_texture_t	*t_d1;
+	mlx_texture_t	*t_d2;
+	mlx_texture_t	*t_d3;
 }t_txtr;
 
 typedef struct s_player{
@@ -102,6 +106,8 @@ typedef struct s_map{
 	int			ff;
 	int			cc;
 	double		offset;
+	int			h_door;
+	int			v_door;
 }t_map;
 
 typedef struct s_data{
@@ -173,4 +179,5 @@ void	cast_door_rays(t_data *mlx, double ang, int x);
 t_point	*find_hz_inter_door(t_point *s, double ang, t_map *map);
 t_point	*find_vrt_inter_door(t_point *s, double ang, t_map *map);
 void	render_doors(t_data *mlx);
+void	cast_ray(t_data *mlx, double ang, int x);
 #endif

@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: azari <azari@student.42.fr>                +#+  +:+       +#+         #
+#    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/21 11:08:41 by azari            ###   ########.fr        #
+#    Updated: 2023/07/21 17:28:36 by mechane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PURPLE 		= 	\033[0;35m
 CC			= 	cc
 GLFW_LIB 		:= $(shell brew --prefix glfw)
-CFLAGS		= 	-Wall -Wextra -Werror -Ofast -g -fsanitize=address
+CFLAGS		= 	-Wall -Wextra -Werror -Ofast -O3 #-g -fsanitize=address
 NAME 		= 	cub3d
 LIBFTF	 	= 	libs/libft
 GNLF	 	= 	libs/get_next_line

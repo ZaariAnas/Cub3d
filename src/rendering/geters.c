@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   geters.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 08:02:06 by azari             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/07/21 11:43:12 by azari            ###   ########.fr       */
+=======
+/*   Updated: 2023/07/21 16:21:37 by mechane          ###   ########.fr       */
+>>>>>>> c5cea7f656d6a8fd8241f961ae5c54b01fe41bc5
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +28,14 @@ uint32_t	getwidth(t_data *mlx)
 		return (mlx->txtr->t_so->width);
 	if (mlx->txtr->side == 'D')
 		return (mlx->txtr->t_do->width);
+	if (mlx->txtr->side == 'O')
+		return (mlx->txtr->t_dc->width);
+	if (mlx->txtr->side == '1')
+		return (mlx->txtr->t_d1->width);
+	if (mlx->txtr->side == '2')
+		return (mlx->txtr->t_d2->width);
+	if (mlx->txtr->side == '3')
+		return (mlx->txtr->t_d3->width);
 	return (0);
 }
 
@@ -39,6 +51,14 @@ uint32_t	getheight(t_data *mlx)
 		return (mlx->txtr->t_so->height);
 	if (mlx->txtr->side == 'D')
 		return (mlx->txtr->t_do->height);
+	if (mlx->txtr->side == 'O')
+		return (mlx->txtr->t_dc->height);
+	if (mlx->txtr->side == '1')
+		return (mlx->txtr->t_d1->height);
+	if (mlx->txtr->side == '2')
+		return (mlx->txtr->t_d2->height);
+	if (mlx->txtr->side == '3')
+		return (mlx->txtr->t_d3->height);
 	return (0);
 }
 
@@ -54,6 +74,14 @@ mlx_texture_t	*getside(t_data *mlx)
 		return (mlx->txtr->t_so);
 	if (mlx->txtr->side == 'D')
 		return (mlx->txtr->t_do);
+	if (mlx->txtr->side == 'O')
+		return (mlx->txtr->t_dc);
+	if (mlx->txtr->side == '1')
+		return (mlx->txtr->t_d1);
+	if (mlx->txtr->side == '2')
+		return (mlx->txtr->t_d2);
+	if (mlx->txtr->side == '3')
+		return (mlx->txtr->t_d3);
 	return (0);
 }
 
@@ -64,9 +92,13 @@ double	get_offset(double z)
 
 void	getoffx(t_data *mlx, double p)
 {
+<<<<<<< HEAD
 	if (mlx->txtr->side == 'E' || mlx->txtr->side == 'N' || mlx->txtr->side == 'D')
+=======
+	if (ft_strchr("ENO1D23", mlx->txtr->side))
+>>>>>>> c5cea7f656d6a8fd8241f961ae5c54b01fe41bc5
 		mlx->txtr->ofsx = (1 - ((fmod(p, TILE_SIZE) / TILE_SIZE)))\
 			* getwidth(mlx);
-	else if (mlx->txtr->side == 'S' || mlx->txtr->side == 'W')
+	else if (ft_strchr("WS", mlx->txtr->side))
 		mlx->txtr->ofsx = ((fmod(p, TILE_SIZE) / TILE_SIZE)) * getwidth(mlx);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/21 11:08:09 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 17:28:42 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void	ft_moves(void *mlx)
 	if (mlx_is_key_down(m->ptr, MLX_KEY_LEFT))
 		left(mlx);
 	if (mlx_is_key_down(m->ptr, MLX_KEY_LEFT_SHIFT))
-		m->plr->walk_speed = 2;
+		m->plr->walk_speed = 6;
 	else
-		m->plr->walk_speed = 5;
+		m->plr->walk_speed = 4;
 	if (mlx_is_key_down(m->ptr, MLX_KEY_ESCAPE))
 		destroy(mlx);
-	mouse_rotate(mlx);
+	mouse_rotate(mlx); //lock unlock
 	ft_render(mlx);
 	return ;
 }
@@ -81,7 +81,7 @@ void	ft_render(t_data *m)
 	m->img = mlx_new_image(m->ptr, m->w_width, m->w_height);
 	render_ceil_a_floor(m);
 	render_walls(m);
-	// render_doors(m);
+	render_doors(m);
 	render_mini_map(m->map, m);
 	mlx_image_to_window(m->ptr, m->img, 0, 0);
 	mlx_set_instance_depth(m->img->instances, 0);

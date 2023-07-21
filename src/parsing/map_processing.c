@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:18:03 by azari             #+#    #+#             */
-/*   Updated: 2023/07/20 10:54:59 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 17:02:51 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_parse_map(t_data *mlx, int fd, char *map_file)
 
 	flag = 1;
 	len = ft_lencheck(mlx->map->line);
-	if (len < 3)
+	if (len < 2)
 		ft_raise_error(UNF_MAP_ERR);
 	mlx->map->col = len;
 	mlx->map->rows++;
