@@ -6,13 +6,10 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 06:09:08 by azari             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/07/20 08:53:22 by azari            ###   ########.fr       */
-=======
-/*   Updated: 2023/07/21 09:55:53 by mechane          ###   ########.fr       */
->>>>>>> 3d2f8fffa29ec09a733f9a3133802f0b00e321bf
+/*   Updated: 2023/07/21 10:15:43 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../include/cub3d.h"
 
@@ -27,8 +24,6 @@ void	ft_get_texture(t_data *mlx)
 	mlx->txtr->t_no = mlx_load_png(mlx->txtr->no);
 	ft_raise_perror(mlx->txtr->t_no, PNG_LOAD_ERR);
 }
-<<<<<<< HEAD
-=======
 
 
 
@@ -154,4 +149,3 @@ void	key(mlx_key_data_t keydata, void* param)
 	if (mlx->type < 0)
 		mlx->type = 2;
 }
->>>>>>> 3d2f8fffa29ec09a733f9a3133802f0b00e321bf
