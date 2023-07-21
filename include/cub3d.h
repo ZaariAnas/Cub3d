@@ -6,7 +6,7 @@
 /*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 18:42:47 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/21 19:28:32 by azari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 # define MLX_WIN_ERR "Error\nmlx window failure"
 # define MLX_INIT_ERR "Error\nmlx init failure"
 # define RGB_ERR "Error\nunvalid RGB color"
+# define DOOR_POS_ERR "Error\nunvalid door position"
 # define ARG_ERR "Error\nunvalid arguments"
 # define UNF_MAP_ERR "Error\nmap unfound"
 # define MAP_ELEM "NSEWD10 \t\n"
 # define WHITESPACE " \t\r\v\n"
-# define FREE_SPACE "NSWE0"
+# define FREE_SPACE "NSWE0D"
 # define RED "\033[1;31m"
 # define TITLE "Cub3d"
 # define TILE_SIZE 40
@@ -178,4 +179,5 @@ void			cast_ray(t_data *mlx, double ang, int x);
 void			left(t_data *mlx);
 void			right(t_data *mlx);
 void			chose_gun(t_data *mlx);
+void			check_door(t_map *m, int i, int j);
 #endif
