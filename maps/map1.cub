@@ -1,9 +1,8 @@
                            
-SO ./assets/so.xpm
-EA ./assets/ea.xpm
-WE ./assets/we.xpm
-NO ./assets/no.xpm
-
+SO ./assets/wall/wall64.png 
+WE ./assets/wall/wall64.png
+EA ./assets/wall/wall64.png
+NO ./assets/wall/wall64.png
 F 32,32,32
 C 0,25,51
 

@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 14:15:01 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 17:25:13 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/21 17:41:02 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,8 @@ void	ft_getmap(t_map *m, char *map_file, int fd)
 
 void	check_surrounding(t_map *m, int i, int j)
 {
-	printf("%d %d\n",i,j);
-	if (i == m->col || j == m->rows || !i || !j)
+	if (i == m->rows || j == m->col || !i || !j)
 		ft_raise_error(MAP_SHAPE_ERR);
-	puts("HH");
 	if (ft_strchr(HOLES, m->map[i][j + 1])
 		|| ft_strchr(HOLES, m->map[i][j - 1])
 		|| ft_strchr(HOLES, m->map[i + 1][j])
