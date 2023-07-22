@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 19:28:32 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/22 06:00:10 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,19 +109,21 @@ typedef struct s_map{
 }t_map;
 
 typedef struct s_data{
-	mlx_t		*ptr;
-	void		*win;
-	mlx_image_t	*img;
-	t_map		*map;
-	t_player	*plr;
-	t_txtr		*txtr;
-	mlx_image_t	*torch;
-	int			frame;
-	int			w_height;
-	int			w_width;
-	double		mini_scale;
-	int			type;
-	bool		shot;
+	mlx_t				*ptr;
+	void				*win;
+	mlx_image_t			*img;
+	t_map				*map;
+	t_player			*plr;
+	t_txtr				*txtr;
+	mlx_image_t			*torch;
+	int					frame;
+	int					w_height;
+	int					w_width;
+	double				mini_scale;
+	int					type;
+	bool				shot;
+	bool				r_mouse;
+	mlx_win_cursor_t	*cur;
 }t_data;
 
 void			ft_getmap(t_map *m, char *map_file, int fd);
@@ -180,4 +182,5 @@ void			left(t_data *mlx);
 void			right(t_data *mlx);
 void			chose_gun(t_data *mlx);
 void			check_door(t_map *m, int i, int j);
+void			set_cursor(t_data *mlx);
 #endif

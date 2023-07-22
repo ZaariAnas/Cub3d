@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:35:49 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 18:36:27 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/22 05:37:42 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,6 @@ void	key(mlx_key_data_t keydata, void *param)
 		mlx->type--;
 	if (mlx->type < 0)
 		mlx->type = 2;
+	if (keydata.key == MLX_KEY_M && keydata.action == MLX_RELEASE)
+		mlx->r_mouse = !mlx->r_mouse;
 }

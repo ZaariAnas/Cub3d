@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:42:49 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/21 18:01:46 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/22 05:39:06 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_moves(void *mlx)
 	else
 		m->plr->walk_speed = 4;
 	if (mlx_is_key_down(m->ptr, MLX_KEY_ESCAPE))
-		destroy(mlx);
+		destroy(mlx); 
 	mouse_rotate(mlx);
 	ft_render(mlx);
 	return ;

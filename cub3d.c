@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 18:47:53 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/22 06:00:02 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ static bool	check_args(int ac, char **av)
 		return (false);
 	return (true);
 }
+void	set_cursor(t_data *mlx)
+{
+	mlx_texture_t	*cur;
+	
+	cur = mlx_load_png("./assets/14.png");
+	mlx->cur = mlx_create_cursor(cur);
+}
 
 int	main(int ac, char **av)
 {
@@ -36,7 +43,6 @@ int	main(int ac, char **av)
 	ft_raise_perror(mlx->ptr, MLX_INIT_ERR);
 	mlx->img = mlx_new_image(mlx->ptr, mlx->w_height, mlx->w_height);
 	ft_raise_perror(mlx->img, MLX_INIT_ERR);
-	mlx_set_cursor_mode(mlx->ptr, MLX_MOUSE_HIDDEN);
 	mlx_loop_hook(mlx->ptr, ft_moves, mlx);
 	mlx_key_hook(mlx->ptr, key, mlx);
 	mlx_loop(mlx->ptr);
