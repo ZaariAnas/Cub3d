@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 13:26:35 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/21 18:33:51 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/22 07:41:50 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	ft_draw(int x, int y, t_data *mlx, int color)
 	}
 }
 
-static void	draw_circle(t_data *mlx, int center_x, int center_y, int radius)
+static void	draw_circle(t_data *mlx, int radius, int color)
 {
 	int	x;
 	int	y;
@@ -54,11 +54,11 @@ static void	draw_circle(t_data *mlx, int center_x, int center_y, int radius)
 		x = -1;
 		while (++x < 200)
 		{
-			dx = x - center_x;
-			dy = y - center_y;
+			dx = x - 100;
+			dy = y - 100;
 			distance = sqrt(dx * dx + dy * dy);
 			if (distance <= radius)
-				mlx_put_pixel(mlx->img, x, y, 0);
+				mlx_put_pixel(mlx->img, x, y, color);
 		}
 	}
 }
@@ -72,7 +72,7 @@ static void	ft_draw_p(t_data *mlx)
 	ang = to_rad(mlx->plr->r_ang);
 	end_y = 100.0 + 2.0 * cos(ang);
 	end_x = 100.0 + 2.0 * sin(ang);
-	draw_circle(mlx, 100, 100, 5);
+	draw_circle(mlx, 3, get_rgba(255, 0, 0, 255));
 	mlx_put_pixel(mlx->img, end_x, end_y, \
 	(255 << 24 | 255 << 16 | 255 << 8 | 255));
 	mlx_put_pixel(mlx->img, end_x + sin(ang), end_y + cos(ang), \
@@ -110,7 +110,7 @@ void	render_mini_map(t_map *m, t_data *mlx)
 	int		y;
 
 	map = m->map;
-	draw_circle(mlx, 100, 100, 96);
+	draw_circle(mlx, 96, 0);
 	x = 0;
 	while (map[(x)])
 	{
@@ -120,7 +120,7 @@ void	render_mini_map(t_map *m, t_data *mlx)
 			if (map[x][y] == '1')
 				ft_draw(y, x, mlx, get_rgba(255, 255, 255, 255));
 			else if (map[x][y] == 'D')
-				ft_draw(y, x, mlx, get_rgba(255, 0, 0, 255));
+				ft_draw(y, x, mlx, get_rgba(120, 120, 120, 255));
 			else
 				ft_draw(y, x, mlx, get_rgba(0, 0, 0, 230));
 			y++;

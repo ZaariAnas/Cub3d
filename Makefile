@@ -6,14 +6,14 @@
 #    By: mechane <mechane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 13:40:15 by azari             #+#    #+#              #
-#    Updated: 2023/07/22 06:10:10 by mechane          ###   ########.fr        #
+#    Updated: 2023/07/22 06:47:41 by mechane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PURPLE 		= 	\033[0;35m
 CC			= 	cc
 GLFW_LIB 		:= $(shell brew --prefix glfw)
-CFLAGS		= 	-Wall -Wextra -Werror -Ofast -O3 -g -fsanitize=address
+CFLAGS		= 	-Wall -Wextra -Werror -Ofast -O3 #-g -fsanitize=address
 NAME 		= 	cub3d
 LIBFTF	 	= 	libs/libft
 GNLF	 	= 	libs/get_next_line

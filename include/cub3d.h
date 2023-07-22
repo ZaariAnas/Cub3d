@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:37:30 by azari             #+#    #+#             */
-/*   Updated: 2023/07/22 06:00:10 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/22 08:44:25 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ typedef struct s_data{
 	int					type;
 	bool				shot;
 	bool				r_mouse;
-	mlx_win_cursor_t	*cur;
 }t_data;
 
 void			ft_getmap(t_map *m, char *map_file, int fd);
@@ -182,5 +181,4 @@ void			left(t_data *mlx);
 void			right(t_data *mlx);
 void			chose_gun(t_data *mlx);
 void			check_door(t_map *m, int i, int j);
-void			set_cursor(t_data *mlx);
 #endif

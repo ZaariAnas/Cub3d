@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 07:38:12 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/22 06:44:27 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/22 08:41:25 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	mouse_rotate(t_data *mlx)
 
 	if (mlx->r_mouse)
 	{
-		mlx_set_cursor_mode(mlx->ptr, MLX_MOUSE_HIDDEN);
 		mlx_get_mouse_pos(mlx->ptr, &x, &y);
 		x -= mlx->w_width / 2;
 		if (x < 0)
@@ -64,6 +63,4 @@ void	mouse_rotate(t_data *mlx)
 			mlx->plr->r_ang += (float)x / (mlx->w_width / 50);
 		mlx_set_mouse_pos(mlx->ptr, mlx->w_width / 2, mlx->w_height / 2);
 	}
-	else
-		mlx_set_cursor(mlx->ptr, mlx->cur);
 }
