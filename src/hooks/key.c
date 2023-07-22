@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:35:49 by azari             #+#    #+#             */
-/*   Updated: 2023/07/22 06:12:58 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/22 06:19:49 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	key(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_M && keydata.action == MLX_RELEASE)
 		mlx->r_mouse = !mlx->r_mouse;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
-		destroy(mlx); 
+		destroy(mlx);
 }
