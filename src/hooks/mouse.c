@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 07:38:12 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/22 06:00:52 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/22 06:02:11 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	destroy(void *mlx)
 
 	m = (t_data *)mlx;
 	mlx_terminate(m->ptr);
+	gc(0, 1);
 	exit(0);
 }
 

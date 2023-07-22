@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azari <azari@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:58:40 by azari             #+#    #+#             */
-/*   Updated: 2023/07/21 19:28:11 by azari            ###   ########.fr       */
+/*   Updated: 2023/07/22 06:02:42 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_raise_perror(void *ptr, char *err)
 	if (!ptr)
 	{
 		printf("%s%s\n", RED, err);
+		gc(0, 1);
 		exit(1);
 	}
 }
