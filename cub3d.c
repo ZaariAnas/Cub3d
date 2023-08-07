@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:36:52 by azari             #+#    #+#             */
-/*   Updated: 2023/07/22 08:42:24 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/07 07:32:22 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,4 @@ int	main(int ac, char **av)
 	mlx_key_hook(mlx->ptr, key, mlx);
 	mlx_loop(mlx->ptr);
 	mlx_terminate(mlx->ptr);
-	gc(0, 1);
 }
