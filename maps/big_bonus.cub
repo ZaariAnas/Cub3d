@@ -1,7 +1,7 @@
-SO ./assets/wall/wall64.png 
-WE ./assets/wall/wall64.png
-EA ./assets/wall/wall64.png
-NO ./assets/wall/wall64.png
+SO ./assets/wall/222.png
+WE ./assets/wall/redffbrick.png
+EA ./assets/wall/mossy.png
+NO ./assets/wall/khalid.png
 C 0,0,0
 F 40,40,40
 
